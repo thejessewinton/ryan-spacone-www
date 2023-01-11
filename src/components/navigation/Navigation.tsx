@@ -48,7 +48,6 @@ export const Navigation = () => {
           className="group relative text-sm font-light uppercase text-neutral-800"
         >
           {item.name}
-          {item.children && <Dropdown items={item.children} />}
         </Link>
       ))}
     </nav>
