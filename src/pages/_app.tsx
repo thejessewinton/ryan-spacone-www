@@ -1,6 +1,7 @@
 import { type AppType } from "next/app";
 
 import { api } from "../utils/api";
+import { Analytics } from "@vercel/analytics/react";
 
 import "../styles/globals.css";
 import { Layout } from "../components/layout/Layout";
@@ -16,6 +17,7 @@ const App: AppType = ({ Component, pageProps }) => {
       </Head>
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </>
   );

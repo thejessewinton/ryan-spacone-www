@@ -1,36 +1,30 @@
-import type { InferGetStaticPropsType, NextPage } from "next";
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import TestImage from "../../public/image.webp";
-import { motion } from "framer-motion";
 
 type IndexPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ProjectCard = ({ url, delay }: { url: string; delay: number }) => {
+const ProjectCard = ({
+  url,
+  projectTitle,
+}: {
+  url: string;
+  projectTitle: string;
+}) => {
   return (
-    <motion.div
-      className="group h-auto w-full overflow-hidden"
-      style={{
-        y: 25,
-        opacity: 0,
-      }}
-      animate={{
-        y: 0,
-        opacity: 1,
-      }}
-      transition={{ ease: "easeInOut", duration: 0.75, delay: delay / 250 }}
-    >
-      <Link href={url} className="block" target="_blank">
+    <div>
+      <Link href={url} target="_blank" aria-label={projectTitle}>
         <Image
           src={TestImage}
           alt="Project Image"
           className="w-full transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
           placeholder="blur"
         />
+        <span className="sr-only">{projectTitle}</span>
       </Link>
-    </motion.div>
+    </div>
   );
 };
 
@@ -53,7 +47,7 @@ const Index: NextPage<IndexPageProps> = () => {
       </Head>
       <div className="space-y-4">
         {testProjects.map((project, i) => (
-          <ProjectCard url={project.url} key={i} delay={i * 100} />
+          <ProjectCard url={project.url} key={i} projectTitle="Project" />
         ))}
       </div>
     </>
@@ -62,7 +56,7 @@ const Index: NextPage<IndexPageProps> = () => {
 
 export default Index;
 
-export const getStaticProps = () => {
+export const getStaticProps: GetStaticProps = () => {
   return {
     props: {},
   };
