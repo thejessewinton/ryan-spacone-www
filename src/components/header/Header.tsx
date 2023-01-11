@@ -1,10 +1,4 @@
-import Link from "next/link";
-
-const navigation = [
-  { name: "Film", href: "#", current: true },
-  { name: "Photo", href: "#", current: false },
-  { name: "About", href: "#", current: false },
-];
+import { Navigation } from "../navigation/Navigation";
 
 const Logo = () => {
   return (
@@ -23,22 +17,6 @@ const Logo = () => {
         fill="black"
       />
     </svg>
-  );
-};
-
-const Navigation = () => {
-  return (
-    <nav className="flex space-x-8">
-      {navigation.map((item) => (
-        <Link
-          href={item.href}
-          key={item.name}
-          className="text-sm font-light uppercase text-neutral-800"
-        >
-          {item.name}
-        </Link>
-      ))}
-    </nav>
   );
 };
 

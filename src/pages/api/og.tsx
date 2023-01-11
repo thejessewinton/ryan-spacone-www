@@ -15,7 +15,7 @@ const handler = (req: NextRequest) => {
       : "Ryan Spacone";
     return new ImageResponse(
       (
-        <div tw="font-bold bg-white h-full w-full flex items-center gap-4 justify-center">
+        <div tw="font-bold font-sans bg-white h-full w-full flex items-center justify-center">
           <Logo />
           <h5 tw="text-2xl ml-4">{title}</h5>
         </div>
@@ -26,7 +26,9 @@ const handler = (req: NextRequest) => {
       }
     );
   } catch {
-    console.error("Error generating image");
+    return new Response(`Failed to generate the image`, {
+      status: 500,
+    });
   }
 };
 

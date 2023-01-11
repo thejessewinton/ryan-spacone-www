@@ -14,7 +14,7 @@ const ProjectCard = ({
   projectTitle: string;
 }) => {
   return (
-    <div>
+    <div className="group overflow-hidden">
       <Link href={url} target="_blank" aria-label={projectTitle}>
         <Image
           src={TestImage}
