@@ -7,8 +7,6 @@ const IMDBIcon = () => {
       fill="currentColor"
       stroke-width="0"
       viewBox="0 0 448 512"
-      height="1em"
-      width="1em"
       xmlns="http://www.w3.org/2000/svg"
       className="h-8 w-8 fill-white"
     >
@@ -24,8 +22,6 @@ const InstagramIcon = () => {
       fill="currentColor"
       stroke-width="0"
       viewBox="0 0 448 512"
-      height="1em"
-      width="1em"
       xmlns="http://www.w3.org/2000/svg"
       className="h-8 w-8 fill-white"
     >
@@ -41,8 +37,6 @@ const VimeoIcon = () => {
       fill="currentColor"
       stroke-width="0"
       viewBox="0 0 448 512"
-      height="1em"
-      width="1em"
       xmlns="http://www.w3.org/2000/svg"
       className="h-8 w-8 fill-white"
     >

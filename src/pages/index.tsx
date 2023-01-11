@@ -3,12 +3,24 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import TestImage from "../../public/image.webp";
+import { motion } from "framer-motion";
 
 type IndexPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ProjectCard = ({ url }: { url: string }) => {
+const ProjectCard = ({ url, delay }: { url: string; delay: number }) => {
   return (
-    <div className="group h-auto w-full overflow-hidden">
+    <motion.div
+      className="group h-auto w-full overflow-hidden"
+      style={{
+        y: 25,
+        opacity: 0,
+      }}
+      animate={{
+        y: 0,
+        opacity: 1,
+      }}
+      transition={{ ease: "easeInOut", duration: 0.75, delay: delay / 250 }}
+    >
       <Link href={url} className="block" target="_blank">
         <Image
           src={TestImage}
@@ -18,9 +30,18 @@ const ProjectCard = ({ url }: { url: string }) => {
           placeholder="blur"
         />
       </Link>
-    </div>
+    </motion.div>
   );
 };
+
+const testProjects = [
+  {
+    url: "https://google.com",
+  },
+  {
+    url: "https://google.com",
+  },
+];
 
 const Index: NextPage<IndexPageProps> = () => {
   return (
@@ -31,14 +52,9 @@ const Index: NextPage<IndexPageProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="space-y-4">
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
-        <ProjectCard url="https://google.com" />
+        {testProjects.map((project, i) => (
+          <ProjectCard url={project.url} key={i} delay={i * 100} />
+        ))}
       </div>
     </>
   );
