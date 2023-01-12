@@ -1,39 +1,15 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import TestImage from "../../public/image.webp";
+import { ProjectCard } from "../components/project-card/ProjectCard";
 
 type IndexPageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const ProjectCard = ({
-  url,
-  projectTitle,
-}: {
-  url: string;
-  projectTitle: string;
-}) => {
-  return (
-    <div className="group overflow-hidden">
-      <Link href={url} target="_blank" aria-label={projectTitle}>
-        <Image
-          src={TestImage}
-          alt="Project Image"
-          className="w-full transition-transform duration-700 group-hover:scale-105"
-          placeholder="blur"
-        />
-        <span className="sr-only">{projectTitle}</span>
-      </Link>
-    </div>
-  );
-};
-
 const testProjects = [
   {
-    url: "https://google.com",
+    slug: "test1",
   },
   {
-    url: "https://google.com",
+    slug: "test2",
   },
 ];
 
@@ -46,8 +22,15 @@ const Index: NextPage<IndexPageProps> = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="space-y-4">
-        {testProjects.map((project, i) => (
-          <ProjectCard url={project.url} key={i} projectTitle="Project" />
+        {testProjects.map((project) => (
+          <ProjectCard
+            href={{
+              pathname: "/projects/[slug]",
+              query: { slug: project.slug },
+            }}
+            key={project.slug}
+            projectTitle="Project"
+          />
         ))}
       </div>
     </>

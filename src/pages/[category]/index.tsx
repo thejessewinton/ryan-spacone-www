@@ -86,11 +86,11 @@ const Project: NextPage<ProjectPage> = () => {
 export default Project;
 
 export const getStaticProps: GetStaticProps = (ctx) => {
-  const { slug } = ctx.params as { slug: string };
+  const { category } = ctx.params as { category: string };
 
   return {
     props: {
-      slug,
+      category,
     },
   };
 };
@@ -100,12 +100,12 @@ export const getStaticPaths: GetStaticPaths = () => {
     paths: [
       {
         params: {
-          slug: "test1",
+          category: "cat1",
         },
       },
       {
         params: {
-          slug: "test2",
+          category: "cat2",
         },
       },
     ],
