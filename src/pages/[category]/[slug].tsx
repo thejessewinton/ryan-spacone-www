@@ -100,11 +100,13 @@ export const getStaticPaths: GetStaticPaths = () => {
     paths: [
       {
         params: {
+          category: "commercial",
           slug: "test1",
         },
       },
       {
         params: {
+          category: "commercial",
           slug: "test2",
         },
       },
