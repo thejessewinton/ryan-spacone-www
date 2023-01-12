@@ -1,9 +1,8 @@
 import { clsx } from "clsx";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { useMobileNav } from "../../../hooks/use-mobile-nav";
+import { ThemeSwitcher } from "../theme-switcher/ThemeSwitcher";
 
 const navigation = [
   { name: "Narrative", href: "/narrative" },
@@ -12,64 +11,23 @@ const navigation = [
   { name: "About", href: "/about" },
 ];
 
-const ThemeChanger = () => {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return <button className="h-4 w-4" />;
-
-  return (
-    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-      {theme === "dark" ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-4 w-4"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-          />
-        </svg>
-      ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-4 w-4"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-          />
-        </svg>
-      )}
-    </button>
-  );
-};
-
 const Hamburger = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
+  const className =
+    "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform dark:bg-white";
   return (
-    <button onClick={() => toggleMobileNav()} className="relative md:hidden">
+    <button
+      onClick={() => toggleMobileNav()}
+      className="relative md:hidden"
+      aria-label="Open Mobile Nav"
+    >
+      <span className="sr-only">Open Mobile Nav</span>
       <span
-        className={clsx(
-          "mr-0 ml-auto block h-[2px] w-8 bg-white transition-transform",
-          isMobileNavOpen ? "rotate-45" : ""
-        )}
+        className={clsx(className, "w-8", isMobileNavOpen ? "rotate-45" : "")}
       />
       <span
         className={clsx(
-          "mr-0 ml-auto block h-[2px] bg-white transition-transform",
+          "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform dark:bg-white",
           isMobileNavOpen ? "-mt-[2px] w-8 -rotate-45" : "mt-1 w-6"
         )}
       />
@@ -82,12 +40,13 @@ export const MobileNavigation = () => {
   const { isMobileNavOpen } = useMobileNav();
 
   return (
-    <>
+    <div className="flex items-center gap-2">
       <Hamburger />
+      <ThemeSwitcher />
       {isMobileNavOpen ? (
         <nav
           className={clsx(
-            "inset-0 top-24 flex-col gap-4 bg-white px-9 dark:bg-neutral-900 md:hidden",
+            "inset-0 top-24 flex-col gap-4 bg-white px-9 pt-12 dark:bg-neutral-900 md:hidden",
             isMobileNavOpen ? "fixed flex" : ""
           )}
         >
@@ -106,10 +65,8 @@ export const MobileNavigation = () => {
               </Link>
             );
           })}
-
-          <ThemeChanger />
         </nav>
       ) : null}
-    </>
+    </div>
   );
 };
