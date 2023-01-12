@@ -12,7 +12,12 @@ const inter = Inter({
 export const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <main className={clsx("flex min-h-screen flex-col px-9", inter.variable)}>
+      <main
+        className={clsx(
+          "relative flex min-h-screen flex-col px-9",
+          inter.variable
+        )}
+      >
         <Header />
         {children}
       </main>

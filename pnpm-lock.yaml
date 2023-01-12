@@ -31,6 +31,7 @@ specifiers:
   tailwindcss: ^3.2.0
   typescript: ^4.9.4
   zod: ^3.20.2
+  zustand: ^4.3.1
 
 dependencies:
   '@next/font': 13.1.1
@@ -49,6 +50,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
   superjson: 1.9.1
   zod: 3.20.2
+  zustand: 4.3.1_react@18.2.0
 
 devDependencies:
   '@types/node': 18.11.18
@@ -2913,4 +2915,20 @@ packages:
 
   /zod/3.20.2:
     resolution: {integrity: sha512-1MzNQdAvO+54H+EaK5YpyEy0T+Ejo/7YLHS93G3RnYWh5gaotGHwGeN/ZO687qEDU2y4CdStQYXVHIgrUl5UVQ==}
+    dev: false
+
+  /zustand/4.3.1_react@18.2.0:
+    resolution: {integrity: sha512-EVyo/eLlOTcJm/X5M00rwtbYFXwRVTaRteSvhtbTZUCQFJkNfIyHPiJ6Ke68MSWzcKHpPzvqNH4gC2ZS/sbNqw==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0_react@18.2.0
     dev: false

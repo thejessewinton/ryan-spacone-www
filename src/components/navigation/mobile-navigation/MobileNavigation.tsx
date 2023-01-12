@@ -3,9 +3,10 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useMobileNav } from "../../../hooks/use-mobile-nav";
 
 const navigation = [
-  { name: "Narrative", href: "#" },
+  { name: "Narrative", href: "/narrative" },
   { name: "Commercial", href: "/commercial" },
   { name: "Photo", href: "/photo" },
   { name: "About", href: "/about" },
@@ -56,26 +57,59 @@ const ThemeChanger = () => {
   );
 };
 
-export const Navigation = () => {
-  const { pathname } = useRouter();
+const Hamburger = () => {
+  const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
   return (
-    <nav className="hidden items-center space-x-8 md:flex">
-      {navigation.map((item) => {
-        const isActive = pathname === item.href;
-        return (
-          <Link
-            href={item.href}
-            key={item.name}
-            className={clsx(
-              "group relative text-sm uppercase",
-              isActive && "text-neutral-400"
-            )}
-          >
-            {item.name}
-          </Link>
-        );
-      })}
-      <ThemeChanger />
-    </nav>
+    <button onClick={() => toggleMobileNav()} className="relative md:hidden">
+      <span
+        className={clsx(
+          "mr-0 ml-auto block h-[2px] w-8 bg-white transition-transform",
+          isMobileNavOpen ? "rotate-45" : ""
+        )}
+      />
+      <span
+        className={clsx(
+          "mr-0 ml-auto block h-[2px] bg-white transition-transform",
+          isMobileNavOpen ? "-mt-[2px] w-8 -rotate-45" : "mt-1 w-6"
+        )}
+      />
+    </button>
+  );
+};
+
+export const MobileNavigation = () => {
+  const { pathname } = useRouter();
+  const { isMobileNavOpen } = useMobileNav();
+
+  return (
+    <>
+      <Hamburger />
+      {isMobileNavOpen ? (
+        <nav
+          className={clsx(
+            "inset-0 top-24 flex-col gap-4 bg-white px-9 dark:bg-neutral-900 md:hidden",
+            isMobileNavOpen ? "fixed flex" : ""
+          )}
+        >
+          {navigation.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                href={item.href}
+                key={item.name}
+                className={clsx(
+                  "relative text-sm uppercase",
+                  isActive && "text-neutral-400"
+                )}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
+
+          <ThemeChanger />
+        </nav>
+      ) : null}
+    </>
   );
 };

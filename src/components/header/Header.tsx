@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileNavigation } from "../navigation/mobile-navigation/MobileNavigation";
 import { Navigation } from "../navigation/Navigation";
 
 const Logo = () => {
@@ -28,6 +29,7 @@ export const Header = () => {
         <Logo />
       </Link>
       <Navigation />
+      <MobileNavigation />
     </header>
   );
 };
