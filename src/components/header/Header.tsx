@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { NavigationProps } from "types/prismic";
 import { MobileNavigation } from "../navigation/mobile-navigation/MobileNavigation";
 import { Navigation } from "../navigation/Navigation";
 
@@ -22,14 +23,16 @@ const Logo = () => {
   );
 };
 
-export const Header = () => {
+export const Header = ({ navigation }: { navigation: NavigationProps }) => {
   return (
     <header className="sticky top-0 z-10 flex h-24 items-center justify-between bg-white dark:bg-neutral-900">
       <Link href="/">
         <Logo />
       </Link>
-      <Navigation />
-      <MobileNavigation />
+      <div>
+        <Navigation navigation={navigation} />
+        <MobileNavigation navigation={navigation} />
+      </div>
     </header>
   );
 };

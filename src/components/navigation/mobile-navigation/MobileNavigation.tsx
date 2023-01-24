@@ -1,15 +1,9 @@
-import { clsx } from "clsx";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useMobileNav } from "../../../hooks/use-mobile-nav";
-import { ThemeSwitcher } from "../theme-switcher/ThemeSwitcher";
+"use client";
 
-const navigation = [
-  { name: "Narrative", href: "/narrative" },
-  { name: "Commercial", href: "/commercial" },
-  { name: "Photo", href: "/photo" },
-  { name: "About", href: "/about" },
-];
+import { clsx } from "clsx";
+import { useMobileNav } from "hooks/use-mobile-nav";
+import Link from "next/link";
+import type { NavigationProps } from "types/prismic";
 
 const Hamburger = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
@@ -35,14 +29,16 @@ const Hamburger = () => {
   );
 };
 
-export const MobileNavigation = () => {
-  const { pathname } = useRouter();
+export const MobileNavigation = ({
+  navigation,
+}: {
+  navigation: NavigationProps;
+}) => {
   const { isMobileNavOpen } = useMobileNav();
 
   return (
     <div className="flex items-center gap-2">
       <Hamburger />
-      <ThemeSwitcher />
       {isMobileNavOpen ? (
         <nav
           className={clsx(
@@ -51,17 +47,15 @@ export const MobileNavigation = () => {
           )}
         >
           {navigation.map((item) => {
-            const isActive = pathname === item.href;
             return (
               <Link
-                href={item.href}
-                key={item.name}
-                className={clsx(
-                  "relative text-sm uppercase",
-                  isActive && "text-neutral-400"
-                )}
+                href={
+                  item.link.link_type === "Web" ? item.link.url : item.link.uid
+                }
+                key={item.label}
+                className={clsx("group relative text-sm uppercase")}
               >
-                {item.name}
+                {item.label}
               </Link>
             );
           })}

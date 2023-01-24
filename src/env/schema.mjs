@@ -7,6 +7,7 @@ import { z } from "zod";
  */
 export const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
+  PRISMIC_REPOSITORY_NAME: z.string(),
 });
 
 /**
@@ -16,6 +17,7 @@ export const serverSchema = z.object({
  */
 export const serverEnv = {
   NODE_ENV: process.env.NODE_ENV,
+  PRISMIC_REPOSITORY_NAME: process.env.PRISMIC_REPOSITORY_NAME,
 };
 
 /**
@@ -25,7 +27,6 @@ export const serverEnv = {
  */
 export const clientSchema = z.object({
   NEXT_PUBLIC_URL: z.string().url(),
-  // NEXT_PUBLIC_CLIENTVAR: z.string(),
 });
 
 /**

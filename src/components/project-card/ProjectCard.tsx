@@ -6,18 +6,12 @@ export const ProjectCard = ({
   href,
   projectTitle,
 }: {
-  href: { pathname: string; query: { slug: string } };
+  href: string;
   projectTitle: string;
 }) => {
   return (
     <div className="group overflow-hidden">
-      <Link
-        href={{
-          pathname: "/projects/[slug]",
-          query: { slug: href.query.slug },
-        }}
-        aria-label={projectTitle}
-      >
+      <Link href={href} aria-label={projectTitle}>
         <Image
           src={TestImage}
           alt="Project Image"

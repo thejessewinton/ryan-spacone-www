@@ -1,14 +1,12 @@
 import { clsx } from "clsx";
-import type {
-  GetStaticPaths,
-  GetStaticProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
-
-type ProjectPage = InferGetStaticPropsType<typeof getStaticProps>;
+import type { NextPage } from "next";
 
 const VimeoPlayer = () => {
+  // const getVideoId = (url: string) => {
+  //   const id = url.split("/").pop();
+  //   return id;
+  // };
+
   return (
     <div className="relative aspect-video w-full bg-black">
       <iframe
@@ -73,7 +71,7 @@ const ImageGallery = () => {
   );
 };
 
-const Project: NextPage<ProjectPage> = () => {
+const Project: NextPage = () => {
   return (
     <div className="flex flex-col gap-2">
       <VimeoPlayer />
@@ -84,31 +82,3 @@ const Project: NextPage<ProjectPage> = () => {
 };
 
 export default Project;
-
-export const getStaticProps: GetStaticProps = (ctx) => {
-  const { slug } = ctx.params as { slug: string };
-
-  return {
-    props: {
-      slug,
-    },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [
-      {
-        params: {
-          slug: "test1",
-        },
-      },
-      {
-        params: {
-          slug: "test2",
-        },
-      },
-    ],
-    fallback: false,
-  };
-};

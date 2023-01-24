@@ -1,35 +1,21 @@
 import { clsx } from "clsx";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { ThemeSwitcher } from "./theme-switcher/ThemeSwitcher";
+import type { NavigationProps } from "types/prismic";
 
-const navigation = [
-  { name: "Narrative", href: "#" },
-  { name: "Commercial", href: "/commercial" },
-  { name: "Photo", href: "/photo" },
-  { name: "About", href: "/about" },
-];
-
-export const Navigation = () => {
-  const { pathname } = useRouter();
+export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
   return (
     <nav className="hidden items-center space-x-8 md:flex">
       {navigation.map((item) => {
-        const isActive = pathname === item.href;
         return (
           <Link
-            href={item.href}
-            key={item.name}
-            className={clsx(
-              "group relative text-sm uppercase",
-              isActive && "text-neutral-400"
-            )}
+            href={item.link.link_type === "Web" ? item.link.url : item.link.uid}
+            key={item.label}
+            className={clsx("group relative text-sm uppercase")}
           >
-            {item.name}
+            {item.label}
           </Link>
         );
       })}
-      <ThemeSwitcher />
     </nav>
   );
 };
