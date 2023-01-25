@@ -1,4 +1,9 @@
-import type { SiteSettingsDocumentData } from "../../.slicemachine/prismicio";
+import type {
+  ProjectDocument,
+  SiteSettingsDocumentDataNavigationItem,
+  SiteSettingsDocumentDataSocialsItem,
+} from "../../.slicemachine/prismicio";
 
-export type NavigationProps = SiteSettingsDocumentData["navigation"];
-export type SocialsProps = SiteSettingsDocumentData["socials"];
+export type NavigationProps = SiteSettingsDocumentDataNavigationItem[];
+export type SocialsProps = SiteSettingsDocumentDataSocialsItem[];
+export type ProjectProps = ProjectDocument["data"];

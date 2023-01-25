@@ -77,6 +77,17 @@ interface ProjectDocumentData {
      */
     title: prismicT.TitleField;
     /**
+     * Cover field in *Project*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.cover
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    cover: prismicT.ImageField<"widescreen">;
+    /**
      * Video field in *Project*
      *
      * - **Field Type**: Embed

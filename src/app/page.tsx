@@ -7,10 +7,9 @@ const Index = async () => {
     <div className="space-y-4">
       {results.map((project) => (
         <ProjectCard
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           href={`/projects/${project.uid}`}
           key={project.uid}
-          projectTitle="Project"
+          project={project.data}
         />
       ))}
     </div>

@@ -9,7 +9,7 @@
             "label",
             {
               "__TYPE__": "FieldContent",
-              "value": "tool",
+              "value": "soil",
               "type": "Text"
             }
           ],
@@ -19,7 +19,7 @@
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "http://twitter.com"
+                "url": "https://slicemachine.dev"
               }
             }
           ]
@@ -37,7 +37,7 @@
             "label",
             {
               "__TYPE__": "FieldContent",
-              "value": "check",
+              "value": "pound",
               "type": "Text"
             }
           ],
@@ -47,7 +47,7 @@
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "http://google.com"
+                "url": "https://prismic.io"
               }
             }
           ]
@@ -57,12 +57,12 @@
   },
   "meta_title": {
     "__TYPE__": "FieldContent",
-    "value": "farther",
+    "value": "pattern",
     "type": "Text"
   },
   "meta_description": {
     "__TYPE__": "FieldContent",
-    "value": "scene",
+    "value": "baby",
     "type": "Text"
   }
 }
