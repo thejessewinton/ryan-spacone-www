@@ -1,6 +1,9 @@
 {
   "_cts": {
     "site_settings": {},
-    "about": {}
+    "about": {},
+    "project": {
+      "credits": {}
+    }
   }
 }

@@ -1,8 +1,8 @@
 import { ProjectCard } from "components/project-card/ProjectCard";
-import { getProjects } from "utils/prismic";
+import { getProjectsByCategory } from "utils/prismic";
 
-const Index = async () => {
-  const { results } = await getProjects();
+const Index = async ({ params }: { params: { category: string } }) => {
+  const { results } = await getProjectsByCategory(params.category);
   return (
     <div className="space-y-4">
       {results.map((project) => (

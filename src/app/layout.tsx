@@ -7,11 +7,15 @@ import { Footer } from "components/footer/Footer";
 import { AnalyticsWrapper } from "components/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
 
-const inter = Inter({ variable: "--font-inter", display: "optional" });
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "optional",
+});
 const newsreader = Newsreader({
   variable: "--font-newsreader",
+  subsets: ["latin"],
   display: "optional",
-  style: "italic",
 });
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
@@ -26,7 +30,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
           <Header navigation={data.navigation} />
           {children}
         </main>
-        <Footer />
+        <Footer socials={data.socials} />
         <AnalyticsWrapper />
       </body>
     </html>

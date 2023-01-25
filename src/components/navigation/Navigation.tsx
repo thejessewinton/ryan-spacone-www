@@ -1,5 +1,6 @@
 import { clsx } from "clsx";
 import Link from "next/link";
+import { Link as PrismicLink } from "prismic-reactjs";
 import type { NavigationProps } from "types/prismic";
 
 export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
@@ -8,7 +9,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
       {navigation.map((item) => {
         return (
           <Link
-            href={item.link.link_type === "Web" ? item.link.url : item.link.uid}
+            href={PrismicLink.url(item.link)}
             key={item.label}
             className={clsx("group relative text-sm uppercase")}
           >

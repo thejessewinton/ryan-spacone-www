@@ -1,12 +1,8 @@
 import { clsx } from "clsx";
 import type { NextPage } from "next";
+import Link from "next/link";
 
 const VimeoPlayer = () => {
-  // const getVideoId = (url: string) => {
-  //   const id = url.split("/").pop();
-  //   return id;
-  // };
-
   return (
     <div className="relative aspect-video w-full bg-black">
       <iframe
@@ -18,6 +14,14 @@ const VimeoPlayer = () => {
   );
 };
 
+const ReturnTo = () => {
+  return (
+    <Link href="/projects">
+      <span>Return to Projects</span>
+    </Link>
+  );
+};
+
 const CreditsSection = ({ projectName }: { projectName: string }) => {
   return (
     <section className="grid grid-cols-2 items-center justify-center gap-4 py-32 text-right md:text-left">
@@ -25,30 +29,30 @@ const CreditsSection = ({ projectName }: { projectName: string }) => {
         {projectName}
       </h4>
 
-      <ul className="flex flex-col gap-4">
-        <li>
-          <span className="block font-normal uppercase">Director</span>
+      <div className="space-y-6">
+        <div>
+          <span className="block font-medium uppercase">Director</span>
           <span>Chris LeClerc</span>
-        </li>
-        <li>
-          <span className="block font-normal uppercase">
+        </div>
+        <div>
+          <span className="block font-medium uppercase">
             Production Company
           </span>
           <span>Territory 6</span>
-        </li>
-        <li>
-          <span className="block font-normal uppercase">Color</span>
+        </div>
+        <div>
+          <span className="block font-medium uppercase">Color</span>
           <span>Alex Verholak</span>
-        </li>
-        <li className="block">
-          <span className="block font-normal uppercase">Format</span>
+        </div>
+        <div>
+          <span className="block font-medium uppercase">Format</span>
           <div className="flex flex-col">
             <span>Alexa Mini</span>
             <span>Arri Master Primes</span>
             <span>Cooke Speed Panchros</span>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
   );
 };

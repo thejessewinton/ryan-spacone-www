@@ -4,22 +4,6 @@
   "repeatable": false,
   "status": true,
   "json": {
-    "Meta": {
-      "meta_title": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Title",
-          "placeholder": ""
-        }
-      },
-      "meta_description": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Description",
-          "placeholder": ""
-        }
-      }
-    },
     "Navigation": {
       "navigation": {
         "type": "Group",
@@ -67,6 +51,22 @@
               }
             }
           }
+        }
+      }
+    },
+    "Meta": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Title",
+          "placeholder": ""
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": ""
         }
       }
     }

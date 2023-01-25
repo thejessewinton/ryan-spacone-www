@@ -63,30 +63,129 @@ interface AboutDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type AboutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
-/** Content for Site Settings documents */
-interface SiteSettingsDocumentData {
+/** Content for Project documents */
+interface ProjectDocumentData {
     /**
-     * Meta Title field in *Site Settings*
+     * Title field in *Project*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Video field in *Project*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.video
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    video: prismicT.EmbedField;
+    /**
+     * Credits field in *Project*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.credits[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    credits: prismicT.GroupField<Simplify<ProjectDocumentDataCreditsItem>>;
+    /**
+     * Stills field in *Project*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.stills[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    stills: prismicT.GroupField<Simplify<ProjectDocumentDataStillsItem>>;
+    /**
+     * Meta Title field in *Project*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: site_settings.meta_title
-     * - **Tab**: Meta
+     * - **API ID Path**: project.meta_title
+     * - **Tab**: SEO
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
     meta_title: prismicT.KeyTextField;
     /**
-     * Meta Description field in *Site Settings*
+     * Meta Description field in *Project*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: site_settings.meta_description
-     * - **Tab**: Meta
+     * - **API ID Path**: project.meta_description
+     * - **Tab**: SEO
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
     meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in Project → Credits
+ *
+ */
+export interface ProjectDocumentDataCreditsItem {
+    /**
+     * Label field in *Project → Credits*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.credits[].label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Details field in *Project → Credits*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.credits[].details
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    details: prismicT.RichTextField;
+}
+/**
+ * Item in Project → Stills
+ *
+ */
+export interface ProjectDocumentDataStillsItem {
+    /**
+     * Image field in *Project → Stills*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.stills[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Project document from Prismic
+ *
+ * - **API ID**: `project`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
+/** Content for Site Settings documents */
+interface SiteSettingsDocumentData {
     /**
      * Navigation field in *Site Settings*
      *
@@ -109,6 +208,28 @@ interface SiteSettingsDocumentData {
      *
      */
     socials: prismicT.GroupField<Simplify<SiteSettingsDocumentDataSocialsItem>>;
+    /**
+     * Meta Title field in *Site Settings*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_settings.meta_title
+     * - **Tab**: Meta
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *Site Settings*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: site_settings.meta_description
+     * - **Tab**: Meta
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
 }
 /**
  * Item in Site Settings → Navigation
@@ -172,12 +293,12 @@ export interface SiteSettingsDocumentDataSocialsItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteSettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteSettingsDocumentData>, "site_settings", Lang>;
-export type AllDocumentTypes = AboutDocument | SiteSettingsDocument;
+export type AllDocumentTypes = AboutDocument | ProjectDocument | SiteSettingsDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataNavigationItem, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes };
+        export type { AboutDocumentData, AboutDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataNavigationItem, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes };
     }
 }

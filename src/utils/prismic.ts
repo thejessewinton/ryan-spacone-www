@@ -3,7 +3,18 @@ import { env } from "env/server.mjs";
 
 const endpoint = getRepositoryEndpoint(env.PRISMIC_REPOSITORY_NAME);
 
-export const prismic = createClient(endpoint);
+export const prismic = createClient(endpoint, {
+  routes: [
+    {
+      type: "about",
+      path: "/:uid",
+    },
+    {
+      type: "project",
+      path: "/projects/:uid",
+    },
+  ],
+});
 
 export const getSiteSettings = async () => {
   return await prismic.getSingle("site_settings");
@@ -11,4 +22,16 @@ export const getSiteSettings = async () => {
 
 export const getAboutPage = async () => {
   return await prismic.getSingle("about");
+};
+
+export const getProjects = async () => {
+  return await prismic.getByType("project");
+};
+
+export const getProjectsByCategory = async (category: string) => {
+  return await prismic.getByTag(category);
+};
+
+export const getProject = async (uid: string) => {
+  return await prismic.getByUID("project", uid);
 };
