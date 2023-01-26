@@ -1,7 +1,7 @@
 import { createClient, getRepositoryEndpoint } from "@prismicio/client";
-import { env } from "env/server.mjs";
+import { env } from "env/client.mjs";
 
-const endpoint = getRepositoryEndpoint(env.PRISMIC_REPOSITORY_NAME);
+const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
 export const prismic = createClient(endpoint, {
   routes: [

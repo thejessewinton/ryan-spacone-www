@@ -1,9 +1,9 @@
 import { getSiteSettings } from "utils/prismic";
 
 const Head = async () => {
-  const settings = await getSiteSettings();
+  const { data } = await getSiteSettings();
 
-  return <title>{settings.data.meta_title}</title>;
+  return <title>{data.meta_title}</title>;
 };
 
 export default Head;

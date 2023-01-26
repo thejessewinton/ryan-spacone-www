@@ -10,13 +10,14 @@ export const ProjectCard = ({
   href: string;
   project: ProjectDocumentData;
 }) => {
+  if (!project.cover.url) return null;
   return (
     <div className="group overflow-hidden">
       <Link href={href} aria-label={asText(project.title)}>
         <Image
-          src={project.cover.url as string}
-          width={project.cover.dimensions.width as number}
-          height={project.cover.dimensions.height as number}
+          src={project.cover.url}
+          width={project.cover.widescreen.dimensions?.width}
+          height={project.cover.widescreen.dimensions?.height}
           alt="Project Image"
           className="w-full transition-transform duration-700 group-hover:scale-105"
           placeholder="blur"

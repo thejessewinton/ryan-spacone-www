@@ -31,6 +31,17 @@ interface AboutDocumentData {
      */
     bio: prismicT.RichTextField;
     /**
+     * Representation field in *About*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.representation[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    representation: prismicT.GroupField<Simplify<AboutDocumentDataRepresentationItem>>;
+    /**
      * Meta Title field in *About*
      *
      * - **Field Type**: Text
@@ -52,6 +63,32 @@ interface AboutDocumentData {
      *
      */
     meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in About → Representation
+ *
+ */
+export interface AboutDocumentDataRepresentationItem {
+    /**
+     * Title field in *About → Representation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.representation[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Details field in *About → Representation*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.representation[].details
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    details: prismicT.RichTextField;
 }
 /**
  * About document from Prismic
@@ -310,6 +347,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataNavigationItem, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes };
+        export type { AboutDocumentData, AboutDocumentDataRepresentationItem, AboutDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataNavigationItem, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes };
     }
 }

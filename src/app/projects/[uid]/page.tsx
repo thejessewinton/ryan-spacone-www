@@ -2,18 +2,7 @@ import { clsx } from "clsx";
 import type { ProjectProps } from "types/prismic";
 import { getProject } from "utils/prismic";
 import { asText } from "@prismicio/helpers";
-import type { ProjectDocumentData } from "../../../../.slicemachine/prismicio";
-
-const VimeoPlayer = ({ video }: { video: ProjectDocumentData["video"] }) => {
-  return (
-    <div
-      className="relative aspect-video w-full bg-neutral-900"
-      dangerouslySetInnerHTML={{
-        __html: video.html as string,
-      }}
-    />
-  );
-};
+import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
 
 const CreditsSection = ({
   projectName,

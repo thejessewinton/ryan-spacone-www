@@ -1,7 +1,6 @@
 import { asLink } from "@prismicio/helpers";
 import { clsx } from "clsx";
 import Link from "next/link";
-
 import type { NavigationProps } from "types/prismic";
 
 export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {

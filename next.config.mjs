@@ -15,5 +15,14 @@ const config = {
   images: {
     domains: ["images.prismic.io"],
   },
+  redirects: async () => {
+    return [
+      {
+        source: "/admin",
+        destination: "https://ryan-spacone.prismic.io",
+        permanent: false,
+      },
+    ];
+  },
 };
 export default config;
