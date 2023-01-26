@@ -1,6 +1,8 @@
 "use client";
 
+import { asLink } from "@prismicio/helpers";
 import { clsx } from "clsx";
+import { motion } from "framer-motion";
 import { useMobileNav } from "hooks/use-mobile-nav";
 import Link from "next/link";
 import type { NavigationProps } from "types/prismic";
@@ -34,32 +36,34 @@ export const MobileNavigation = ({
 }: {
   navigation: NavigationProps;
 }) => {
-  const { isMobileNavOpen } = useMobileNav();
+  const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
 
   return (
     <div className="flex items-center gap-2">
       <Hamburger />
       {isMobileNavOpen ? (
-        <nav
+        <motion.nav
           className={clsx(
             "inset-0 top-24 flex-col gap-4 bg-white px-9 pt-12 dark:bg-neutral-900 md:hidden",
             isMobileNavOpen ? "fixed flex" : ""
           )}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0, transition: { bounce: false } }}
+          exit={{ opacity: 0, y: 50 }}
         >
           {navigation.map((item) => {
             return (
               <Link
-                href={
-                  item.link.link_type === "Web" ? item.link.url : item.link.uid
-                }
+                href={asLink(item.link) as string}
                 key={item.label}
                 className={clsx("group relative text-sm uppercase")}
+                onClick={toggleMobileNav}
               >
                 {item.label}
               </Link>
             );
           })}
-        </nav>
+        </motion.nav>
       ) : null}
     </div>
   );

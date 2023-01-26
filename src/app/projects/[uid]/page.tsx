@@ -3,6 +3,8 @@ import type { ProjectProps } from "types/prismic";
 import { getProject } from "utils/prismic";
 import { asText } from "@prismicio/helpers";
 import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
+import Image from "next/image";
+import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 
 const CreditsSection = ({
   projectName,
@@ -24,7 +26,13 @@ const CreditsSection = ({
               <span className="block font-medium uppercase">
                 {credit.label}
               </span>
-              {asText(credit.details)}
+              {asText(credit.details, "\n\n")
+                .split("\n\n")
+                .map((line) => (
+                  <span className="block" key={line}>
+                    {line}
+                  </span>
+                ))}
             </div>
           );
         })}
@@ -33,18 +41,30 @@ const CreditsSection = ({
   );
 };
 
-const ImageGallery = () => {
-  const arrayOfImages = Array.from({ length: 15 }, (_, i) => i + 1);
-
+const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
   return (
     <div className="grid grid-cols-2 gap-4">
-      {arrayOfImages.map((image, i) => {
+      {stills.map((still, i) => {
+        if (!still.image.url) return null;
+
         const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
+
         return (
-          <div
+          <ScrollObserver
+            key={still.image.url}
             className={clsx("aspect-video bg-black", className)}
-            key={image}
-          />
+          >
+            <Image
+              src={still.image.url}
+              width={still.image.dimensions.width}
+              height={still.image.dimensions.height}
+              alt="Project Image"
+              loading="lazy"
+              className={clsx("aspect-video bg-black", className)}
+              placeholder="blur"
+              blurDataURL={`${still.image.url}&blur=200`}
+            />
+          </ScrollObserver>
         );
       })}
     </div>
@@ -58,7 +78,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
     <div className="flex flex-col gap-2">
       <VimeoPlayer video={data.video} />
       <CreditsSection projectName={data.title} credits={data.credits} />
-      <ImageGallery />
+      <ImageGallery stills={data.stills} />
     </div>
   );
 };

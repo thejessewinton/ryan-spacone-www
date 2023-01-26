@@ -15,7 +15,13 @@ const About = async () => {
         placeholder="blur"
         blurDataURL={`${data.image.url as string}&blur=200`}
       />
-      {asText(data.bio, "\n\n")}
+      {asText(data.bio, "\n\n")
+        .split("\n\n")
+        .map((line) => (
+          <div className="mb-8 block" key={line}>
+            {line}
+          </div>
+        ))}
     </div>
   );
 };
