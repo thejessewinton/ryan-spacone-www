@@ -5,26 +5,13 @@
   "status": true,
   "json": {
     "Navigation": {
-      "navigation": {
-        "type": "Group",
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
         "config": {
-          "label": "Navigation",
-          "fields": {
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              }
-            },
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link",
-                "placeholder": "",
-                "allowTargetBlank": true,
-                "select": null
-              }
+          "choices": {
+            "navigation_item": {
+              "type": "SharedSlice"
             }
           }
         }

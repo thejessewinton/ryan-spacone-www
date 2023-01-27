@@ -100,6 +100,79 @@ export interface AboutDocumentDataRepresentationItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type AboutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
+/** Content for Category documents */
+interface CategoryDocumentData {
+    /**
+     * Title field in *Category*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Projects field in *Category*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.projects[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    projects: prismicT.GroupField<Simplify<CategoryDocumentDataProjectsItem>>;
+    /**
+     * Meta Title field in *Category*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.meta_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *Category*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.meta_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in Category → Projects
+ *
+ */
+export interface CategoryDocumentDataProjectsItem {
+    /**
+     * Project field in *Category → Projects*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.projects[].project
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    project: prismicT.RelationField<"project">;
+}
+/**
+ * Category document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CategoryDocumentData>, "category", Lang>;
 /** Content for Project documents */
 interface ProjectDocumentData {
     /**
@@ -235,16 +308,16 @@ export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocu
 /** Content for Site Settings documents */
 interface SiteSettingsDocumentData {
     /**
-     * Navigation field in *Site Settings*
+     * Slice Zone field in *Site Settings*
      *
-     * - **Field Type**: Group
+     * - **Field Type**: Slice Zone
      * - **Placeholder**: *None*
-     * - **API ID Path**: site_settings.navigation[]
+     * - **API ID Path**: site_settings.slices[]
      * - **Tab**: Navigation
-     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
      *
      */
-    navigation: prismicT.GroupField<Simplify<SiteSettingsDocumentDataNavigationItem>>;
+    slices: prismicT.SliceZone<SiteSettingsDocumentDataSlicesSlice>;
     /**
      * Socials field in *Site Settings*
      *
@@ -280,31 +353,10 @@ interface SiteSettingsDocumentData {
     meta_description: prismicT.KeyTextField;
 }
 /**
- * Item in Site Settings → Navigation
+ * Slice for *Site Settings → Slice Zone*
  *
  */
-export interface SiteSettingsDocumentDataNavigationItem {
-    /**
-     * Label field in *Site Settings → Navigation*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: site_settings.navigation[].label
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    label: prismicT.KeyTextField;
-    /**
-     * Link field in *Site Settings → Navigation*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: site_settings.navigation[].link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    link: prismicT.LinkField;
-}
+type SiteSettingsDocumentDataSlicesSlice = NavigationItemSlice;
 /**
  * Item in Site Settings → Socials
  *
@@ -341,12 +393,87 @@ export interface SiteSettingsDocumentDataSocialsItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteSettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteSettingsDocumentData>, "site_settings", Lang>;
-export type AllDocumentTypes = AboutDocument | ProjectDocument | SiteSettingsDocument;
+export type AllDocumentTypes = AboutDocument | CategoryDocument | ProjectDocument | SiteSettingsDocument;
+/**
+ * Primary content in NavigationItem → Primary
+ *
+ */
+interface NavigationItemSliceDefaultPrimary {
+    /**
+     * Label field in *NavigationItem → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.primary.label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Link field in *NavigationItem → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Item in NavigationItem → Items
+ *
+ */
+export interface NavigationItemSliceDefaultItem {
+    /**
+     * Label field in *NavigationItem → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.items[].label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Link field in *NavigationItem → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation_item.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+}
+/**
+ * Default variation for NavigationItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `NavigationItem`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavigationItemSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<NavigationItemSliceDefaultPrimary>, Simplify<NavigationItemSliceDefaultItem>>;
+/**
+ * Slice variation for *NavigationItem*
+ *
+ */
+type NavigationItemSliceVariation = NavigationItemSliceDefault;
+/**
+ * NavigationItem Shared Slice
+ *
+ * - **API ID**: `navigation_item`
+ * - **Description**: `NavigationItem`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavigationItemSlice = prismicT.SharedSlice<"navigation_item", NavigationItemSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataRepresentationItem, AboutDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataNavigationItem, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes };
+        export type { AboutDocumentData, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

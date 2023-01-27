@@ -13,6 +13,10 @@ export const prismic = createClient(endpoint, {
       type: "project",
       path: "/projects/:uid",
     },
+    {
+      type: "category",
+      path: "/category/:uid",
+    },
   ],
 });
 
@@ -28,8 +32,16 @@ export const getProjects = async () => {
   return await prismic.getByType("project");
 };
 
-export const getProjectsByCategory = async (category: string) => {
-  return await prismic.getByTag(category);
+export const getCategory = async (category: string) => {
+  return await prismic.getByUID("category", category, {
+    fetchLinks: [
+      "project.title",
+      "project.category",
+      "project.image",
+      "project.description",
+      "project.uid",
+    ],
+  });
 };
 
 export const getProject = async (uid: string) => {

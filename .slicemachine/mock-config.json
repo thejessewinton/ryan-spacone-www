@@ -1,12 +1,21 @@
 {
   "_cts": {
     "site_settings": {
-      "navigation": {},
       "socials": {}
     },
     "about": {},
     "project": {
       "credits": {}
+    },
+    "category": {
+      "projects": {}
+    }
+  },
+  "src/components/slices": {
+    "Nav": {
+      "default": {
+        "primary": {}
+      }
     }
   }
 }

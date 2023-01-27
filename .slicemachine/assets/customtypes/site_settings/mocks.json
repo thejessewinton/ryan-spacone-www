@@ -1,29 +1,53 @@
 {
-  "navigation": {
-    "__TYPE__": "GroupContentType",
+  "slices": {
+    "__TYPE__": "SliceContentType",
     "value": [
       {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "label",
-            {
+        "key": "navigation_item$635da0bb-592e-47e5-8596-c82be7226dd1",
+        "name": "navigation_item",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "label": {
               "__TYPE__": "FieldContent",
-              "value": "soil",
+              "value": "space",
               "type": "Text"
-            }
-          ],
-          [
-            "link",
-            {
+            },
+            "link": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "url": "http://twitter.com"
               }
             }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "label",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "verb",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "__TYPE__": "ExternalLink",
+                      "url": "http://google.com"
+                    }
+                  }
+                ]
+              ]
+            }
           ]
-        ]
+        }
       }
     ]
   },
@@ -37,7 +61,7 @@
             "label",
             {
               "__TYPE__": "FieldContent",
-              "value": "pound",
+              "value": "job",
               "type": "Text"
             }
           ],
@@ -47,7 +71,7 @@
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://prismic.io"
+                "url": "http://google.com"
               }
             }
           ]
@@ -57,12 +81,12 @@
   },
   "meta_title": {
     "__TYPE__": "FieldContent",
-    "value": "pattern",
+    "value": "just",
     "type": "Text"
   },
   "meta_description": {
     "__TYPE__": "FieldContent",
-    "value": "baby",
+    "value": "group",
     "type": "Text"
   }
 }

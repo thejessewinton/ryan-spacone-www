@@ -4,7 +4,7 @@ import { Inter, Newsreader } from "@next/font/google";
 import "../styles/globals.css";
 import { Header } from "components/header/Header";
 import { Footer } from "components/footer/Footer";
-import { AnalyticsWrapper } from "components/analytics-wrapper";
+import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
 
 const inter = Inter({
@@ -27,7 +27,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
       <link href="/favicon.ico" rel="shortcut icon" />
       <body className="flex min-h-screen flex-col text-neutral-800">
         <main className="relative px-9">
-          <Header navigation={data.navigation} />
+          <Header navigation={data.slices} />
           {children}
         </main>
         <Footer socials={data.socials} />

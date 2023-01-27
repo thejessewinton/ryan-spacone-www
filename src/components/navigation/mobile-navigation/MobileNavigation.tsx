@@ -36,7 +36,7 @@ export const MobileNavigation = ({
 }: {
   navigation: NavigationProps;
 }) => {
-  const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
+  const { isMobileNavOpen } = useMobileNav();
 
   return (
     <div className="flex items-center gap-2">
@@ -53,14 +53,15 @@ export const MobileNavigation = ({
         >
           {navigation.map((item) => {
             return (
-              <Link
-                href={asLink(item.link) as string}
-                key={item.label}
-                className={clsx("group relative text-sm uppercase")}
-                onClick={toggleMobileNav}
-              >
-                {item.label}
-              </Link>
+              <div className="group relative" key={item.id}>
+                <Link
+                  href={asLink(item.primary.link) as string}
+                  key={item.primary.label}
+                  className="relative text-sm uppercase"
+                >
+                  {item.primary.label}
+                </Link>
+              </div>
             );
           })}
         </motion.nav>

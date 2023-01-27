@@ -1,8 +1,8 @@
 import { SEO } from "components/seo/SEO";
-import { getProject } from "utils/prismic";
+import { getCategory } from "utils/prismic";
 
-const Head = async ({ params }: { params: { uid: string } }) => {
-  const { data } = await getProject(params.uid);
+const Head = async ({ params }: { params: { category: string } }) => {
+  const { data } = await getCategory(params.category);
 
   if (!data.meta_title || !data.meta_description) return null;
 
