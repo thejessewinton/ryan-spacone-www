@@ -9,9 +9,20 @@
 const config = {
   reactStrictMode: true,
   swcMinify: true,
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    domains: ["images.prismic.io"],
+  },
+  redirects: async () => {
+    return [
+      {
+        source: "/admin",
+        destination: "https://ryan-spacone.prismic.io",
+        permanent: false,
+      },
+    ];
   },
 };
 export default config;

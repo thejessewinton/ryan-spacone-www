@@ -6,8 +6,12 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      aspectRatio: {
+        widescreen: "3/1",
+      },
       fontFamily: {
-        sans: ["--font-inter", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        serif: ["var(--font-newsreader)", ...defaultTheme.fontFamily.serif],
       },
     },
   },

@@ -1,0 +1,21 @@
+{
+  "_cts": {
+    "site_settings": {
+      "socials": {}
+    },
+    "about": {},
+    "project": {
+      "credits": {}
+    },
+    "category": {
+      "projects": {}
+    }
+  },
+  "src/components/slices": {
+    "Nav": {
+      "default": {
+        "primary": {}
+      }
+    }
+  }
+}

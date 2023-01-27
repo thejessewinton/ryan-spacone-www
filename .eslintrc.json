@@ -4,9 +4,9 @@
       "extends": [
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": "tsconfig.json"
+        "project": "./tsconfig.json"
       }
     }
   ],
@@ -16,6 +16,7 @@
   },
   "plugins": ["@typescript-eslint"],
   "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
+  "ignorePatterns": ["src/components/slices/**/*.js"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": "warn"
   }

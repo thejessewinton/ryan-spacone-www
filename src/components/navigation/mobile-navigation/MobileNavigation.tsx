@@ -1,15 +1,11 @@
-import { clsx } from "clsx";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useMobileNav } from "../../../hooks/use-mobile-nav";
-import { ThemeSwitcher } from "../theme-switcher/ThemeSwitcher";
+"use client";
 
-const navigation = [
-  { name: "Narrative", href: "/narrative" },
-  { name: "Commercial", href: "/commercial" },
-  { name: "Photo", href: "/photo" },
-  { name: "About", href: "/about" },
-];
+import { asLink } from "@prismicio/helpers";
+import { clsx } from "clsx";
+import { motion } from "framer-motion";
+import { useMobileNav } from "hooks/use-mobile-nav";
+import Link from "next/link";
+import type { NavigationProps } from "types/prismic";
 
 const Hamburger = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
@@ -35,37 +31,40 @@ const Hamburger = () => {
   );
 };
 
-export const MobileNavigation = () => {
-  const { pathname } = useRouter();
+export const MobileNavigation = ({
+  navigation,
+}: {
+  navigation: NavigationProps;
+}) => {
   const { isMobileNavOpen } = useMobileNav();
 
   return (
     <div className="flex items-center gap-2">
       <Hamburger />
-      <ThemeSwitcher />
       {isMobileNavOpen ? (
-        <nav
+        <motion.nav
           className={clsx(
             "inset-0 top-24 flex-col gap-4 bg-white px-9 pt-12 dark:bg-neutral-900 md:hidden",
             isMobileNavOpen ? "fixed flex" : ""
           )}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0, transition: { bounce: false } }}
+          exit={{ opacity: 0, y: 50 }}
         >
           {navigation.map((item) => {
-            const isActive = pathname === item.href;
             return (
-              <Link
-                href={item.href}
-                key={item.name}
-                className={clsx(
-                  "relative text-sm uppercase",
-                  isActive && "text-neutral-400"
-                )}
-              >
-                {item.name}
-              </Link>
+              <div className="group relative" key={item.id}>
+                <Link
+                  href={asLink(item.primary.link) as string}
+                  key={item.primary.label}
+                  className="relative text-sm uppercase"
+                >
+                  {item.primary.label}
+                </Link>
+              </div>
             );
           })}
-        </nav>
+        </motion.nav>
       ) : null}
     </div>
   );

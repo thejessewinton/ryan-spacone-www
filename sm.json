@@ -1,0 +1,6 @@
+{
+  "apiEndpoint": "https://ryan-spacone.prismic.io/api/v2",
+  "libraries": ["@/src/components/slices"],
+  "_latest": "0.3.0",
+  "framework": "previousNext"
+}
