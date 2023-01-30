@@ -14,30 +14,32 @@ const CreditsSection = ({
   credits: ProjectProps["credits"];
 }) => {
   return (
-    <section className="grid grid-cols-2 items-center justify-center gap-4 py-32 text-right md:text-left">
-      <h1 className="text-center font-serif text-2xl uppercase">
-        {asText(projectName)}
-      </h1>
+    <ScrollObserver>
+      <section className="grid grid-cols-2 items-center justify-center gap-4 py-32 text-right md:text-left">
+        <h1 className="text-center font-serif text-2xl uppercase">
+          {asText(projectName)}
+        </h1>
 
-      <div className="space-y-6">
-        {credits.map((credit) => {
-          return (
-            <div key={credit.label}>
-              <span className="block font-medium uppercase">
-                {credit.label}
-              </span>
-              {asText(credit.details, "\n\n")
-                .split("\n\n")
-                .map((line) => (
-                  <span className="block" key={line}>
-                    {line}
-                  </span>
-                ))}
-            </div>
-          );
-        })}
-      </div>
-    </section>
+        <div className="space-y-6">
+          {credits.map((credit) => {
+            return (
+              <div key={credit.label}>
+                <span className="block font-medium uppercase">
+                  {credit.label}
+                </span>
+                {asText(credit.details, "\n\n")
+                  .split("\n\n")
+                  .map((line) => (
+                    <span className="block" key={line}>
+                      {line}
+                    </span>
+                  ))}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </ScrollObserver>
   );
 };
 

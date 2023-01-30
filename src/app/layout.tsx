@@ -22,14 +22,15 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   const { data } = await getSiteSettings();
 
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${newsreader.variable} bg-neutral-900`}
+    >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
-      <body className="flex min-h-screen flex-col text-neutral-800">
-        <main className="relative px-9">
-          <Header navigation={data.slices} />
-          {children}
-        </main>
+      <body className="flex min-h-screen flex-col bg-white text-neutral-800">
+        <Header navigation={data.slices} />
+        <main className="relative px-9">{children}</main>
         <Footer socials={data.socials} />
         <AnalyticsWrapper />
       </body>

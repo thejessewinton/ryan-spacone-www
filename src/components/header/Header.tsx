@@ -1,3 +1,7 @@
+"use client";
+
+import { clsx } from "clsx";
+import { useScroll } from "hooks/use-scroll";
 import Link from "next/link";
 import type { NavigationProps } from "types/prismic";
 import { MobileNavigation } from "../navigation/mobile-navigation/MobileNavigation";
@@ -24,8 +28,14 @@ const Logo = () => {
 };
 
 export const Header = ({ navigation }: { navigation: NavigationProps }) => {
+  const scrolling = useScroll();
   return (
-    <header className="sticky top-0 z-10 flex h-24 items-center justify-between bg-white dark:bg-neutral-900">
+    <header
+      className={clsx(
+        "sticky top-0 z-10 flex h-24 items-center justify-between bg-white px-9 dark:bg-neutral-900",
+        scrolling && "drop-shadow-sm"
+      )}
+    >
       <Link href="/">
         <Logo />
       </Link>
