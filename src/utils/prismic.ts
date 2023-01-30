@@ -1,9 +1,10 @@
 import { createClient, getRepositoryEndpoint } from "@prismicio/client";
 import { env } from "env/client.mjs";
+import * as prismic from "@prismicio/client";
 
 const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
-export const prismic = createClient(endpoint, {
+export const client = createClient(endpoint, {
   routes: [
     {
       type: "about",
@@ -21,19 +22,19 @@ export const prismic = createClient(endpoint, {
 });
 
 export const getSiteSettings = async () => {
-  return await prismic.getSingle("site_settings");
+  return await client.getSingle("site_settings");
 };
 
 export const getAboutPage = async () => {
-  return await prismic.getSingle("about");
+  return await client.getSingle("about");
 };
 
 export const getProjects = async () => {
-  return await prismic.getByType("project");
+  return await client.getByType("project");
 };
 
 export const getCategory = async (category: string) => {
-  return await prismic.getByUID("category", category, {
+  return await client.getByUID("category", category, {
     fetchLinks: [
       "project.title",
       "project.category",
@@ -45,5 +46,27 @@ export const getCategory = async (category: string) => {
 };
 
 export const getProject = async (uid: string) => {
-  return await prismic.getByUID("project", uid);
+  const project = await client.getByUID("project", uid);
+
+  const previousProject = await client.get({
+    predicates: prismic.predicate.at("document.type", "project"),
+    pageSize: 1,
+    after: project.id,
+    orderings: "my.project.date desc",
+    lang: "*",
+  });
+
+  const nextProject = await client.get({
+    predicates: prismic.predicate.at("document.type", "project"),
+    pageSize: 1,
+    after: project.id,
+    orderings: "my.project.date",
+    lang: "*",
+  });
+
+  return {
+    project,
+    previousProject: previousProject.results[0],
+    nextProject: nextProject.results[0],
+  };
 };

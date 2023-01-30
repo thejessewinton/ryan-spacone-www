@@ -5,6 +5,7 @@ import { asText } from "@prismicio/helpers";
 import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
+import Link from "next/link";
 
 const CreditsSection = ({
   projectName,
@@ -74,13 +75,24 @@ const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
 };
 
 const Project = async ({ params }: { params: { uid: string } }) => {
-  const { data } = await getProject(params.uid);
+  const { project, nextProject, previousProject } = await getProject(
+    params.uid
+  );
 
   return (
     <div className="flex flex-col gap-2">
-      <VimeoPlayer video={data.video} />
-      <CreditsSection projectName={data.title} credits={data.credits} />
-      <ImageGallery stills={data.stills} />
+      <VimeoPlayer video={project.data.video} />
+      <CreditsSection
+        projectName={project.data.title}
+        credits={project.data.credits}
+      />
+      <ImageGallery stills={project.data.stills} />
+      {previousProject && (
+        <Link href={previousProject.url as string}>Previous Project</Link>
+      )}
+      {nextProject && (
+        <Link href={nextProject.url as string}>Next Project</Link>
+      )}
     </div>
   );
 };
