@@ -6,6 +6,7 @@ import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import Link from "next/link";
+import type { ProjectDocument } from "../../../../.slicemachine/prismicio";
 
 const CreditsSection = ({
   projectName,
@@ -74,6 +75,52 @@ const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
   );
 };
 
+const ProjectNav = ({
+  previous,
+  next,
+}: {
+  previous: ProjectDocument | undefined;
+  next: ProjectDocument | undefined;
+}) => {
+  return (
+    <div className="grid max-h-[200px] grid-cols-2 gap-4 overflow-hidden pt-4">
+      {previous && (
+        <Link href={previous.url as string} className="relative">
+          <Image
+            src={previous.data.stills[0]?.image.url as string}
+            width={1920}
+            height={200}
+            alt="Project Image"
+            loading="lazy"
+            className="aspect-video bg-black"
+            placeholder="blur"
+            blurDataURL={`${
+              previous.data.stills[0]?.image.url as string
+            }&blur=200`}
+          />
+        </Link>
+      )}
+      {next && (
+        <Link href={next.url as string} className="relative">
+          <h3 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            Next Project
+          </h3>
+          <Image
+            src={next.data.stills[0]?.image.url as string}
+            width={1920}
+            height={200}
+            alt="Project Image"
+            loading="lazy"
+            className="aspect-video bg-black"
+            placeholder="blur"
+            blurDataURL={`${next.data.stills[0]?.image.url as string}&blur=200`}
+          />
+        </Link>
+      )}
+    </div>
+  );
+};
+
 const Project = async ({ params }: { params: { uid: string } }) => {
   const { project, nextProject, previousProject } = await getProject(
     params.uid
@@ -87,12 +134,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
         credits={project.data.credits}
       />
       <ImageGallery stills={project.data.stills} />
-      {previousProject && (
-        <Link href={previousProject.url as string}>Previous Project</Link>
-      )}
-      {nextProject && (
-        <Link href={nextProject.url as string}>Next Project</Link>
-      )}
+      <ProjectNav previous={previousProject} next={nextProject} />
     </div>
   );
 };

@@ -29,7 +29,7 @@ const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
 export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
   const activeSegment = useSelectedLayoutSegment();
   return (
-    <nav className="hidden items-center space-x-8 md:flex">
+    <nav className="hidden items-center space-x-12 md:flex">
       {navigation.map((item) => {
         const isActive =
           activeSegment === asLink(item.primary.link)?.replace("/", "");
@@ -39,7 +39,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
               <>
                 <span
                   key={item.primary.label}
-                  className="relative text-sm uppercase"
+                  className="relative text-sm font-light uppercase"
                 >
                   {item.primary.label}
                 </span>
@@ -52,7 +52,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
                 }
                 key={item.primary.label}
                 className={clsx(
-                  "relative text-sm uppercase",
+                  "relative text-sm font-light uppercase",
                   isActive && "text-neutral-600"
                 )}
               >

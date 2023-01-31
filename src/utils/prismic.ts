@@ -1,6 +1,7 @@
 import { createClient, getRepositoryEndpoint } from "@prismicio/client";
 import { env } from "env/client.mjs";
 import * as prismic from "@prismicio/client";
+import type { ProjectDocument } from "../../.slicemachine/prismicio";
 
 const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
@@ -51,22 +52,21 @@ export const getProject = async (uid: string) => {
   const previousProject = await client.get({
     predicates: prismic.predicate.at("document.type", "project"),
     pageSize: 1,
-    after: project.id,
-    orderings: "my.project.date desc",
-    lang: "*",
+    fetchLinks: ["project.title", "project.cover", "project.stills"],
+    orderings: "my.project.date",
   });
 
   const nextProject = await client.get({
     predicates: prismic.predicate.at("document.type", "project"),
     pageSize: 1,
+    fetchLinks: ["project.title", "project.cover", "project.stills"],
     after: project.id,
-    orderings: "my.project.date",
-    lang: "*",
+    orderings: "my.project.date desc",
   });
 
   return {
     project,
-    previousProject: previousProject.results[0],
-    nextProject: nextProject.results[0],
+    previousProject: previousProject.results[0] as ProjectDocument,
+    nextProject: nextProject.results[0] as ProjectDocument,
   };
 };
