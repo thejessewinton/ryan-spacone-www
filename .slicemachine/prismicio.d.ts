@@ -173,6 +173,102 @@ export interface CategoryDocumentDataProjectsItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type CategoryDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CategoryDocumentData>, "category", Lang>;
+/** Content for Photo Set documents */
+interface PhotoSetDocumentData {
+    /**
+     * Title field in *Photo Set*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: photo_set.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Cover field in *Photo Set*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: photo_set.cover
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    cover: prismicT.ImageField<never>;
+    /**
+     * Images field in *Photo Set*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: photo_set.images[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    images: prismicT.GroupField<Simplify<PhotoSetDocumentDataImagesItem>>;
+    /**
+     * Meta Title field in *Photo Set*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: photo_set.meta_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *Photo Set*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: photo_set.meta_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in Photo Set → Images
+ *
+ */
+export interface PhotoSetDocumentDataImagesItem {
+    /**
+     * Image field in *Photo Set → Images*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: photo_set.images[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Photo Set document from Prismic
+ *
+ * - **API ID**: `photo_set`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PhotoSetDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PhotoSetDocumentData>, "photo_set", Lang>;
+/** Content for Photo documents */
+type PhotoDocumentData = Record<string, never>;
+/**
+ * Photo document from Prismic
+ *
+ * - **API ID**: `photo`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PhotoDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PhotoDocumentData>, "photo", Lang>;
 /** Content for Project documents */
 interface ProjectDocumentData {
     /**
@@ -393,7 +489,7 @@ export interface SiteSettingsDocumentDataSocialsItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteSettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteSettingsDocumentData>, "site_settings", Lang>;
-export type AllDocumentTypes = AboutDocument | CategoryDocument | ProjectDocument | SiteSettingsDocument;
+export type AllDocumentTypes = AboutDocument | CategoryDocument | PhotoSetDocument | PhotoDocument | ProjectDocument | SiteSettingsDocument;
 /**
  * Primary content in NavigationItem → Primary
  *
@@ -474,6 +570,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, PhotoSetDocumentData, PhotoSetDocumentDataImagesItem, PhotoSetDocument, PhotoDocumentData, PhotoDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }
