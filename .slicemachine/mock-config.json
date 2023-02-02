@@ -9,7 +9,9 @@
     },
     "category": {
       "projects": {}
-    }
+    },
+    "photo_set": {},
+    "photo": {}
   },
   "src/components/slices": {
     "Nav": {

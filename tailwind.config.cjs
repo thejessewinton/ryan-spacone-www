@@ -3,7 +3,6 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
-  darkMode: "class",
   theme: {
     extend: {
       aspectRatio: {
@@ -11,7 +10,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-        serif: ["var(--font-newsreader)", ...defaultTheme.fontFamily.serif],
+        serif: ["var(--font-lora)", ...defaultTheme.fontFamily.serif],
+        mono: ["var(--font-cutive)", ...defaultTheme.fontFamily.mono],
       },
     },
   },

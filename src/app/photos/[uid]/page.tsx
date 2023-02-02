@@ -17,25 +17,22 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="px-64 py-8">
-        <div className="mb-4 border-b border-b-yellow-600 py-4">
-          <h1 className="font-serif text-2xl uppercase italic">
-            {asText(projectName)}
-          </h1>
-        </div>
+      <section className="grid grid-cols-2 items-center justify-center gap-4 py-32 text-right md:text-left">
+        <h1 className="text-center font-serif text-2xl uppercase">
+          {asText(projectName)}
+        </h1>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-6">
           {credits.map((credit) => {
             return (
-              <div
-                key={credit.label}
-                className="col-span-1 font-mono font-light"
-              >
-                <span className="mr-2 font-bold">{credit.label}:</span>
+              <div key={credit.label}>
+                <span className="block font-medium uppercase">
+                  {credit.label}
+                </span>
                 {asText(credit.details, "\n\n")
                   .split("\n\n")
                   .map((line) => (
-                    <span className="" key={line}>
+                    <span className="block" key={line}>
                       {line}
                     </span>
                   ))}
@@ -50,23 +47,16 @@ const CreditsSection = ({
 
 const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-2 gap-4">
       {stills.map((still, i) => {
         if (!still.image.url) return null;
 
-        const subIndex = i % 6;
-
-        const className =
-          subIndex < 2
-            ? "col-span-2"
-            : subIndex >= 2 && subIndex < 6
-            ? "col-span-1"
-            : "";
+        const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
 
         return (
           <ScrollObserver
             key={still.image.url}
-            className={clsx("bg-black", className)}
+            className={clsx("aspect-video bg-black", className)}
           >
             <Image
               src={still.image.url}
@@ -74,6 +64,7 @@ const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
               height={still.image.dimensions.height}
               alt="Project Image"
               loading="lazy"
+              className={clsx("aspect-video bg-black", className)}
               placeholder="blur"
               blurDataURL={`${still.image.url}&blur=200`}
             />

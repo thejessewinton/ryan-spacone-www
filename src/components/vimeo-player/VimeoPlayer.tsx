@@ -11,11 +11,13 @@ const getIdFromUrl = (url: string) => {
 
 export const VimeoPlayer = ({
   video,
+  cover,
 }: {
   video: ProjectDocumentData["video"];
+  cover?: ProjectDocumentData["cover"];
 }) => {
   const id = getIdFromUrl(video.embed_url);
-  const src = `https://player.vimeo.com/video/${id}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0`;
+  const src = `https://player.vimeo.com/video/${id}?&autoplay=1&title=0&byline=0&portrait=0&badge=0`;
   return (
     <motion.div
       className="relative aspect-video w-full bg-neutral-900"
