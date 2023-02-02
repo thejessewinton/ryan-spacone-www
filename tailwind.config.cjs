@@ -9,9 +9,12 @@ module.exports = {
         widescreen: "3/1",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-        serif: ["var(--font-lora)", ...defaultTheme.fontFamily.serif],
-        mono: ["var(--font-cutive)", ...defaultTheme.fontFamily.mono],
+        brand: ["var(--font-unbounded)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-manrope)", ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        brand: "#904D27",
+        primary: "#111111",
       },
     },
   },

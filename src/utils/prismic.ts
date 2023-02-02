@@ -57,7 +57,11 @@ export const getProject = async (uid: string) => {
     predicates: prismic.predicate.at("document.type", "project"),
     pageSize: 1,
     fetchLinks: ["project.title", "project.cover", "project.stills"],
-    orderings: "my.project.date",
+    after: project.id,
+    orderings: {
+      field: "document.last_publication_date",
+      direction: "desc",
+    },
   });
 
   const nextProject = await client.get({
@@ -65,7 +69,6 @@ export const getProject = async (uid: string) => {
     pageSize: 1,
     fetchLinks: ["project.title", "project.cover", "project.stills"],
     after: project.id,
-    orderings: "my.project.date desc",
   });
 
   return {
