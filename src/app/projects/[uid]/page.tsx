@@ -5,8 +5,7 @@ import { asText } from "@prismicio/helpers";
 import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
-import Link from "next/link";
-import type { ProjectDocument } from "../../../../.slicemachine/prismicio";
+import { ProjectNav } from "components/project-nav/ProjectNav";
 
 const CreditsSection = ({
   projectName,
@@ -17,21 +16,21 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="px-64 py-8">
-        <div className="mb-4 border-b border-b-yellow-600 py-4">
-          <h1 className="font-serif text-2xl uppercase italic">
+      <section className="py-8 px-9 md:px-64">
+        <div className="mb-4 border-b border-b-brand pb-4">
+          <h1 className="font-brand text-2xl uppercase italic">
             {asText(projectName)}
           </h1>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {credits.map((credit) => {
             return (
               <div
                 key={credit.label}
-                className="col-span-1 font-mono font-light"
+                className="font-brand font-light md:col-span-1"
               >
-                <span className="mr-2 font-bold">{credit.label}:</span>
+                <span className="mr-2">{credit.label}:</span>
                 {asText(credit.details, "\n\n")
                   .split("\n\n")
                   .map((line) => (
@@ -84,52 +83,6 @@ const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
   );
 };
 
-const ProjectNav = ({
-  previous,
-  next,
-}: {
-  previous: ProjectDocument | undefined;
-  next: ProjectDocument | undefined;
-}) => {
-  return (
-    <div className="grid max-h-[200px] grid-cols-2 gap-4 overflow-hidden pt-4">
-      {previous && (
-        <Link href={previous.url as string} className="relative">
-          <Image
-            src={previous.data.stills[0]?.image.url as string}
-            width={1920}
-            height={200}
-            alt="Project Image"
-            loading="lazy"
-            className="aspect-video bg-black"
-            placeholder="blur"
-            blurDataURL={`${
-              previous.data.stills[0]?.image.url as string
-            }&blur=200`}
-          />
-        </Link>
-      )}
-      {next && (
-        <Link href={next.url as string} className="relative">
-          <h3 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            Next Project
-          </h3>
-          <Image
-            src={next.data.stills[0]?.image.url as string}
-            width={1920}
-            height={200}
-            alt="Project Image"
-            loading="lazy"
-            className="aspect-video bg-black"
-            placeholder="blur"
-            blurDataURL={`${next.data.stills[0]?.image.url as string}&blur=200`}
-          />
-        </Link>
-      )}
-    </div>
-  );
-};
-
 const Project = async ({ params }: { params: { uid: string } }) => {
   const { project, nextProject, previousProject } = await getProject(
     params.uid
@@ -137,7 +90,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <VimeoPlayer video={project.data.video} />
+      <VimeoPlayer cover={project.data.cover} video={project.data.video} />
       <CreditsSection
         projectName={project.data.title}
         credits={project.data.credits}

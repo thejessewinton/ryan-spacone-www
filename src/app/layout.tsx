@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { Dosis, Inter, Lora } from "@next/font/google";
+import { Manrope, Unbounded } from "@next/font/google";
 
 import "../styles/globals.css";
 import { Header } from "components/header/Header";
@@ -7,22 +7,15 @@ import { Footer } from "components/footer/Footer";
 import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "optional",
 });
-const lora = Lora({
-  variable: "--font-lora",
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
   subsets: ["latin"],
   display: "optional",
-  weight: ["400", "700"],
-});
-const dosis = Dosis({
-  variable: "--font-cutive",
-  subsets: ["latin"],
-  display: "optional",
-  weight: ["400"],
 });
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
@@ -31,11 +24,11 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${lora.variable} ${dosis.variable} bg-neutral-900`}
+      className={`${manrope.variable} ${unbounded.variable} leading-loose tracking-wide`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
-      <body className="flex min-h-screen flex-col bg-neutral-900 text-neutral-200">
+      <body className="flex min-h-screen flex-col bg-primary text-neutral-200">
         <Header navigation={data.slices} />
         <main className="relative">{children}</main>
         <Footer socials={data.socials} />
