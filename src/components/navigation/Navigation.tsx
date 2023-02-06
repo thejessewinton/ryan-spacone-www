@@ -1,13 +1,13 @@
 "use client";
 
 import { asLink } from "@prismicio/helpers";
-import { clsx } from "clsx";
 import Link from "next/link";
 import type { NavigationProps } from "types/prismic";
 import { useSelectedLayoutSegment } from "next/navigation";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 
 import type { NavigationItemSliceDefaultItem } from "../../../.slicemachine/prismicio";
+import { HoverLine } from "components/hover-line/HoverLine";
 
 const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
   return (
@@ -27,22 +27,11 @@ const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
   );
 };
 
-const HoverLine = ({ open }: { open?: boolean }) => {
-  return (
-    <span
-      className={clsx(
-        "absolute block h-[2px] w-[120%] origin-left scale-x-0 bg-brand transition-transform group-hover:scale-x-100",
-        open && "scale-x-100"
-      )}
-    />
-  );
-};
-
 export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
   const activeSegment = useSelectedLayoutSegment();
   return (
     <NavigationMenuPrimitive.NavigationMenu>
-      <NavigationMenuPrimitive.List className="flex items-center gap-4">
+      <NavigationMenuPrimitive.List className="flex items-center gap-8">
         {navigation.map((item) => {
           const isActive =
             activeSegment === asLink(item.primary.link)?.replace("/", "");
