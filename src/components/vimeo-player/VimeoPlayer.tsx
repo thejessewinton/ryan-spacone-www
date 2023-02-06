@@ -5,12 +5,7 @@ import { useState } from "react";
 import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
 import { PlayIcon } from "components/icons/Icons";
-
-const getIdFromUrl = (url: string) => {
-  const id = url.split("/").pop();
-  if (!id) throw new Error("Could not get ID from URL");
-  return id;
-};
+import { getIdFromUrl } from "utils/get-id-from-url";
 
 export const VimeoPlayer = ({
   video,

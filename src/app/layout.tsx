@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { Manrope, Unbounded } from "@next/font/google";
+import { Lora, Manrope, Unbounded } from "@next/font/google";
 
 import "../styles/globals.css";
 import { Header } from "components/header/Header";
@@ -17,6 +17,12 @@ const unbounded = Unbounded({
   subsets: ["latin"],
   display: "optional",
 });
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  display: "optional",
+  weight: ["400", "500"],
+});
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
   const { data } = await getSiteSettings();
@@ -24,7 +30,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${unbounded.variable} font-light leading-loose tracking-wide`}
+      className={`${manrope.variable} ${unbounded.variable} ${lora.variable} font-light leading-loose tracking-wide`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />

@@ -2,8 +2,9 @@
 
 import { asText } from "@prismicio/helpers";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { getIdFromUrl } from "utils/get-id-from-url";
 import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 
 export const ProjectCard = ({
@@ -13,6 +14,9 @@ export const ProjectCard = ({
   href: string;
   project: ProjectDocumentData;
 }) => {
+  const id = getIdFromUrl(project.video.embed_url);
+  const src = `https://player.vimeo.com/video/${id}?background=1`;
+
   if (!project.cover.url) return null;
   return (
     <ScrollObserver>
@@ -22,19 +26,18 @@ export const ProjectCard = ({
           aria-label={asText(project.title)}
           className="absolute z-10"
         >
-          <h3 className="relative border-b border-brand font-brand text-lg uppercase">
+          <h3 className="relative border-b border-brand font-brand text-lg font-normal uppercase italic">
             {asText(project.title)}
           </h3>
         </Link>
 
-        <Image
-          src={project.cover.url}
-          width={project.cover.widescreen.dimensions?.width}
-          height={project.cover.widescreen.dimensions?.height}
-          alt="Project Image"
-          className="absolute inset-0 h-full w-full object-cover"
-          placeholder="blur"
-          blurDataURL={`${project.cover.url}&blur=200`}
+        <motion.iframe
+          src={src}
+          className="absolute inset-0 h-full w-full"
+          allowFullScreen
+          allow="autoplay"
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
         />
       </div>
     </ScrollObserver>
