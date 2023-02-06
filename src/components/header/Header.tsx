@@ -32,7 +32,7 @@ export const Header = ({ navigation }: { navigation: NavigationProps }) => {
   return (
     <header
       className={clsx(
-        "z-10 flex h-20 items-center justify-between px-9",
+        "absolute z-10 flex h-20 w-full items-center justify-between px-9",
         scrolling && "drop-shadow-sm"
       )}
     >
