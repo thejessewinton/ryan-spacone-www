@@ -1,11 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { MutableRefObject, Ref, useRef, useState } from "react";
 import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
 import { PlayIcon } from "components/icons/Icons";
 import { getIdFromUrl } from "utils/get-id-from-url";
+import { useRouter } from "next/navigation";
 
 export const VimeoPlayer = ({
   video,
@@ -17,12 +18,24 @@ export const VimeoPlayer = ({
   const [played, setPlayed] = useState(false);
   const id = getIdFromUrl(video.embed_url);
   const src = `https://player.vimeo.com/video/${id}?&autoplay=1&title=0&byline=0&portrait=0&badge=0`;
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handlePlay = () => {
+    setPlayed(true);
+    console.log("played");
+    window.scrollTo({
+      top: ref.current?.offsetTop,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <motion.div
       className="relative aspect-video w-full bg-neutral-900"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      ref={ref}
     >
       <AnimatePresence>
         {played ? (
@@ -41,22 +54,22 @@ export const VimeoPlayer = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <button onClick={() => setPlayed(true)} className="absolute">
-              <PlayIcon className="h-16 w-16" />
+            <button onClick={handlePlay} className="absolute">
+              <PlayIcon className="h-32 w-32" />
               <span className="sr-only">Play</span>
             </button>
             <Image
               src={cover.url}
-              width={1920}
-              height={1080}
+              width={cover.dimensions.width}
+              height={cover.dimensions.height}
               alt="Project Image"
-              className="aspect-video w-full transition-transform duration-700 group-hover:scale-105"
+              className="aspect-video w-full object-cover transition-transform duration-700 group-hover:scale-105"
               placeholder="blur"
               blurDataURL={`${cover.url}&blur=200`}
             />
           </motion.div>
         ) : (
-          <button onClick={() => setPlayed(true)}>Play</button>
+          <button onClick={handlePlay}>Play</button>
         )}
       </AnimatePresence>
     </motion.div>

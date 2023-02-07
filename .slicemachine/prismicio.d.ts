@@ -294,6 +294,17 @@ interface ProjectDocumentData {
      */
     cover: prismicT.ImageField<"widescreen">;
     /**
+     * Preview field in *Project*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.preview
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    preview: prismicT.ImageField<never>;
+    /**
      * Video field in *Project*
      *
      * - **Field Type**: Embed

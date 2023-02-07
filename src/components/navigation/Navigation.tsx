@@ -11,13 +11,13 @@ import { HoverLine } from "components/hover-line/HoverLine";
 
 const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
   return (
-    <div className="absolute right-0 z-10 flex flex-col gap-4 rounded-sm bg-primary py-4 px-8 drop-shadow-lg transition-opacity group-hover:visible group-hover:opacity-100">
+    <div className="absolute right-0 z-10 flex flex-col gap-4 rounded-sm bg-white py-4 px-8 drop-shadow-lg transition-opacity group-hover:visible group-hover:opacity-100">
       {items.map((item) => {
         return (
           <Link
             href={asLink(item.link) as string}
             key={item.label}
-            className="group font-brand text-sm uppercase"
+            className="group text-sm uppercase"
           >
             {item.label}
           </Link>
@@ -42,11 +42,11 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
             >
               {item.items.length ? (
                 <>
-                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center font-brand text-sm font-light uppercase">
+                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center text-sm font-light uppercase">
                     {item.primary.label}
                     <HoverLine open={isActive} />
                   </NavigationMenuPrimitive.Trigger>
-                  <NavigationMenuPrimitive.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:slide-in-from-right-52 absolute top-0 left-0 w-full md:w-auto">
+                  <NavigationMenuPrimitive.Content className="absolute right-0 w-full md:w-auto">
                     <Dropdown items={item.items} />
                   </NavigationMenuPrimitive.Content>
                 </>
@@ -58,7 +58,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
                       : (asLink(item.primary.link) as string)
                   }
                   key={item.primary.label}
-                  className="group relative flex items-center justify-center font-brand text-sm font-light uppercase"
+                  className="group relative flex items-center justify-center text-sm font-light uppercase"
                 >
                   {item.primary.label}
                   <HoverLine open={isActive} />

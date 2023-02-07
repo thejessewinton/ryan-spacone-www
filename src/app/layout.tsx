@@ -30,11 +30,11 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${unbounded.variable} ${lora.variable} font-light leading-loose tracking-wide`}
+      className={`${manrope.variable} ${unbounded.variable} ${lora.variable} leading-loose tracking-wide`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
-      <body className="flex min-h-screen flex-col bg-primary text-neutral-200">
+      <body className="flex min-h-screen flex-col bg-white text-neutral-900">
         <Header navigation={data.slices} />
         <main className="relative">{children}</main>
         <Footer socials={data.socials} />

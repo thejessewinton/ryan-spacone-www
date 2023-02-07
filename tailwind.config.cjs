@@ -9,7 +9,7 @@ module.exports = {
         widescreen: "3/1",
       },
       fontFamily: {
-        brand: ["var(--font-unbounded)", ...defaultTheme.fontFamily.sans],
+        brand: ["var(--font-lora)", ...defaultTheme.fontFamily.sans],
         sans: ["var(--font-manrope)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
