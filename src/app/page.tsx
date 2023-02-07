@@ -4,7 +4,7 @@ import { getProjects } from "utils/prismic";
 const Index = async () => {
   const { results } = await getProjects();
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {results.map((project) => (
         <ProjectCard
           href={`/projects/${project.uid}`}

@@ -28,6 +28,14 @@
           ]
         }
       },
+      "preview": {
+        "type": "Image",
+        "config": {
+          "label": "Preview",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "video": {
         "type": "Embed",
         "config": {

@@ -26,10 +26,7 @@ const CreditsSection = ({
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {credits.map((credit) => {
             return (
-              <div
-                key={credit.label}
-                className="font-brand font-light md:col-span-1"
-              >
+              <div key={credit.label} className="md:col-span-1">
                 <span className="mr-2">{credit.label}:</span>
                 {asText(credit.details, "\n\n")
                   .split("\n\n")
