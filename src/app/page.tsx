@@ -1,11 +1,11 @@
 import { ProjectCard } from "components/project-card/ProjectCard";
-import { getProjects } from "utils/prismic";
+import { getHomePage } from "utils/prismic";
 
 const Index = async () => {
-  const { results } = await getProjects();
+  const { data } = await getHomePage();
   return (
     <div className="flex flex-col gap-4">
-      {results.map((project) => (
+      {data.projects.map(({ project }) => (
         <ProjectCard
           href={`/projects/${project.uid}`}
           key={project.uid}

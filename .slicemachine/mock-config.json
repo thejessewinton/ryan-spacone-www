@@ -11,7 +11,10 @@
       "projects": {}
     },
     "photo_set": {},
-    "photo": {}
+    "photo": {},
+    "home": {
+      "projects": {}
+    }
   },
   "src/components/slices": {
     "Nav": {

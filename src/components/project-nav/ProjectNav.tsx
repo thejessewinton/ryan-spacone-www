@@ -15,14 +15,14 @@ export const ProjectNav = ({
 }) => {
   return (
     <ScrollObserver>
-      <div className="grid grid-cols-2 gap-4 overflow-hidden pt-6">
+      <div className="divide-x-neutral-200 grid h-24 grid-cols-2 divide-x overflow-hidden">
         {previous && (
           <Link
             href={previous.url as string}
             className="group flex items-center justify-center gap-4 text-lg"
             aria-disabled={!previous}
           >
-            <LeftArrow className="transition-all duration-700 group-hover:-translate-x-2" />
+            <LeftArrow className="transition-all group-hover:-translate-x-2" />
             <h3 className="font-brand uppercase group-hover:text-brand">
               Previous
             </h3>
@@ -37,7 +37,7 @@ export const ProjectNav = ({
             <h3 className="font-brand uppercase group-hover:text-brand">
               Next
             </h3>
-            <RightArrow className="transition-all duration-700 group-hover:translate-x-2" />
+            <LeftArrow className="rotate-180 transition-all group-hover:translate-x-2" />
           </Link>
         )}
       </div>
