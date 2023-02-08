@@ -23,8 +23,7 @@ export const VimeoPlayer = ({
   const handlePlay = () => {
     setPlayed(true);
     console.log("played");
-    window.scrollTo({
-      top: ref.current?.offsetTop,
+    ref.current?.scrollIntoView({
       behavior: "smooth",
     });
   };

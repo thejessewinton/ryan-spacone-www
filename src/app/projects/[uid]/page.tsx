@@ -86,15 +86,17 @@ const Project = async ({ params }: { params: { uid: string } }) => {
   );
 
   return (
-    <div className="flex flex-col gap-2">
-      <VimeoPlayer cover={project.data.cover} video={project.data.video} />
-      <CreditsSection
-        projectName={project.data.title}
-        credits={project.data.credits}
-      />
-      <ImageGallery stills={project.data.stills} />
+    <>
+      <div className="flex flex-col gap-2">
+        <VimeoPlayer cover={project.data.cover} video={project.data.video} />
+        <CreditsSection
+          projectName={project.data.title}
+          credits={project.data.credits}
+        />
+        <ImageGallery stills={project.data.stills} />
+      </div>
       <ProjectNav previous={previousProject} next={nextProject} />
-    </div>
+    </>
   );
 };
 

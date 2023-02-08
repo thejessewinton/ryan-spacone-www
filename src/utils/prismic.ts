@@ -3,9 +3,11 @@ import { env } from "env/client.mjs";
 import * as prismic from "@prismicio/client";
 import type {
   CategoryDocument,
+  HomeDocument,
   PhotoSetDocument,
   ProjectDocument,
 } from "../../.slicemachine/prismicio";
+import { cache } from "react";
 
 const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
@@ -26,19 +28,36 @@ export const client = createClient(endpoint, {
   ],
 });
 
-export const getSiteSettings = async () => {
+export const getSiteSettings = cache(async () => {
   return await client.getSingle("site_settings");
-};
+});
 
-export const getAboutPage = async () => {
+export const getHomePage = cache(async () => {
+  return await client.getSingle<
+    HomeDocument & {
+      data: {
+        projects: { project: ProjectDocument }[];
+      };
+    }
+  >("home", {
+    fetchLinks: [
+      "project.title",
+      "project.cover",
+      "project.uid",
+      "project.preview",
+    ],
+  });
+});
+
+export const getAboutPage = cache(async () => {
   return await client.getSingle("about");
-};
+});
 
-export const getProjects = async () => {
+export const getProjects = cache(async () => {
   return await client.getByType("project");
-};
+});
 
-export const getCategory = async (category: string) => {
+export const getCategory = cache(async (category: string) => {
   return await client.getByUID<
     CategoryDocument & {
       data: {
@@ -48,9 +67,9 @@ export const getCategory = async (category: string) => {
   >("category", category, {
     fetchLinks: ["project.title", "project.cover", "project.uid"],
   });
-};
+});
 
-export const getProject = async (uid: string) => {
+export const getProject = cache(async (uid: string) => {
   const project = await client.getByUID("project", uid);
 
   const previousProject = await client.get({
@@ -76,13 +95,13 @@ export const getProject = async (uid: string) => {
     previousProject: previousProject.results[0] as ProjectDocument,
     nextProject: nextProject.results[0] as ProjectDocument,
   };
-};
+});
 
-export const getPhotoSets = async () => {
+export const getPhotoSets = cache(async () => {
   return await client.getByType("photo_set");
-};
+});
 
-export const getPhotoSet = async (uid: string) => {
+export const getPhotoSet = cache(async (uid: string) => {
   const photoSet = await client.getByUID("photo_set", uid);
 
   const previousPhotoSet = await client.get({
@@ -103,4 +122,4 @@ export const getPhotoSet = async (uid: string) => {
     previousProject: previousPhotoSet.results[0] as PhotoSetDocument,
     nextPhotoSet: nextPhotoSet.results[0] as PhotoSetDocument,
   };
-};
+});
