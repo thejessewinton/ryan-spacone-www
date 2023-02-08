@@ -12,11 +12,6 @@ const manrope = Manrope({
   subsets: ["latin"],
   display: "optional",
 });
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
-  subsets: ["latin"],
-  display: "optional",
-});
 const lora = Lora({
   variable: "--font-lora",
   subsets: ["latin"],
@@ -30,7 +25,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${unbounded.variable} ${lora.variable} leading-loose tracking-wide`}
+      className={`${manrope.variable} ${lora.variable} leading-loose tracking-wide`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />

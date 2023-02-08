@@ -18,7 +18,7 @@ const CreditsSection = ({
     <ScrollObserver>
       <section className="py-8 px-9 md:px-64">
         <div className="mb-4 border-b border-b-brand pb-4">
-          <h1 className="font-brand text-2xl uppercase italic">
+          <h1 className="font-serif text-2xl uppercase italic">
             {asText(projectName)}
           </h1>
         </div>

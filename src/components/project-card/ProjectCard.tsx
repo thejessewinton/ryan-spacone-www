@@ -20,7 +20,7 @@ export const ProjectCard = ({
     <ScrollObserver>
       <Link href={href} aria-label={asText(project.title)} className="relative">
         <div className="group relative flex min-h-[70vh] items-center justify-center overflow-hidden">
-          <h3 className="relative z-10 flex items-center justify-center font-brand text-lg uppercase italic text-white">
+          <h3 className="relative z-10 flex items-center justify-center font-serif text-lg uppercase italic text-white">
             {asText(project.title)}
             <HoverLine />
           </h3>
