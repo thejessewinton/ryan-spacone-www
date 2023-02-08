@@ -16,14 +16,14 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="py-8 px-9 md:px-64">
+      <section className="py-16 px-9 md:px-64">
         <div className="mb-4 border-b border-b-brand pb-4">
           <h1 className="font-serif text-2xl uppercase italic">
             {asText(projectName)}
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2">
           {credits.map((credit) => {
             return (
               <div key={credit.label} className="md:col-span-1">
