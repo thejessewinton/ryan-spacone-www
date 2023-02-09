@@ -43,7 +43,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
             >
               {item.items.length ? (
                 <>
-                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center uppercase">
+                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center text-sm uppercase">
                     {item.primary.label}
                     <HoverLine open={isActive} />
                   </NavigationMenuPrimitive.Trigger>
@@ -59,7 +59,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
                       : (asLink(item.primary.link) as string)
                   }
                   key={item.primary.label}
-                  className="group relative flex items-center justify-center uppercase"
+                  className="group relative flex items-center justify-center text-sm uppercase"
                 >
                   {item.primary.label}
                   <HoverLine open={isActive} />

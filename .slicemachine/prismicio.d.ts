@@ -31,6 +31,17 @@ interface AboutDocumentData {
      */
     bio: prismicT.RichTextField;
     /**
+     * Links field in *About*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.links[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    links: prismicT.GroupField<Simplify<AboutDocumentDataLinksItem>>;
+    /**
      * Representation field in *About*
      *
      * - **Field Type**: Group
@@ -63,6 +74,42 @@ interface AboutDocumentData {
      *
      */
     meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in About → Links
+ *
+ */
+export interface AboutDocumentDataLinksItem {
+    /**
+     * Icon field in *About → Links*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.links[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+    /**
+     * Label field in *About → Links*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.links[].label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Link field in *About → Links*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.links[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
 }
 /**
  * Item in About → Representation
@@ -344,6 +391,18 @@ interface ProjectDocumentData {
      *
      */
     title: prismicT.TitleField;
+    /**
+     * Coming Soon field in *Project*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: project.coming_soon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    coming_soon: prismicT.BooleanField;
     /**
      * Video field in *Project*
      *
@@ -669,6 +728,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, PhotoSetDocumentData, PhotoSetDocumentDataImagesItem, PhotoSetDocument, PhotoDocumentData, PhotoDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, PhotoSetDocumentData, PhotoSetDocumentDataImagesItem, PhotoSetDocument, PhotoDocumentData, PhotoDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }
