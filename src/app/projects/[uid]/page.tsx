@@ -96,7 +96,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
   return (
     <>
       <div className="flex flex-col gap-2">
-        {project.data.video.url ? (
+        {project.data.video ? (
           <VimeoPlayer video={project.data.video} />
         ) : project.data.cover && project.data.cover.url ? (
           <Image
