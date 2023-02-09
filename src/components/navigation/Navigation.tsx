@@ -31,10 +31,11 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
   const activeSegment = useSelectedLayoutSegment();
   return (
     <NavigationMenuPrimitive.NavigationMenu>
-      <NavigationMenuPrimitive.List className="flex items-center gap-8">
+      <NavigationMenuPrimitive.List className="flex items-center gap-x-8">
         {navigation.map((item) => {
-          const isActive =
-            activeSegment === asLink(item.primary.link)?.replace("/", "");
+          const isActive = activeSegment?.includes(
+            asLink(item.primary.link)?.replace("/", "") as string
+          );
           return (
             <NavigationMenuPrimitive.Item
               key={item.primary.label}
@@ -42,11 +43,11 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
             >
               {item.items.length ? (
                 <>
-                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center text-sm font-light uppercase">
+                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center uppercase">
                     {item.primary.label}
                     <HoverLine open={isActive} />
                   </NavigationMenuPrimitive.Trigger>
-                  <NavigationMenuPrimitive.Content className="absolute right-0 w-full md:w-auto">
+                  <NavigationMenuPrimitive.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:slide-in-from-right-52 absolute right-0 w-full md:absolute md:w-auto">
                     <Dropdown items={item.items} />
                   </NavigationMenuPrimitive.Content>
                 </>
@@ -58,7 +59,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
                       : (asLink(item.primary.link) as string)
                   }
                   key={item.primary.label}
-                  className="group relative flex items-center justify-center text-sm font-light uppercase"
+                  className="group relative flex items-center justify-center uppercase"
                 >
                   {item.primary.label}
                   <HoverLine open={isActive} />

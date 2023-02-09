@@ -5,18 +5,18 @@ import { IMDBIcon, InstagramIcon, VimeoIcon } from "../icons/Icons";
 
 export const Footer = ({ socials }: { socials: SocialsProps }) => {
   return (
-    <footer className="z-100 relative flex h-40 flex-col items-center justify-center gap-8 border-t border-neutral-200">
+    <footer className="z-100 relative flex h-80 flex-col items-center justify-center gap-8 bg-neutral-900 text-white">
       <nav className="flex items-center justify-center gap-4">
         {socials.map((social) => (
           <Link href={asLink(social.link) as string} key={social.label}>
             <span className="sr-only">{social.label}</span>
             {social.label === "Instagram" ? (
-              <InstagramIcon />
+              <InstagramIcon className="transition-colors hover:text-neutral-300" />
             ) : social.label === "Vimeo" ? (
-              <VimeoIcon />
-            ) : (
-              <IMDBIcon />
-            )}
+              <VimeoIcon className="transition-colors hover:text-neutral-300" />
+            ) : social.label === "IMDB" ? (
+              <IMDBIcon className="transition-colors hover:text-neutral-300" />
+            ) : null}
           </Link>
         ))}
       </nav>

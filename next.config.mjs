@@ -13,7 +13,7 @@ const config = {
     appDir: true,
   },
   images: {
-    domains: ["images.prismic.io", "vumbnail.com"],
+    domains: ["images.prismic.io", "i.vimeocdn.com"],
   },
   redirects: async () => {
     return [
