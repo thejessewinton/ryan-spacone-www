@@ -35,7 +35,7 @@ export const VimeoPlayer = ({
     >
       <iframe
         src={src}
-        className="absolute inset-0 h-full w-full"
+        className="h-full w-full"
         allowFullScreen
         onPlay={handlePlay}
       />

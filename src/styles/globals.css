@@ -3,10 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  p {
-    @apply mb-8;
-  }
-  em {
-    @apply font-serif font-normal;
+  iframe {
+    @apply h-full w-full;
   }
 }
