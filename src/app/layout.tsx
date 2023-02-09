@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { Lora, Manrope, Unbounded } from "@next/font/google";
+import { Lora, Open_Sans } from "@next/font/google";
 
 import "../styles/globals.css";
 import { Header } from "components/header/Header";
@@ -7,16 +7,16 @@ import { Footer } from "components/footer/Footer";
 import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const openSans = Open_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "optional",
 });
 const lora = Lora({
-  variable: "--font-lora",
+  variable: "--font-serif",
   subsets: ["latin"],
   display: "optional",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
@@ -25,13 +25,13 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${lora.variable} leading-loose tracking-wide`}
+      className={`${openSans.variable} ${lora.variable} leading-loose tracking-wide`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
       <body className="flex min-h-screen flex-col bg-white text-neutral-900">
         <Header navigation={data.slices} />
-        <main className="relative px-6">{children}</main>
+        <main className="relative px-3">{children}</main>
         <Footer socials={data.socials} />
         <AnalyticsWrapper />
       </body>

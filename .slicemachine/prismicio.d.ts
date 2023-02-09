@@ -415,6 +415,17 @@ interface ProjectDocumentData {
      */
     video: prismicT.EmbedField;
     /**
+     * Secondary Video field in *Project*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.secondary_video
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    secondary_video: prismicT.EmbedField;
+    /**
      * Cover field in *Project*
      *
      * - **Field Type**: Image
