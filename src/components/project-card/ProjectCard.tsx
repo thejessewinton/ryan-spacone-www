@@ -5,6 +5,7 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import Link from "next/link";
 import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
+import { getBlurUrl, getImageUrl } from "utils/get-url";
 
 export const ProjectCard = ({
   href,
@@ -24,13 +25,14 @@ export const ProjectCard = ({
           </h3>
 
           <Image
-            src={project.cover.widescreen.url}
+            src={getImageUrl(project.cover.widescreen)}
             width={project.cover.widescreen.dimensions?.width}
             height={project.cover.widescreen.dimensions?.height}
             alt={asText(project.title)}
             className="w-full transition-transform duration-700 group-hover:scale-105"
             placeholder="blur"
-            blurDataURL={`${project.cover.widescreen.url}&blur=200`}
+            blurDataURL={getBlurUrl(project.cover.widescreen.url)}
+            quality={100}
           />
         </div>
       </Link>

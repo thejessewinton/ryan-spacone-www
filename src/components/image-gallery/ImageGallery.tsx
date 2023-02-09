@@ -6,6 +6,7 @@ import type { ProjectProps } from "types/prismic";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { Lightbox } from "components/lightbox/Lightbox";
+import { getBlurUrl, getImageUrl } from "utils/get-url";
 
 export const ImageGallery = ({
   stills,
@@ -33,13 +34,13 @@ export const ImageGallery = ({
             >
               <Image
                 onClick={() => handleOpen(i)}
-                src={still.image.url}
+                src={getImageUrl(still.image)}
                 width={still.image.dimensions.width}
                 height={still.image.dimensions.height}
                 alt="Project Image"
                 loading="lazy"
                 placeholder="blur"
-                blurDataURL={`${still.image.url}&blur=200`}
+                blurDataURL={getBlurUrl(still.image.url)}
                 className="mx-auto block cursor-pointer"
               />
             </ScrollObserver>

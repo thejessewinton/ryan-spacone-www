@@ -8,6 +8,7 @@ import { ProjectNav } from "components/project-nav/ProjectNav";
 import Link from "next/link";
 import { Lightbox } from "components/lightbox/Lightbox";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
+import { getBlurUrl, getImageUrl } from "utils/get-url";
 
 const CreditsSection = ({
   projectName,
@@ -77,13 +78,13 @@ const Project = async ({ params }: { params: { uid: string } }) => {
           <VimeoPlayer video={project.data.video} />
         ) : project.data.cover && project.data.cover.url ? (
           <Image
-            src={project.data.cover.url}
+            src={getImageUrl(project.data.cover.url)}
             width={project.data.cover.dimensions.width}
             height={project.data.cover.dimensions.height}
             alt="Project Image"
             loading="lazy"
             placeholder="blur"
-            blurDataURL={`${project.data.cover.url}&blur=200`}
+            blurDataURL={getBlurUrl(project.data.cover.url)}
             className="mx-auto block"
           />
         ) : null}
