@@ -21,7 +21,7 @@ const CreditsSection = ({
   return (
     <ScrollObserver>
       <section className="grid w-full grid-cols-2 justify-center gap-4 py-24 md:items-center">
-        <h4 className="font-serif text-2xl uppercase tracking-[0.2em] md:text-center">
+        <h4 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
           {asText(projectName)}
         </h4>
 
@@ -49,7 +49,7 @@ const CreditsSection = ({
                 return (
                   <div key={item.label} className="md:col-span-1">
                     <Link
-                      className="font-medium"
+                      className="font-medium underline"
                       href={asLink(item.link) as string}
                       target="_blank"
                     >
