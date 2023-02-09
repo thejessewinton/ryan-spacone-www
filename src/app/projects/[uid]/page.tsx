@@ -25,33 +25,37 @@ const CreditsSection = ({
         </h4>
 
         <div className="flex flex-col gap-4">
-          {credits.map((credit) => {
-            return (
-              <div key={credit.label} className="md:col-span-1">
-                <span className="font-medium">{credit.label}</span>
-                {asText(credit.details, "\n\n")
-                  .split("\n\n")
-                  .map((line) => (
-                    <span className="block" key={line}>
-                      {line}
-                    </span>
-                  ))}
-              </div>
-            );
-          })}
-          {links.map((item) => {
-            return (
-              <div key={item.label} className="md:col-span-1">
-                <Link
-                  className="font-medium"
-                  href={asLink(item.link) as string}
-                  target="_blank"
-                >
-                  {item.label}
-                </Link>
-              </div>
-            );
-          })}
+          {credits && credits.length
+            ? credits.map((credit) => {
+                return (
+                  <div key={credit.label} className="md:col-span-1">
+                    <span className="font-medium">{credit.label}</span>
+                    {asText(credit.details, "\n\n")
+                      .split("\n\n")
+                      .map((line) => (
+                        <span className="block" key={line}>
+                          {line}
+                        </span>
+                      ))}
+                  </div>
+                );
+              })
+            : null}
+          {links && links.length
+            ? links.map((item) => {
+                return (
+                  <div key={item.label} className="md:col-span-1">
+                    <Link
+                      className="font-medium"
+                      href={asLink(item.link) as string}
+                      target="_blank"
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                );
+              })
+            : null}
         </div>
       </section>
     </ScrollObserver>
