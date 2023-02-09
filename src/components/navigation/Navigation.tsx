@@ -31,7 +31,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
   const activeSegment = useSelectedLayoutSegment();
   return (
     <NavigationMenuPrimitive.NavigationMenu>
-      <NavigationMenuPrimitive.List className="flex items-center gap-8">
+      <NavigationMenuPrimitive.List className="flex items-center gap-x-8">
         {navigation.map((item) => {
           const isActive = activeSegment?.includes(
             asLink(item.primary.link)?.replace("/", "") as string
@@ -43,7 +43,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
             >
               {item.items.length ? (
                 <>
-                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center text-sm font-light uppercase">
+                  <NavigationMenuPrimitive.Trigger className="group relative flex items-center justify-center uppercase">
                     {item.primary.label}
                     <HoverLine open={isActive} />
                   </NavigationMenuPrimitive.Trigger>
@@ -59,7 +59,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
                       : (asLink(item.primary.link) as string)
                   }
                   key={item.primary.label}
-                  className="group relative flex items-center justify-center text-sm font-light uppercase"
+                  className="group relative flex items-center justify-center uppercase"
                 >
                   {item.primary.label}
                   <HoverLine open={isActive} />

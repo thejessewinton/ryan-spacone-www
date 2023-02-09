@@ -22,14 +22,14 @@ export const ProjectNav = ({
             className="group flex items-center justify-center gap-4 text-lg"
           >
             <LeftArrow className="transition-all group-hover:-translate-x-2" />
-            <h3 className="font-serif uppercase group-hover:text-brand">
+            <h3 className="font-serif uppercase italic group-hover:text-brand">
               Previous Project
             </h3>
           </Link>
         ) : (
           <div className="group flex cursor-not-allowed items-center justify-center gap-4 text-lg opacity-75">
             <LeftArrow />
-            <h3 className="font-serif uppercase">Previous</h3>
+            <h3 className="font-serif uppercase italic">Previous</h3>
           </div>
         )}
         {next ? (
@@ -38,7 +38,7 @@ export const ProjectNav = ({
             className="group flex items-center justify-center gap-4 text-lg"
             aria-disabled={!next}
           >
-            <h3 className="font-serif uppercase group-hover:text-brand">
+            <h3 className="font-serif uppercase italic group-hover:text-brand">
               Next Project
             </h3>
             <LeftArrow className="rotate-180 transition-all group-hover:translate-x-2" />
@@ -46,7 +46,7 @@ export const ProjectNav = ({
         ) : (
           <div className="group flex cursor-not-allowed items-center justify-center gap-4 text-lg opacity-75">
             <LeftArrow className="rotate-180" />
-            <h3 className="font-serif uppercase">Next</h3>
+            <h3 className="font-serif uppercase italic">Next</h3>
           </div>
         )}
       </div>

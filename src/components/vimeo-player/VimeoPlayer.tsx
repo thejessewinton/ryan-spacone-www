@@ -4,13 +4,20 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 
+const getIdFromUrl = (url: string) => {
+  const id = url.split("/").pop();
+  if (!id) throw new Error("Could not get ID from URL");
+  return id;
+};
+
 export const VimeoPlayer = ({
   video,
 }: {
-  video: ProjectDocumentData["video"] & { video_id: string };
+  video: ProjectDocumentData["video"];
 }) => {
+  const id = getIdFromUrl(video.embed_url);
   const ref = useRef<HTMLDivElement>(null);
-  const src = `https://player.vimeo.com/video/${video.video_id}?&autoplay=1&title=0&byline=0&portrait=0&badge=0`;
+  const src = `https://player.vimeo.com/video/${id}?&autoplay=1&title=0&byline=0&portrait=0&badge=0`;
 
   const handlePlay = () => {
     ref.current?.scrollIntoView({

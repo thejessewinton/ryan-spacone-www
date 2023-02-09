@@ -1,22 +1,25 @@
 import { clsx } from "clsx";
 import type { ProjectProps } from "types/prismic";
 import { getProject } from "utils/prismic";
-import { asText } from "@prismicio/helpers";
+import { asLink, asText } from "@prismicio/helpers";
 import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { ProjectNav } from "components/project-nav/ProjectNav";
+import Link from "next/link";
 
 const CreditsSection = ({
   projectName,
   credits,
+  links,
 }: {
   projectName: ProjectProps["title"];
   credits: ProjectProps["credits"];
+  links: ProjectProps["links"];
 }) => {
   return (
     <ScrollObserver>
-      <section className="grid grid-cols-2 items-center justify-center gap-4 py-32">
+      <section className="grid grid-cols-2 items-center justify-center gap-4 py-24">
         <h4 className="text-center font-serif text-2xl uppercase italic tracking-widest">
           {asText(projectName)}
         </h4>
@@ -25,7 +28,7 @@ const CreditsSection = ({
           {credits.map((credit) => {
             return (
               <div key={credit.label} className="md:col-span-1">
-                <span className="mr-2 font-medium">{credit.label}</span>
+                <span className="font-medium">{credit.label}</span>
                 {asText(credit.details, "\n\n")
                   .split("\n\n")
                   .map((line) => (
@@ -33,6 +36,19 @@ const CreditsSection = ({
                       {line}
                     </span>
                   ))}
+              </div>
+            );
+          })}
+          {links.map((item) => {
+            return (
+              <div key={item.label} className="md:col-span-1">
+                <Link
+                  className="font-medium"
+                  href={asLink(item.link) as string}
+                  target="_blank"
+                >
+                  {item.label}
+                </Link>
               </div>
             );
           })}
@@ -47,15 +63,6 @@ const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
     <div className="grid grid-cols-2">
       {stills.map((still, i) => {
         if (!still.image.url) return null;
-
-        //const subIndex = i % 6;
-
-        // const className =
-        //   subIndex < 2
-        //     ? "col-span-2"
-        //     : subIndex >= 2 && subIndex < 6
-        //     ? "col-span-1"
-        //     : "";
 
         const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
 
@@ -72,6 +79,7 @@ const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
               loading="lazy"
               placeholder="blur"
               blurDataURL={`${still.image.url}&blur=200`}
+              className="mx-auto block"
             />
           </ScrollObserver>
         );
@@ -88,10 +96,24 @@ const Project = async ({ params }: { params: { uid: string } }) => {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <VimeoPlayer video={project.data.video} />
+        {project.data.video.url ? (
+          <VimeoPlayer video={project.data.video} />
+        ) : project.data.cover && project.data.cover.url ? (
+          <Image
+            src={project.data.cover.url}
+            width={project.data.cover.dimensions.width}
+            height={project.data.cover.dimensions.height}
+            alt="Project Image"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={`${project.data.cover.url}&blur=200`}
+            className="mx-auto block"
+          />
+        ) : null}
         <CreditsSection
           projectName={project.data.title}
           credits={project.data.credits}
+          links={project.data.links}
         />
         <ImageGallery stills={project.data.stills} />
       </div>
