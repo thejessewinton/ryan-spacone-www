@@ -35,11 +35,11 @@ export const Lightbox = ({
   if (!images || !images[currentImage]?.image.url) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
       <button onClick={toggleOpen} className="absolute right-6 top-6">
         <CloseIcon />
       </button>
-      <div className="flex items-center justify-center p-24" ref={ref}>
+      <div className="flex items-center justify-center p-12" ref={ref}>
         <Image
           src={images[currentImage]?.image.url as string}
           alt="Lightbox Image"

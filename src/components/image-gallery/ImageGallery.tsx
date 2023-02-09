@@ -28,7 +28,7 @@ export const ImageGallery = ({
         return (
           <>
             <ScrollObserver
-              key={`${still.image.url}-${i}`}
+              key={`gallery-${still.image.url}-${i}`}
               className={clsx("bg-black", className)}
             >
               <Image
