@@ -1,4 +1,3 @@
-import { clsx } from "clsx";
 import type { ProjectProps } from "types/prismic";
 import { getProject } from "utils/prismic";
 import { asLink, asText } from "@prismicio/helpers";
@@ -7,6 +6,8 @@ import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { ProjectNav } from "components/project-nav/ProjectNav";
 import Link from "next/link";
+import { Lightbox } from "components/lightbox/Lightbox";
+import { ImageGallery } from "components/image-gallery/ImageGallery";
 
 const CreditsSection = ({
   projectName,
@@ -20,16 +21,18 @@ const CreditsSection = ({
   return (
     <ScrollObserver>
       <section className="grid w-full grid-cols-2 justify-center gap-4 py-24 md:items-center">
-        <h4 className="font-serif text-2xl uppercase italic tracking-widest md:text-center">
+        <h4 className="font-serif text-2xl uppercase tracking-[0.2em] md:text-center">
           {asText(projectName)}
         </h4>
 
-        <div className="flex flex-col gap-4 text-right md:text-left">
+        <div className="flex flex-col gap-4 text-right font-thin md:text-left">
           {credits && credits.length
             ? credits.map((credit) => {
                 return (
                   <div key={credit.label} className="md:col-span-1">
-                    <span className="font-bold">{credit.label}</span>
+                    <span className="font-normal uppercase">
+                      {credit.label}
+                    </span>
                     {asText(credit.details, "\n\n")
                       .split("\n\n")
                       .map((line) => (
@@ -59,36 +62,6 @@ const CreditsSection = ({
         </div>
       </section>
     </ScrollObserver>
-  );
-};
-
-const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
-  return (
-    <div className="grid grid-cols-2">
-      {stills.map((still, i) => {
-        if (!still.image.url) return null;
-
-        const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
-
-        return (
-          <ScrollObserver
-            key={still.image.url}
-            className={clsx("bg-black", className)}
-          >
-            <Image
-              src={still.image.url}
-              width={still.image.dimensions.width}
-              height={still.image.dimensions.height}
-              alt="Project Image"
-              loading="lazy"
-              placeholder="blur"
-              blurDataURL={`${still.image.url}&blur=200`}
-              className="mx-auto block"
-            />
-          </ScrollObserver>
-        );
-      })}
-    </div>
   );
 };
 
