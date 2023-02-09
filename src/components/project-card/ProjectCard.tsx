@@ -25,7 +25,7 @@ export const ProjectCard = ({
           </h3>
 
           <Image
-            src={getImageUrl(project.cover.widescreen)}
+            src={getImageUrl(project.cover.widescreen.url)}
             width={project.cover.widescreen.dimensions?.width}
             height={project.cover.widescreen.dimensions?.height}
             alt={asText(project.title)}

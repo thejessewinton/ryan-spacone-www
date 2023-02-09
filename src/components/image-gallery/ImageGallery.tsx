@@ -34,7 +34,7 @@ export const ImageGallery = ({
             >
               <Image
                 onClick={() => handleOpen(i)}
-                src={getImageUrl(still.image)}
+                src={getImageUrl(still.image.url)}
                 width={still.image.dimensions.width}
                 height={still.image.dimensions.height}
                 alt="Project Image"

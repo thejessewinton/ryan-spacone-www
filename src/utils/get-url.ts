@@ -1,8 +1,5 @@
-import { asImageSrc } from "@prismicio/helpers";
-import type { FilledImageFieldImage } from "@prismicio/types";
-
-export const getImageUrl = (image: FilledImageFieldImage) => {
-  return asImageSrc(image, { auto: ["format"], q: 100 });
+export const getImageUrl = (url: string) => {
+  return `${url}`;
 };
 
 export const getBlurUrl = (url: string) => {

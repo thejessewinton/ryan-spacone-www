@@ -16,7 +16,7 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
         >
           <Link href={asLink(item.link) as string}>
             <Image
-              src={getImageUrl(item.icon.url as string)}
+              src={getImageUrl(item.icon as string)}
               width={item.icon.dimensions?.width}
               height={item.icon.dimensions?.height}
               alt="Project Image"
