@@ -23,7 +23,7 @@ export const ProjectNav = ({
           >
             <LeftArrow className="transition-all group-hover:-translate-x-2" />
             <h3 className="font-serif uppercase group-hover:text-brand">
-              Previous
+              Previous Project
             </h3>
           </Link>
         ) : (
@@ -39,7 +39,7 @@ export const ProjectNav = ({
             aria-disabled={!next}
           >
             <h3 className="font-serif uppercase group-hover:text-brand">
-              Next
+              Next Project
             </h3>
             <LeftArrow className="rotate-180 transition-all group-hover:translate-x-2" />
           </Link>

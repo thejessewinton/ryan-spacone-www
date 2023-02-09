@@ -14,6 +14,13 @@
           "single": "heading1"
         }
       },
+      "video": {
+        "type": "Embed",
+        "config": {
+          "label": "Video",
+          "placeholder": ""
+        }
+      },
       "cover": {
         "type": "Image",
         "config": {
@@ -26,21 +33,6 @@
               "height": 503
             }
           ]
-        }
-      },
-      "preview": {
-        "type": "Image",
-        "config": {
-          "label": "Preview",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
-      "video": {
-        "type": "Embed",
-        "config": {
-          "label": "Video",
-          "placeholder": ""
         }
       },
       "credits": {

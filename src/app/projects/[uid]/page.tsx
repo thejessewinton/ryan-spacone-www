@@ -16,22 +16,20 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="py-16 px-9 md:px-64">
-        <div className="mb-4 border-b border-b-brand pb-4">
-          <h1 className="font-serif text-2xl uppercase italic">
-            {asText(projectName)}
-          </h1>
-        </div>
+      <section className="grid grid-cols-2 items-center justify-center gap-4 py-32">
+        <h4 className="text-center font-serif text-2xl uppercase italic tracking-widest">
+          {asText(projectName)}
+        </h4>
 
-        <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2">
+        <div className="flex flex-col gap-4">
           {credits.map((credit) => {
             return (
               <div key={credit.label} className="md:col-span-1">
-                <span className="mr-2">{credit.label}:</span>
+                <span className="mr-2 font-medium">{credit.label}</span>
                 {asText(credit.details, "\n\n")
                   .split("\n\n")
                   .map((line) => (
-                    <span className="" key={line}>
+                    <span className="block" key={line}>
                       {line}
                     </span>
                   ))}
@@ -46,18 +44,20 @@ const CreditsSection = ({
 
 const ImageGallery = ({ stills }: { stills: ProjectProps["stills"] }) => {
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-2">
       {stills.map((still, i) => {
         if (!still.image.url) return null;
 
-        const subIndex = i % 6;
+        //const subIndex = i % 6;
 
-        const className =
-          subIndex < 2
-            ? "col-span-2"
-            : subIndex >= 2 && subIndex < 6
-            ? "col-span-1"
-            : "";
+        // const className =
+        //   subIndex < 2
+        //     ? "col-span-2"
+        //     : subIndex >= 2 && subIndex < 6
+        //     ? "col-span-1"
+        //     : "";
+
+        const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
 
         return (
           <ScrollObserver
@@ -88,7 +88,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
   return (
     <>
       <div className="flex flex-col gap-2">
-        <VimeoPlayer cover={project.data.cover} video={project.data.video} />
+        <VimeoPlayer video={project.data.video} />
         <CreditsSection
           projectName={project.data.title}
           credits={project.data.credits}
