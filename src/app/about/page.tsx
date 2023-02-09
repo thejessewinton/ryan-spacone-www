@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import type { AboutDocumentData } from "../../../.slicemachine/prismicio";
 import Link from "next/link";
+import { getImageUrl } from "utils/get-url";
 
 const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
   return (
@@ -15,7 +16,7 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
         >
           <Link href={asLink(item.link) as string}>
             <Image
-              src={item.icon.url as string}
+              src={getImageUrl(item.icon.url as string)}
               width={item.icon.dimensions?.width}
               height={item.icon.dimensions?.height}
               alt="Project Image"
