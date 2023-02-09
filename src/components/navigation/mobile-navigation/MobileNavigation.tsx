@@ -46,7 +46,7 @@ export const MobileNavigation = ({
       {isMobileNavOpen ? (
         <motion.nav
           className={clsx(
-            "inset-0 top-20 flex-col gap-4 bg-white px-9 pt-12 md:hidden",
+            "inset-0 top-24 flex-col gap-4 bg-white px-9 pt-12 md:hidden",
             isMobileNavOpen ? "fixed flex" : ""
           )}
           initial={{ opacity: 0, y: 50 }}

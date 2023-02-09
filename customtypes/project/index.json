@@ -23,13 +23,6 @@
           "placeholder_false": "false"
         }
       },
-      "video": {
-        "type": "Embed",
-        "config": {
-          "label": "Video",
-          "placeholder": ""
-        }
-      },
       "cover": {
         "type": "Image",
         "config": {
@@ -90,7 +83,25 @@
             }
           }
         }
+      }
+    },
+    "Videos": {
+      "video": {
+        "type": "Embed",
+        "config": {
+          "label": "Video",
+          "placeholder": ""
+        }
       },
+      "secondary_video": {
+        "type": "Embed",
+        "config": {
+          "label": "Secondary Video",
+          "placeholder": ""
+        }
+      }
+    },
+    "Stills": {
       "stills": {
         "type": "Group",
         "config": {

@@ -33,7 +33,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
               item.items.length ? "" : (asLink(item.primary.link) as string)
             }
             key={item.primary.label}
-            className="group relative flex items-center justify-center text-sm uppercase"
+            className="tracking-loose group relative flex items-center justify-center text-sm font-normal uppercase text-neutral-600"
           >
             {item.primary.label}
             <HoverLine />

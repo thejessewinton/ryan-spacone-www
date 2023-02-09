@@ -9,8 +9,8 @@ module.exports = {
         widescreen: "3/1",
       },
       fontFamily: {
-        serif: ["var(--font-lora)", ...defaultTheme.fontFamily.serif],
-        sans: ["var(--font-manrope)", ...defaultTheme.fontFamily.sans],
+        serif: ["var(--font-serif)", ...defaultTheme.fontFamily.serif],
+        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         brand: "#904D27",

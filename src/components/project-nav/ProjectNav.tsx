@@ -15,7 +15,7 @@ export const ProjectNav = ({
 }) => {
   return (
     <ScrollObserver>
-      <div className="my-24 grid h-24 grid-cols-2 overflow-hidden">
+      <div className="my-12 grid h-24 grid-cols-2 overflow-hidden md:my-24">
         {previous ? (
           <Link
             href={previous.url as string}
