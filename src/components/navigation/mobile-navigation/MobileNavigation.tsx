@@ -4,13 +4,15 @@ import { asLink } from "@prismicio/helpers";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import { useMobileNav } from "hooks/use-mobile-nav";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useEffect } from "react";
 import type { NavigationProps } from "types/prismic";
 
 const Hamburger = () => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
   const className =
-    "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform dark:bg-white";
+    "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform";
   return (
     <button
       onClick={() => toggleMobileNav()}
@@ -23,7 +25,7 @@ const Hamburger = () => {
       />
       <span
         className={clsx(
-          "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform dark:bg-white",
+          "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform",
           isMobileNavOpen ? "-mt-[2px] w-8 -rotate-45" : "mt-1 w-6"
         )}
       />
@@ -36,7 +38,7 @@ export const MobileNavigation = ({
 }: {
   navigation: NavigationProps;
 }) => {
-  const { isMobileNavOpen } = useMobileNav();
+  const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
 
   return (
     <div className="flex items-center gap-2">
@@ -44,7 +46,7 @@ export const MobileNavigation = ({
       {isMobileNavOpen ? (
         <motion.nav
           className={clsx(
-            "inset-0 top-24 flex-col gap-4 bg-white px-9 pt-12 dark:bg-neutral-900 md:hidden",
+            "inset-0 top-20 flex-col gap-4 bg-white px-9 pt-12 md:hidden",
             isMobileNavOpen ? "fixed flex" : ""
           )}
           initial={{ opacity: 0, y: 50 }}
@@ -53,11 +55,12 @@ export const MobileNavigation = ({
         >
           {navigation.map((item) => {
             return (
-              <div className="group relative" key={item.id}>
+              <div className="group relative text-right" key={item.id}>
                 <Link
                   href={asLink(item.primary.link) as string}
                   key={item.primary.label}
                   className="relative text-sm uppercase"
+                  onClick={() => toggleMobileNav()}
                 >
                   {item.primary.label}
                 </Link>
