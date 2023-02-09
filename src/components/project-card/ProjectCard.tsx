@@ -19,7 +19,7 @@ export const ProjectCard = ({
     <ScrollObserver>
       <Link href={href} aria-label={asText(project.title)} className="relative">
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
-          <h3 className="absolute z-10 flex items-center justify-center font-serif text-sm uppercase italic text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-lg">
+          <h3 className="absolute z-10 mx-auto text-center font-serif text-sm uppercase tracking-[15px] text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl md:tracking-[1.5625rem]">
             {asText(project.title)}
           </h3>
 

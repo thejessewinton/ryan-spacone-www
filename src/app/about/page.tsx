@@ -1,4 +1,4 @@
-import { asLink, asText } from "@prismicio/helpers";
+import { asHTML, asLink, asText } from "@prismicio/helpers";
 import { getAboutPage } from "utils/prismic";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
@@ -35,7 +35,7 @@ const Representation = ({
   representation: AboutDocumentData["representation"];
 }) => {
   return (
-    <div className="mt-16 mb-8 block text-center">
+    <div className="mt-16 mb-8 block text-center font-light">
       <h2 className="mb-8 font-serif text-2xl">Representation</h2>
       <div className="mb-4 flex flex-col flex-wrap items-center justify-center gap-8 md:flex-row md:gap-20">
         {representation.map((rep) => (
@@ -71,13 +71,11 @@ const About = async () => {
           placeholder="blur"
           blurDataURL={`${data.image.url as string}&blur=200`}
         />
-        {asText(data.bio, "\n\n")
-          .split("\n\n")
-          .map((line) => (
-            <div className="mb-8 block" key={line}>
-              {line}
-            </div>
-          ))}
+
+        <div
+          className="mb-8 block text-sm font-light"
+          dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
+        />
 
         {data.links && data.links.length ? <Links links={data.links} /> : null}
 
