@@ -32,7 +32,7 @@ const CategoryNav = () => {
 const Index = async () => {
   const { data } = await getHomePage();
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-1 md:gap-4">
       {data.projects.map(({ project }) => (
         <ProjectCard
           href={`/projects/${project.uid}`}
