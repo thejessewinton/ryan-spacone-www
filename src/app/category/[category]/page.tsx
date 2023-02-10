@@ -5,7 +5,7 @@ const Index = async ({ params }: { params: { category: string } }) => {
   const { data } = await getCategory(params.category);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       {data.projects.map(({ project }) => (
         <ProjectCard
           href={`/projects/${project.uid}`}

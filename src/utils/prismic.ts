@@ -14,6 +14,10 @@ const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 export const client = createClient(endpoint, {
   routes: [
     {
+      type: "home",
+      path: "/",
+    },
+    {
       type: "about",
       path: "/:uid",
     },

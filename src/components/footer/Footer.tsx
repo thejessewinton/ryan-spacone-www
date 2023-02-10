@@ -5,7 +5,7 @@ import { IMDBIcon, InstagramIcon, VimeoIcon } from "../icons/Icons";
 
 export const Footer = ({ socials }: { socials: SocialsProps }) => {
   return (
-    <footer className="z-100 relative mt-4 flex h-80 flex-col items-center justify-center gap-8 bg-neutral-900 text-white">
+    <footer className="z-100 relative mt-2 flex h-80 flex-col items-center justify-center gap-8 bg-neutral-900 text-white">
       <nav className="flex items-center justify-center gap-4">
         {socials.map((social) => (
           <Link href={asLink(social.link) as string} key={social.label}>
