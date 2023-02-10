@@ -28,10 +28,7 @@ export const ImageGallery = ({
 
         return (
           <>
-            <ScrollObserver
-              key={`gallery-${still.image.url}-${i}`}
-              className={clsx("bg-black", className)}
-            >
+            <ScrollObserver key={i} className={clsx("bg-black", className)}>
               <Image
                 onClick={() => handleOpen(i)}
                 src={getImageUrl(still.image.url)}

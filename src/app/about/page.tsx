@@ -74,17 +74,20 @@ const About = async () => {
           quality={100}
           blurDataURL={`${data.image.url as string}&blur=200`}
         />
+        <div className="px-3">
+          <div
+            className="mb-8 block text-sm font-light"
+            dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
+          />
 
-        <div
-          className="mb-8 block text-sm font-light"
-          dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
-        />
+          {data.links && data.links.length ? (
+            <Links links={data.links} />
+          ) : null}
 
-        {data.links && data.links.length ? <Links links={data.links} /> : null}
-
-        {data.representation && data.representation.length ? (
-          <Representation representation={data.representation} />
-        ) : null}
+          {data.representation && data.representation.length ? (
+            <Representation representation={data.representation} />
+          ) : null}
+        </div>
       </ScrollObserver>
     </div>
   );
