@@ -7,14 +7,16 @@ import { useRef } from "react";
 import { useClickOutside } from "hooks/use-click-outside";
 import { CloseIcon, LeftArrow } from "components/icons/Icons";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
+import { useLockBodyScroll } from "hooks/use-lock-body-scroll";
 
 export const Lightbox = ({
   images,
 }: {
   images: ProjectDocumentData["stills"];
 }) => {
-  const { toggleOpen, currentImage, setCurrentImage } = useLightbox();
+  const { toggleOpen, isOpen, currentImage, setCurrentImage } = useLightbox();
   const ref = useRef<HTMLDivElement>(null);
+  useLockBodyScroll(isOpen);
 
   const handlePrev = () => {
     if (currentImage === 0) {
@@ -46,6 +48,7 @@ export const Lightbox = ({
           placeholder="blur"
           blurDataURL={getBlurUrl(images[currentImage]?.image.url as string)}
           alt="Lightbox Image"
+          loading="eager"
           width={images[currentImage]?.image.dimensions?.width}
           height={images[currentImage]?.image.dimensions?.height}
         />
