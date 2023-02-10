@@ -33,6 +33,7 @@ specifiers:
   tailwind-merge: ^1.9.0
   tailwindcss: ^3.2.0
   typescript: ^4.9.4
+  yet-another-react-lightbox: ^2.3.1
   zod: ^3.20.2
   zustand: ^4.3.1
 
@@ -53,6 +54,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   tailwind-merge: 1.9.0
+  yet-another-react-lightbox: 2.3.1_biqbaboplfbrettd7655fr4n2y
   zod: 3.20.2
   zustand: 4.3.1_react@18.2.0
 
@@ -7297,6 +7299,17 @@ packages:
       buffer-crc32: 0.2.13
       fd-slicer: 1.1.0
     dev: true
+
+  /yet-another-react-lightbox/2.3.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-7XNWWjoWCP1TGAfhxO6HOHQ5R/hx1g3XEXlZi6hAfrRICcK+/HEj1eT3wE6vgzOAyGAAKI7RZ9LBD+XKf3Cb3Q==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}

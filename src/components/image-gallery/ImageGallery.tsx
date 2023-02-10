@@ -40,6 +40,7 @@ export const ImageGallery = ({
                 alt="Project Image"
                 loading="lazy"
                 placeholder="blur"
+                quality={100}
                 blurDataURL={getBlurUrl(still.image.url)}
                 className="mx-auto block cursor-pointer"
               />

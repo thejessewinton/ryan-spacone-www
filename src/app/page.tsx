@@ -1,4 +1,3 @@
-import { LeftArrow } from "components/icons/Icons";
 import { ProjectCard } from "components/project-card/ProjectCard";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import Link from "next/link";

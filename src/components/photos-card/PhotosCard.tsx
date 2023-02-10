@@ -22,6 +22,7 @@ export const PhotosCard = ({
           className="w-full transition-transform duration-700 group-hover:scale-105"
           placeholder="blur"
           blurDataURL={`${set.cover.url}&blur=200`}
+          quality={100}
         />
         <span className="sr-only">{asText(set.title)}</span>
       </Link>
