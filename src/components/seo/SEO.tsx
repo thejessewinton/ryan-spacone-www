@@ -20,15 +20,9 @@ export const SEO = ({ title, description }: HeadProps) => {
       <meta property="og:url" content={env.NEXT_PUBLIC_URL} />
       <meta property="og:site_name" content="Ryan Spacone" />
       <meta property="og:type" content="website" />
-      <meta
-        property="og:image"
-        content="https://linear.app/static/og/home.jpg"
-      />
+      <meta property="og:image" content="/og.jpg" />
       <meta property="twitter:card" content="summary_large_image" />
-      <meta
-        property="twitter:image"
-        content="https://linear.app/static/og/home.jpg"
-      />
+      <meta property="twitter:image" content="/og.jpg" />
       <meta name="description" content={description} />
       <meta property="twitter:description" content={description} />
       <meta property="og:description" content={description} />
