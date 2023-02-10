@@ -7,11 +7,13 @@ const Index = async () => {
   return (
     <div className="space-y-2">
       {data.projects.map(({ project }) => (
-        <ProjectCard
-          href={`/projects/${project.uid}`}
-          key={project.uid}
-          project={project.data}
-        />
+        <div className="group relative" key={project.uid}>
+          <ProjectCard
+            href={`/projects/${project.uid}`}
+            project={project.data}
+            preview={project.data.preview}
+          />
+        </div>
       ))}
     </div>
   );

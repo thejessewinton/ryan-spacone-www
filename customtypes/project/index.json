@@ -37,6 +37,13 @@
           ]
         }
       },
+      "preview": {
+        "type": "Embed",
+        "config": {
+          "label": "Preview",
+          "placeholder": ""
+        }
+      },
       "credits": {
         "type": "Group",
         "config": {
