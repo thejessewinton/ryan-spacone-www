@@ -43,15 +43,22 @@ export const Lightbox = ({
         <CloseIcon />
       </button>
       <div className="flex items-center justify-center p-12" ref={ref}>
-        <Image
-          src={getImageUrl(images[currentImage]?.image.url as string)}
-          placeholder="blur"
-          blurDataURL={getBlurUrl(images[currentImage]?.image.url as string)}
-          alt="Lightbox Image"
-          loading="eager"
-          width={images[currentImage]?.image.dimensions?.width}
-          height={images[currentImage]?.image.dimensions?.height}
-        />
+        {images.map((still, i) => {
+          return (
+            <Image
+              key={i}
+              src={getImageUrl(still.image.url as string)}
+              placeholder="blur"
+              blurDataURL={getBlurUrl(still.image.url as string)}
+              alt="Lightbox Image"
+              loading="eager"
+              className={i === currentImage ? "block" : "hidden"}
+              width={still.image.dimensions?.width}
+              height={still.image.dimensions?.height}
+            />
+          );
+        })}
+
         <div className="absolute flex w-full items-center justify-between">
           <button
             onClick={handlePrev}
