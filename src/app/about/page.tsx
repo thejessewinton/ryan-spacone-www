@@ -16,11 +16,12 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
         >
           <Link href={asLink(item.link) as string}>
             <Image
-              src={getImageUrl(item.icon as string)}
+              src={getImageUrl(item.icon.url as string)}
               width={item.icon.dimensions?.width}
               height={item.icon.dimensions?.height}
               alt="Project Image"
               className="mx-auto transition-transform duration-700 group-hover:scale-105"
+              quality={100}
             />
             <span className="sr-only">{item.label}</span>
           </Link>
@@ -70,6 +71,7 @@ const About = async () => {
           alt="Project Image"
           className="mb-8 mt-8 w-full"
           placeholder="blur"
+          quality={100}
           blurDataURL={`${data.image.url as string}&blur=200`}
         />
 

@@ -20,7 +20,7 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="grid w-full grid-cols-2 justify-center gap-4 py-24 md:items-center">
+      <section className="grid w-full grid-cols-2 justify-center gap-4 py-24 px-3 md:items-center md:px-0">
         <h4 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
           {asText(projectName)}
         </h4>
@@ -85,6 +85,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
             placeholder="blur"
             blurDataURL={getBlurUrl(project.data.cover.url)}
             className="mx-auto block"
+            quality={100}
           />
         ) : null}
         <CreditsSection
