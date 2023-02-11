@@ -12,10 +12,12 @@ export const ProjectCard = ({
   href,
   project,
   preview,
+  previewOnHover = false,
 }: {
   href: string;
   project: ProjectDocumentData;
   preview?: ProjectDocumentData["preview"];
+  previewOnHover?: boolean;
 }) => {
   if (!project.cover.widescreen.url) return null;
 
@@ -45,7 +47,12 @@ export const ProjectCard = ({
             blurDataURL={getBlurUrl(project.cover.widescreen.url)}
             quality={100}
           />
-          {preview ? <ProjectPreview preview={project.preview} /> : null}
+          {preview ? (
+            <ProjectPreview
+              showOnHover={previewOnHover}
+              preview={project.preview}
+            />
+          ) : null}
         </div>
       </Link>
     </ScrollObserver>

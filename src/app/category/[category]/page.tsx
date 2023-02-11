@@ -12,6 +12,7 @@ const Index = async ({ params }: { params: { category: string } }) => {
           key={project.uid}
           project={project.data}
           preview={project.data.preview}
+          previewOnHover={true}
         />
       ))}
     </div>
