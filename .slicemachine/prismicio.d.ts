@@ -404,28 +404,6 @@ interface ProjectDocumentData {
      */
     coming_soon: prismicT.BooleanField;
     /**
-     * Video field in *Project*
-     *
-     * - **Field Type**: Embed
-     * - **Placeholder**: *None*
-     * - **API ID Path**: project.video
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
-     *
-     */
-    video: prismicT.EmbedField;
-    /**
-     * Secondary Video field in *Project*
-     *
-     * - **Field Type**: Embed
-     * - **Placeholder**: *None*
-     * - **API ID Path**: project.secondary_video
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
-     *
-     */
-    secondary_video: prismicT.EmbedField;
-    /**
      * Cover field in *Project*
      *
      * - **Field Type**: Image
@@ -436,6 +414,17 @@ interface ProjectDocumentData {
      *
      */
     cover: prismicT.ImageField<"widescreen">;
+    /**
+     * Preview field in *Project*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.preview
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    preview: prismicT.EmbedField;
     /**
      * Credits field in *Project*
      *
@@ -459,12 +448,34 @@ interface ProjectDocumentData {
      */
     links: prismicT.GroupField<Simplify<ProjectDocumentDataLinksItem>>;
     /**
+     * Video field in *Project*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.video
+     * - **Tab**: Videos
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    video: prismicT.EmbedField;
+    /**
+     * Secondary Video field in *Project*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.secondary_video
+     * - **Tab**: Videos
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    secondary_video: prismicT.EmbedField;
+    /**
      * Stills field in *Project*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
      * - **API ID Path**: project.stills[]
-     * - **Tab**: Main
+     * - **Tab**: Stills
      * - **Documentation**: https://prismic.io/docs/core-concepts/group
      *
      */
