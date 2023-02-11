@@ -30,8 +30,8 @@ export const ProjectCard = ({
           <h3 className="absolute z-10 mx-auto space-x-4 text-center font-serif text-sm uppercase text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl lg:space-x-6">
             {asText(project.title)
               .split("")
-              .map((letter) => (
-                <span key={letter}>{letter}</span>
+              .map((letter, i) => (
+                <span key={`${letter}-${i}`}>{letter}</span>
               ))}
           </h3>
 

@@ -11,7 +11,7 @@ const Index = async () => {
           <ProjectCard
             href={`/projects/${project.uid}`}
             project={project.data}
-            //preview={project.data.preview}
+            preview={project.data.preview}
           />
         </div>
       ))}
