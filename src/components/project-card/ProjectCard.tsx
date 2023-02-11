@@ -24,11 +24,15 @@ export const ProjectCard = ({
       <Link
         href={href}
         aria-label={asText(project.title)}
-        className="relative cursor-pointer"
+        className="cursor-pointer"
       >
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
-          <h3 className="absolute z-10 mx-auto text-center font-serif text-sm uppercase tracking-[15px] text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl md:tracking-[1.5625rem]">
-            {asText(project.title)}
+          <h3 className="absolute z-10 mx-auto space-x-4 text-center font-serif text-sm uppercase text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl lg:space-x-6">
+            {asText(project.title)
+              .split("")
+              .map((letter) => (
+                <span key={letter}>{letter}</span>
+              ))}
           </h3>
 
           <Image
