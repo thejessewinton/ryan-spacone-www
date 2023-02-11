@@ -11,6 +11,7 @@ const Index = async ({ params }: { params: { category: string } }) => {
           href={`/projects/${project.uid}`}
           key={project.uid}
           project={project.data}
+          preview={project.data.preview}
         />
       ))}
     </div>

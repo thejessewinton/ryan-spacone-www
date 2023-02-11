@@ -13,11 +13,11 @@ export const getVideoUrl = (url: string) => {
   return `https://player.vimeo.com/video/${id}?&autoplay=1&title=0&byline=0&portrait=0&badge=0`;
 };
 
-export const getPreviewUrl = (url: string) => {
-  const urlArray = url.split("/");
-  // get second to last item from id
-  const id = urlArray[urlArray.length - 2];
-  if (!id) throw new Error("Could not get ID from URL");
+export const getPreviewUrl = (html: string) => {
+  // extract the src property from the iframe that is passed in and add the autoplay parameter
 
-  return `https://player.vimeo.com/video/797781305?h=f88cf0b616&background=1&responsive=0&amp;app_id=122963`;
+  const src = html.match(/src="([^"]+)"/)?.[1];
+  if (!src) throw new Error("Could not get src from HTML");
+
+  return `${src}&background=1`;
 };

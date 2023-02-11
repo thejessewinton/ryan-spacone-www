@@ -8,8 +8,9 @@ export const ProjectPreview = ({
 }) => {
   return (
     <iframe
-      src={getPreviewUrl(preview.embed_url)}
-      className="absolute transition-opacity duration-1000 group-hover:opacity-100"
+      src={getPreviewUrl(preview.html as string)}
+      allowFullScreen
+      className="absolute h-[170%] min-h-full w-auto min-w-full max-w-none opacity-0 transition-opacity duration-700 group-hover:opacity-100"
     />
   );
 };
