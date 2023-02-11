@@ -10,7 +10,7 @@ export const ProjectPreview = ({
     <iframe
       src={getPreviewUrl(preview.html as string)}
       allowFullScreen
-      className="absolute h-[170%] min-h-full w-auto min-w-full max-w-none opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+      className="absolute h-[169%] min-h-full w-auto min-w-full max-w-none opacity-100 transition-opacity duration-700 group-hover:opacity-100"
     />
   );
 };
