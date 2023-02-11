@@ -69,7 +69,12 @@ export const getCategory = cache(async (category: string) => {
       };
     }
   >("category", category, {
-    fetchLinks: ["project.title", "project.cover", "project.uid"],
+    fetchLinks: [
+      "project.title",
+      "project.cover",
+      "project.uid",
+      "project.preview",
+    ],
   });
 });
 
