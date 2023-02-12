@@ -18,7 +18,7 @@ export const ProjectPreview = ({
         "absolute h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700",
         showOnHover
           ? "opacity-0 group-hover:opacity-100"
-          : "opacity-0 md:opacity-100 md:group-hover:opacity-100"
+          : "opacity-0 group-hover:opacity-100 md:opacity-100"
       )}
     />
   );
