@@ -1,6 +1,6 @@
 {
-  "id": "photo_set",
-  "label": "Photo Set",
+  "id": "stills_set",
+  "label": "Stills Set",
   "repeatable": true,
   "status": true,
   "json": {

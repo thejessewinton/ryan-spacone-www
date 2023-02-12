@@ -1,14 +1,14 @@
 import { asText } from "@prismicio/helpers";
 import Image from "next/image";
 import Link from "next/link";
-import type { PhotoSetDocumentData } from "../../../.slicemachine/prismicio";
+import type { StillsSetDocumentData } from "../../../.slicemachine/prismicio";
 
 export const PhotosCard = ({
   href,
   set,
 }: {
   href: string;
-  set: PhotoSetDocumentData;
+  set: StillsSetDocumentData;
 }) => {
   if (!set.cover.url) return null;
   return (

@@ -11,9 +11,14 @@
       "projects": {}
     },
     "photo_set": {},
-    "photo": {},
+    "photo": {
+      "projects": {}
+    },
     "home": {
       "projects": {}
+    },
+    "stills": {
+      "sets": {}
     }
   },
   "src/components/slices": {
