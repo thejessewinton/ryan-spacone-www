@@ -1,19 +1,22 @@
 import { PhotosCard } from "components/photos-card/PhotosCard";
-import { getPhotoSets } from "utils/prismic";
+import { getStillsPage } from "utils/prismic";
 
 const Index = async () => {
-  const { results } = await getPhotoSets();
+  const { data } = await getStillsPage();
+
+  console.log(JSON.stringify(data, null, 4));
+
   return (
     <div className="space-y-4">
-      {results.map((set) => {
+      {/* {data.sets.map(({ set }) => {
         return (
           <PhotosCard
-            href={`/photos/${set.uid}`}
             key={set.uid}
             set={set.data}
+            href={`/stills/${set.uid}`}
           />
         );
-      })}
+      })} */}
     </div>
   );
 };

@@ -1,12 +1,12 @@
 {
-  "projects": {
+  "sets": {
     "__TYPE__": "GroupContentType",
     "value": [
       {
         "__TYPE__": "GroupItemContent",
         "value": [
           [
-            "project",
+            "set",
             {
               "__TYPE__": "LinkContent",
               "value": {
@@ -21,16 +21,16 @@
   },
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "solve"
+    "value": "piano"
   },
   "meta_title": {
     "__TYPE__": "FieldContent",
-    "value": "ants",
+    "value": "as",
     "type": "Text"
   },
   "meta_description": {
     "__TYPE__": "FieldContent",
-    "value": "automobile",
+    "value": "star",
     "type": "Text"
   }
 }

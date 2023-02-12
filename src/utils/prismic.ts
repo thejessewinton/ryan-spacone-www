@@ -4,8 +4,9 @@ import * as prismic from "@prismicio/client";
 import type {
   CategoryDocument,
   HomeDocument,
-  PhotoSetDocument,
+  StillsSetDocument,
   ProjectDocument,
+  StillsDocument,
 } from "../../.slicemachine/prismicio";
 import { cache } from "react";
 
@@ -20,6 +21,10 @@ export const client = createClient(endpoint, {
     {
       type: "about",
       path: "/:uid",
+    },
+    {
+      type: "stills_set",
+      path: "/stills/:uid",
     },
     {
       type: "project",
@@ -106,12 +111,20 @@ export const getProject = cache(async (uid: string) => {
   };
 });
 
-export const getPhotoSets = cache(async () => {
-  return await client.getByType("photo_set");
+export const getStillsPage = cache(async () => {
+  return await client.getSingle<
+    StillsDocument & {
+      data: {
+        sets: { set: StillsSetDocument }[];
+      };
+    }
+  >("stills", {
+    fetchLinks: ["set.title", "set.cover", "set.uid", "set.preview"],
+  });
 });
 
-export const getPhotoSet = cache(async (uid: string) => {
-  const photoSet = await client.getByUID("photo_set", uid);
+export const getStillsSet = cache(async (uid: string) => {
+  const photoSet = await client.getByUID("stills_set", uid);
 
   const previousPhotoSet = await client.get({
     predicates: prismic.predicate.at("document.type", "photo_set"),
@@ -128,7 +141,7 @@ export const getPhotoSet = cache(async (uid: string) => {
 
   return {
     photoSet,
-    previousProject: previousPhotoSet.results[0] as PhotoSetDocument,
-    nextPhotoSet: nextPhotoSet.results[0] as PhotoSetDocument,
+    previousProject: previousPhotoSet.results[0] as StillsSetDocument,
+    nextPhotoSet: nextPhotoSet.results[0] as StillsSetDocument,
   };
 });

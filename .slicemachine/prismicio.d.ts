@@ -282,102 +282,6 @@ export interface HomeDocumentDataProjectsItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
-/** Content for Photo Set documents */
-interface PhotoSetDocumentData {
-    /**
-     * Title field in *Photo Set*
-     *
-     * - **Field Type**: Title
-     * - **Placeholder**: *None*
-     * - **API ID Path**: photo_set.title
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    title: prismicT.TitleField;
-    /**
-     * Cover field in *Photo Set*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: photo_set.cover
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    cover: prismicT.ImageField<never>;
-    /**
-     * Images field in *Photo Set*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: photo_set.images[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/group
-     *
-     */
-    images: prismicT.GroupField<Simplify<PhotoSetDocumentDataImagesItem>>;
-    /**
-     * Meta Title field in *Photo Set*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: photo_set.meta_title
-     * - **Tab**: SEO
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    meta_title: prismicT.KeyTextField;
-    /**
-     * Meta Description field in *Photo Set*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: photo_set.meta_description
-     * - **Tab**: SEO
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    meta_description: prismicT.KeyTextField;
-}
-/**
- * Item in Photo Set → Images
- *
- */
-export interface PhotoSetDocumentDataImagesItem {
-    /**
-     * Image field in *Photo Set → Images*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: photo_set.images[].image
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image: prismicT.ImageField<never>;
-}
-/**
- * Photo Set document from Prismic
- *
- * - **API ID**: `photo_set`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type PhotoSetDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PhotoSetDocumentData>, "photo_set", Lang>;
-/** Content for Photo documents */
-type PhotoDocumentData = Record<string, never>;
-/**
- * Photo document from Prismic
- *
- * - **API ID**: `photo`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type PhotoDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PhotoDocumentData>, "photo", Lang>;
 /** Content for Project documents */
 interface ProjectDocumentData {
     /**
@@ -669,7 +573,153 @@ export interface SiteSettingsDocumentDataSocialsItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type SiteSettingsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SiteSettingsDocumentData>, "site_settings", Lang>;
-export type AllDocumentTypes = AboutDocument | CategoryDocument | HomeDocument | PhotoSetDocument | PhotoDocument | ProjectDocument | SiteSettingsDocument;
+/** Content for Stills Set documents */
+interface StillsSetDocumentData {
+    /**
+     * Title field in *Stills Set*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills_set.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Cover field in *Stills Set*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills_set.cover
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    cover: prismicT.ImageField<never>;
+    /**
+     * Images field in *Stills Set*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills_set.images[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    images: prismicT.GroupField<Simplify<StillsSetDocumentDataImagesItem>>;
+    /**
+     * Meta Title field in *Stills Set*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills_set.meta_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *Stills Set*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills_set.meta_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in Stills Set → Images
+ *
+ */
+export interface StillsSetDocumentDataImagesItem {
+    /**
+     * Image field in *Stills Set → Images*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills_set.images[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Stills Set document from Prismic
+ *
+ * - **API ID**: `stills_set`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StillsSetDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<StillsSetDocumentData>, "stills_set", Lang>;
+/** Content for Stills documents */
+interface StillsDocumentData {
+    /**
+     * Sets field in *Stills*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.sets[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    sets: prismicT.GroupField<Simplify<StillsDocumentDataSetsItem>>;
+    /**
+     * Meta Title field in *Stills*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.meta_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *Stills*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.meta_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
+}
+/**
+ * Item in Stills → Sets
+ *
+ */
+export interface StillsDocumentDataSetsItem {
+    /**
+     * Set field in *Stills → Sets*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.sets[].set
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    set: prismicT.RelationField<"stills_set">;
+}
+/**
+ * Stills document from Prismic
+ *
+ * - **API ID**: `stills`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type StillsDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<StillsDocumentData>, "stills", Lang>;
+export type AllDocumentTypes = AboutDocument | CategoryDocument | HomeDocument | ProjectDocument | SiteSettingsDocument | StillsSetDocument | StillsDocument;
 /**
  * Primary content in NavigationItem → Primary
  *
@@ -750,6 +800,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, PhotoSetDocumentData, PhotoSetDocumentDataImagesItem, PhotoSetDocument, PhotoDocumentData, PhotoDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, StillsSetDocumentData, StillsSetDocumentDataImagesItem, StillsSetDocument, StillsDocumentData, StillsDocumentDataSetsItem, StillsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }
