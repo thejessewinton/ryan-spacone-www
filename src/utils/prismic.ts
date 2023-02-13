@@ -106,8 +106,8 @@ export const getProject = cache(async (uid: string) => {
 
   return {
     project,
-    previousProject: previousProject.results[0],
-    nextProject: nextProject.results[0],
+    previousProject: previousProject.results[0] as ProjectDocument,
+    nextProject: nextProject.results[0] as ProjectDocument,
   };
 });
 
