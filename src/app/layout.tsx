@@ -25,7 +25,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      className={`${openSans.variable} ${lora.variable} leading-loose tracking-wide`}
+      className={`${openSans.variable} ${lora.variable} h-full leading-loose tracking-wide`}
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />

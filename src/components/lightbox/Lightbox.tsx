@@ -38,11 +38,11 @@ export const Lightbox = ({
   if (!images || !images[currentImage]?.image.url) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm">
-      <button onClick={toggleOpen} className="absolute right-6 top-6 p-6">
-        <CloseIcon />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-sm">
+      <button onClick={toggleOpen} className="group absolute right-6 top-6 p-6">
+        <CloseIcon className="transition-transform group-hover:rotate-90" />
       </button>
-      <div className="flex items-center justify-center p-12" ref={ref}>
+      <div className="relative flex items-center justify-center p-12" ref={ref}>
         {images.map((still, i) => {
           return (
             <Image
@@ -59,18 +59,18 @@ export const Lightbox = ({
           );
         })}
 
-        <div className="absolute flex w-full items-center justify-between">
+        <div className="absolute flex h-full w-full items-center justify-between">
           <button
             onClick={handlePrev}
-            className="flex items-center justify-center"
+            className="group flex h-full items-center justify-center p-6"
           >
-            <LeftArrow className="w-12 text-white" />
+            <LeftArrow className="w-12 text-white transition-all group-hover:-translate-x-2" />
           </button>
           <button
             onClick={handleNext}
-            className="flex items-center justify-center"
+            className="group flex h-full items-center justify-center p-6"
           >
-            <LeftArrow className="w-12 rotate-180 text-white" />
+            <LeftArrow className="w-12 rotate-180 text-white transition-all group-hover:translate-x-2" />
           </button>
         </div>
       </div>
