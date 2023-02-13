@@ -3,9 +3,9 @@
     "__TYPE__": "StructuredTextContent",
     "value": [
       {
-        "type": "heading1",
+        "type": "paragraph",
         "content": {
-          "text": "Printed"
+          "text": "Laboris do ad nostrud duis sunt excepteur ipsum excepteur."
         }
       }
     ]
@@ -14,13 +14,13 @@
     "__TYPE__": "ImageContent",
     "origin": {
       "id": "main",
-      "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
-      "width": 4000,
-      "height": 6000
+      "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+      "width": 3277,
+      "height": 4092
     },
-    "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468",
-    "width": 4000,
-    "height": 6000,
+    "url": "https://images.unsplash.com/photo-1494173853739-c21f58b16055",
+    "width": 3277,
+    "height": 4092,
     "edit": {
       "zoom": 1,
       "crop": {
@@ -29,27 +29,47 @@
       },
       "background": "transparent"
     },
-    "thumbnails": {}
+    "thumbnails": {
+      "cover": {
+        "origin": {
+          "id": "cover",
+          "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+          "width": 3212,
+          "height": 3880
+        },
+        "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?rect=0%2C1605%2C3212%2C669&w=1440&h=300",
+        "width": 1440,
+        "height": 300,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 1605
+          },
+          "background": "transparent"
+        }
+      }
+    }
   },
-  "images": {
+  "stills": {
     "__TYPE__": "GroupContentType",
     "value": [
       {
         "__TYPE__": "GroupItemContent",
         "value": [
           [
-            "image",
+            "still",
             {
               "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
-                "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
-                "width": 3212,
-                "height": 3880
+                "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+                "width": 4016,
+                "height": 6016
               },
-              "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
-              "width": 3212,
-              "height": 3880,
+              "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482",
+              "width": 4016,
+              "height": 6016,
               "edit": {
                 "zoom": 1,
                 "crop": {
@@ -67,16 +87,16 @@
   },
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "student"
+    "value": "getting"
   },
   "meta_title": {
     "__TYPE__": "FieldContent",
-    "value": "barn",
+    "value": "wrapped",
     "type": "Text"
   },
   "meta_description": {
     "__TYPE__": "FieldContent",
-    "value": "replied",
+    "value": "traffic",
     "type": "Text"
   }
 }

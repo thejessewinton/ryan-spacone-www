@@ -45,8 +45,8 @@ export const ProjectNav = ({
           </Link>
         ) : (
           <div className="group flex cursor-not-allowed items-center justify-center gap-4 text-lg opacity-75">
-            <LeftArrow className="rotate-180" />
             <h3 className="font-serif text-sm uppercase italic">Next</h3>
+            <LeftArrow className="rotate-180" />
           </div>
         )}
       </div>

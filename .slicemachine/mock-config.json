@@ -19,6 +19,9 @@
     },
     "stills": {
       "sets": {}
+    },
+    "stills_set": {
+      "stills": {}
     }
   },
   "src/components/slices": {

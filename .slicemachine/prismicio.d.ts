@@ -578,14 +578,14 @@ interface StillsSetDocumentData {
     /**
      * Title field in *Stills Set*
      *
-     * - **Field Type**: Title
+     * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
      * - **API ID Path**: stills_set.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    title: prismicT.TitleField;
+    title: prismicT.RichTextField;
     /**
      * Cover field in *Stills Set*
      *
@@ -596,18 +596,18 @@ interface StillsSetDocumentData {
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    cover: prismicT.ImageField<never>;
+    cover: prismicT.ImageField<"cover">;
     /**
-     * Images field in *Stills Set*
+     * Stills field in *Stills Set*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
-     * - **API ID Path**: stills_set.images[]
+     * - **API ID Path**: stills_set.stills[]
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/group
      *
      */
-    images: prismicT.GroupField<Simplify<StillsSetDocumentDataImagesItem>>;
+    stills: prismicT.GroupField<Simplify<StillsSetDocumentDataStillsItem>>;
     /**
      * Meta Title field in *Stills Set*
      *
@@ -632,20 +632,20 @@ interface StillsSetDocumentData {
     meta_description: prismicT.KeyTextField;
 }
 /**
- * Item in Stills Set → Images
+ * Item in Stills Set → Stills
  *
  */
-export interface StillsSetDocumentDataImagesItem {
+export interface StillsSetDocumentDataStillsItem {
     /**
-     * Image field in *Stills Set → Images*
+     * Still field in *Stills Set → Stills*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: stills_set.images[].image
+     * - **API ID Path**: stills_set.stills[].still
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    image: prismicT.ImageField<never>;
+    still: prismicT.ImageField<never>;
 }
 /**
  * Stills Set document from Prismic
@@ -659,6 +659,17 @@ export interface StillsSetDocumentDataImagesItem {
 export type StillsSetDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<StillsSetDocumentData>, "stills_set", Lang>;
 /** Content for Stills documents */
 interface StillsDocumentData {
+    /**
+     * Title field in *Stills*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: stills.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
     /**
      * Sets field in *Stills*
      *
@@ -800,6 +811,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, StillsSetDocumentData, StillsSetDocumentDataImagesItem, StillsSetDocument, StillsDocumentData, StillsDocumentDataSetsItem, StillsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, StillsSetDocumentData, StillsSetDocumentDataStillsItem, StillsSetDocument, StillsDocumentData, StillsDocumentDataSetsItem, StillsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }
