@@ -1,8 +1,8 @@
-import { LeftArrow, RightArrow } from "components/icons/Icons";
+import { LeftArrow } from "components/icons/Icons";
 import Link from "next/link";
 import type {
-  PhotoSetDocument,
   ProjectDocument,
+  StillsSetDocument,
 } from "../../../.slicemachine/prismicio";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 
@@ -10,8 +10,8 @@ export const ProjectNav = ({
   previous,
   next,
 }: {
-  previous: ProjectDocument | PhotoSetDocument | undefined;
-  next: ProjectDocument | PhotoSetDocument | undefined;
+  previous: ProjectDocument | StillsSetDocument | undefined;
+  next: ProjectDocument | StillsSetDocument | undefined;
 }) => {
   return (
     <ScrollObserver>
