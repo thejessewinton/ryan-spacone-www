@@ -32,7 +32,7 @@ export const ProjectCard = ({
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
           <Balancer
             as="h2"
-            className="absolute z-10 mx-auto inline-block space-x-2 whitespace-pre-line text-center font-serif text-sm uppercase leading-10 tracking-[2rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]"
+            className="absolute z-10 text-center font-serif text-sm uppercase tracking-[1rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]"
           >
             {asText(project.title)}
           </Balancer>
