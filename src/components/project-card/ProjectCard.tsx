@@ -7,6 +7,7 @@ import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import { ProjectPreview } from "components/project-preview/ProjectPreview";
+import Balancer from "react-wrap-balancer";
 
 export const ProjectCard = ({
   href,
@@ -26,16 +27,15 @@ export const ProjectCard = ({
       <Link
         href={href}
         aria-label={asText(project.title)}
-        className="cursor-pointer"
+        className="relative z-[100] h-full w-full cursor-pointer"
       >
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
-          <h3 className="absolute z-10 mx-auto space-x-4 text-center font-serif text-sm uppercase text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl lg:space-x-6">
-            {asText(project.title)
-              .split("")
-              .map((letter, i) => (
-                <span key={`${letter}-${i}`}>{letter}</span>
-              ))}
-          </h3>
+          <Balancer
+            as="h2"
+            className="absolute z-10 mx-auto inline-block space-x-2 whitespace-pre-line text-center font-serif text-sm uppercase leading-10 tracking-[2rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-[2rem] lg:space-x-7"
+          >
+            {asText(project.title)}
+          </Balancer>
 
           <Image
             src={getImageUrl(project.cover.widescreen.url)}

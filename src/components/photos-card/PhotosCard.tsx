@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import type { StillsSetDocumentData } from "../../../.slicemachine/prismicio";
+import Balancer from "react-wrap-balancer";
 
 export const PhotosCard = ({
   href,
@@ -22,13 +23,15 @@ export const PhotosCard = ({
         className="cursor-pointer"
       >
         <div className="group relative flex max-h-[300px] items-center justify-center overflow-hidden">
-          <h3 className="absolute z-10 mx-auto space-x-4 text-center font-serif text-sm uppercase text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl lg:space-x-6">
-            {asText(set.title)
-              .split("")
-              .map((letter, i) => (
-                <span key={`${letter}-${i}`}>{letter}</span>
-              ))}
-          </h3>
+          <Balancer className="mx-auto">
+            <h3 className="absolute z-10 mx-auto space-x-4 text-center font-serif text-sm uppercase text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl lg:space-x-6">
+              {asText(set.title)
+                .split("")
+                .map((letter, i) => (
+                  <span key={`${letter}-${i}`}>{letter}</span>
+                ))}
+            </h3>
+          </Balancer>
 
           <Image
             src={getImageUrl(set.cover.cover.url)}
