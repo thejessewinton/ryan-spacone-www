@@ -10,8 +10,8 @@
         "config": {
           "label": "Title",
           "placeholder": "",
-          "allowTargetBlank": false,
-          "single": "heading1"
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
       "cover": {
@@ -19,18 +19,24 @@
         "config": {
           "label": "Cover",
           "constraint": {},
-          "thumbnails": []
+          "thumbnails": [
+            {
+              "name": "cover",
+              "width": 1440,
+              "height": 300
+            }
+          ]
         }
       },
-      "images": {
+      "stills": {
         "type": "Group",
         "config": {
-          "label": "Images",
+          "label": "Stills",
           "fields": {
-            "image": {
+            "still": {
               "type": "Image",
               "config": {
-                "label": "Image",
+                "label": "Still",
                 "constraint": {},
                 "thumbnails": []
               }
@@ -43,7 +49,7 @@
       "uid": {
         "type": "UID",
         "config": {
-          "label": "uid",
+          "label": "UID",
           "placeholder": ""
         }
       },

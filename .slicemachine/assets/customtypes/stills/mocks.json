@@ -1,4 +1,15 @@
 {
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "heading1",
+        "content": {
+          "text": "Welcome"
+        }
+      }
+    ]
+  },
   "sets": {
     "__TYPE__": "GroupContentType",
     "value": [
@@ -21,16 +32,16 @@
   },
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "piano"
+    "value": "action"
   },
   "meta_title": {
     "__TYPE__": "FieldContent",
-    "value": "as",
+    "value": "level",
     "type": "Text"
   },
   "meta_description": {
     "__TYPE__": "FieldContent",
-    "value": "star",
+    "value": "blew",
     "type": "Text"
   }
 }

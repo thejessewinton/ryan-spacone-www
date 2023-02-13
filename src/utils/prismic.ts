@@ -119,29 +119,34 @@ export const getStillsPage = cache(async () => {
       };
     }
   >("stills", {
-    fetchLinks: ["set.title", "set.cover", "set.uid", "set.preview"],
+    fetchLinks: [
+      "stills_set.title",
+      "stills_set.cover",
+      "stills_setstills_set.uid",
+      "stills_set.preview",
+    ],
   });
 });
 
 export const getStillsSet = cache(async (uid: string) => {
-  const photoSet = await client.getByUID("stills_set", uid);
+  const stillsSet = await client.getByUID("stills_set", uid);
 
-  const previousPhotoSet = await client.get({
-    predicates: prismic.predicate.at("document.type", "photo_set"),
+  const previousStillsSet = await client.get({
+    predicates: prismic.predicate.at("document.type", "stills_set"),
     pageSize: 1,
-    orderings: "my.photo_set.date",
+    orderings: "my.stills_set.date",
   });
 
-  const nextPhotoSet = await client.get({
-    predicates: prismic.predicate.at("document.type", "photo_set"),
+  const nextStillsSet = await client.get({
+    predicates: prismic.predicate.at("document.type", "stills_set"),
     pageSize: 1,
-    after: photoSet.id,
-    orderings: "my.photo_set.date desc",
+    after: stillsSet.id,
+    orderings: "my.stills_set.date desc",
   });
 
   return {
-    photoSet,
-    previousProject: previousPhotoSet.results[0] as StillsSetDocument,
-    nextPhotoSet: nextPhotoSet.results[0] as StillsSetDocument,
+    stillsSet,
+    previousSet: previousStillsSet.results[0] as StillsSetDocument,
+    nextSet: nextStillsSet.results[0] as StillsSetDocument,
   };
 });
