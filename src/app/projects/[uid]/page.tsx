@@ -20,7 +20,7 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="grid w-full justify-center gap-4 py-8 px-3 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
+      <section className="grid w-full gap-4 py-8 px-3 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
         <h4 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
           {asText(projectName)}
         </h4>
