@@ -28,7 +28,7 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
               className="mx-auto transition-transform duration-700 group-hover:scale-105"
               quality={100}
             />
-            <span className="absolute bottom-1 mx-auto text-center font-serif text-sm uppercase opacity-0 transition-opacity group-hover:opacity-100 md:block">
+            <span className="absolute -bottom-2 mx-auto text-center font-serif text-sm opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:bottom-1 md:block">
               {item.label}
             </span>
           </Link>
