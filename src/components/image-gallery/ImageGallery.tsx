@@ -19,6 +19,7 @@ export const ImageGallery = ({
     toggleOpen();
     setCurrentImage(index);
   };
+
   return (
     <div className="grid grid-cols-2">
       {stills.map((still, i) => {
@@ -33,7 +34,7 @@ export const ImageGallery = ({
               className={clsx("bg-neutral-900", className)}
             >
               <Image
-                onClick={() => handleOpen(i)}
+                onClick={() => (isOpen ? null : handleOpen(i))}
                 src={getImageUrl(still.image.url)}
                 width={still.image.dimensions.width}
                 height={still.image.dimensions.height}

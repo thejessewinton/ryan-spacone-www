@@ -16,7 +16,10 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
           key={item.label}
           className="group overflow-hidden border border-neutral-200 px-6 py-4"
         >
-          <Link href={asLink(item.link) as string} className="group">
+          <Link
+            href={asLink(item.link) as string}
+            className="group relative flex justify-center"
+          >
             <Image
               src={getImageUrl(item.icon.url as string)}
               width={item.icon.dimensions?.width}
@@ -25,7 +28,7 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
               className="mx-auto transition-transform duration-700 group-hover:scale-105"
               quality={100}
             />
-            <span className="mx-auto block text-center font-serif text-sm uppercase opacity-0 transition-opacity group-hover:opacity-100">
+            <span className="absolute bottom-1 mx-auto text-center font-serif text-sm uppercase opacity-0 transition-opacity group-hover:opacity-100 md:block">
               {item.label}
             </span>
           </Link>
