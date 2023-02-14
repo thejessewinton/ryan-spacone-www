@@ -31,7 +31,7 @@ export const ProjectCard = ({
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
           <h2 className="absolute z-10 flex flex-col gap-2 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
             {project.client ? (
-              <span className="block text-xs md:text-base">
+              <span className="block text-[0.7rem] md:text-base">
                 {asText(project.client)}
               </span>
             ) : null}
