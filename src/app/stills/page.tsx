@@ -1,6 +1,8 @@
 import { PhotosCard } from "components/photos-card/PhotosCard";
 import { getStillsPage } from "utils/prismic";
 
+export const revalidate = 60;
+
 const Index = async () => {
   const { data } = await getStillsPage();
 

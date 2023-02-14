@@ -4,6 +4,8 @@ import Image from "next/image";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 
+export const revalidate = 60;
+
 const Project = async ({ params }: { params: { uid: string } }) => {
   const { stillsSet, nextSet, previousSet } = await getStillsSet(params.uid);
 
