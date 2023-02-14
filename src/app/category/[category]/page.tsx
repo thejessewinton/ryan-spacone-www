@@ -1,6 +1,8 @@
 import { ProjectCard } from "components/project-card/ProjectCard";
 import { getCategory } from "utils/prismic";
 
+export const revalidate = 60;
+
 const Index = async ({ params }: { params: { category: string } }) => {
   const { data } = await getCategory(params.category);
 

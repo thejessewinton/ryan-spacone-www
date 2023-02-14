@@ -2,6 +2,8 @@ import { getStillsSet } from "utils/prismic";
 import { ProjectNav } from "components/project-nav/ProjectNav";
 import { MasonryGallery } from "components/masonry-gallery/MasonryGallery";
 
+export const revalidate = 60;
+
 const Project = async ({ params }: { params: { uid: string } }) => {
   const { stillsSet, nextSet, previousSet } = await getStillsSet(params.uid);
 
