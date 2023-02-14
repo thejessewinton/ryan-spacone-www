@@ -110,8 +110,14 @@ export const getProject = cache(async (uid: string) => {
     after: project.id,
   });
 
+  const firstProject = await client.get({
+    predicates: prismic.predicate.at("document.tags", [tag]),
+    pageSize: 1,
+  });
+
   return {
     project,
+    firstProject: firstProject.results[0] as ProjectDocument,
     previousProject: previousProject.results[0] as ProjectDocument,
     nextProject: nextProject.results[0] as ProjectDocument,
   };
@@ -140,18 +146,29 @@ export const getStillsSet = cache(async (uid: string) => {
   const previousStillsSet = await client.get({
     predicates: prismic.predicate.at("document.type", "stills_set"),
     pageSize: 1,
-    orderings: "my.stills_set.date",
+    orderings: {
+      field: "my.stills_set.date",
+      direction: "desc",
+    },
   });
 
   const nextStillsSet = await client.get({
     predicates: prismic.predicate.at("document.type", "stills_set"),
     pageSize: 1,
     after: stillsSet.id,
-    orderings: "my.stills_set.date desc",
+    orderings: {
+      field: "my.stills_set.date",
+    },
+  });
+
+  const firstSet = await client.get({
+    predicates: prismic.predicate.at("document.type", "stills_set"),
+    pageSize: 1,
   });
 
   return {
     stillsSet,
+    firstSet: firstSet.results[0] as StillsSetDocument,
     previousSet: previousStillsSet.results[0] as StillsSetDocument,
     nextSet: nextStillsSet.results[0] as StillsSetDocument,
   };
