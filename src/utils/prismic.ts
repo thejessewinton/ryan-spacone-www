@@ -51,6 +51,7 @@ export const getHomePage = cache(async () => {
   >("home", {
     fetchLinks: [
       "project.title",
+      "project.client",
       "project.cover",
       "project.uid",
       "project.preview",
@@ -76,6 +77,7 @@ export const getCategory = cache(async (category: string) => {
   >("category", category, {
     fetchLinks: [
       "project.title",
+      "project.client",
       "project.cover",
       "project.uid",
       "project.preview",

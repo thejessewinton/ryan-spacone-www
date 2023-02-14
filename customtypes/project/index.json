@@ -5,6 +5,15 @@
   "status": true,
   "json": {
     "Main": {
+      "client": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Client",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "heading1"
+        }
+      },
       "title": {
         "type": "StructuredText",
         "config": {
@@ -12,15 +21,6 @@
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "heading1"
-        }
-      },
-      "coming_soon": {
-        "type": "Boolean",
-        "config": {
-          "label": "Coming Soon",
-          "default_value": false,
-          "placeholder_true": "true",
-          "placeholder_false": "false"
         }
       },
       "cover": {

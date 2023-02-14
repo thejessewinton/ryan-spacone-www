@@ -285,6 +285,17 @@ export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumen
 /** Content for Project documents */
 interface ProjectDocumentData {
     /**
+     * Client field in *Project*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.client
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    client: prismicT.TitleField;
+    /**
      * Title field in *Project*
      *
      * - **Field Type**: Title
@@ -295,18 +306,6 @@ interface ProjectDocumentData {
      *
      */
     title: prismicT.TitleField;
-    /**
-     * Coming Soon field in *Project*
-     *
-     * - **Field Type**: Boolean
-     * - **Placeholder**: *None*
-     * - **Default Value**: false
-     * - **API ID Path**: project.coming_soon
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-     *
-     */
-    coming_soon: prismicT.BooleanField;
     /**
      * Cover field in *Project*
      *
