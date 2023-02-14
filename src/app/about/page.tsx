@@ -1,4 +1,4 @@
-import { asHTML, asLink, asText } from "@prismicio/helpers";
+import { asHTML, asLink } from "@prismicio/helpers";
 import { getAboutPage } from "utils/prismic";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
@@ -16,7 +16,7 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
           key={item.label}
           className="group overflow-hidden border border-neutral-200 px-6 py-4"
         >
-          <Link href={asLink(item.link) as string}>
+          <Link href={asLink(item.link) as string} className="group">
             <Image
               src={getImageUrl(item.icon.url as string)}
               width={item.icon.dimensions?.width}
@@ -25,7 +25,7 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
               className="mx-auto transition-transform duration-700 group-hover:scale-105"
               quality={100}
             />
-            <span className="mx-auto block text-center font-serif text-sm uppercase">
+            <span className="mx-auto block text-center font-serif text-sm uppercase opacity-0 transition-opacity group-hover:opacity-100">
               {item.label}
             </span>
           </Link>
@@ -47,15 +47,10 @@ const Representation = ({
         {representation.map((rep) => (
           <div key={rep.title}>
             <h3 className="mb-2 font-serif">{rep.title}</h3>
-            <div className="mb-4 text-sm">
-              {asText(rep.details, "\n\n")
-                .split("\n\n")
-                .map((line) => (
-                  <div className="mb-1 block" key={line}>
-                    {line}
-                  </div>
-                ))}
-            </div>
+            <div
+              className="text-sm leading-loose"
+              dangerouslySetInnerHTML={{ __html: asHTML(rep.details) }}
+            />
           </div>
         ))}
       </div>

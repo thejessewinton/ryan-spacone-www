@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { asLink } from "@prismicio/helpers";
 import type { SocialsProps } from "types/prismic";
-import { IMDBIcon, InstagramIcon, VimeoIcon } from "../icons/Icons";
+import { Airplane, IMDBIcon, InstagramIcon, VimeoIcon } from "../icons/Icons";
 
 export const Footer = ({ socials }: { socials: SocialsProps }) => {
   return (
@@ -16,6 +16,8 @@ export const Footer = ({ socials }: { socials: SocialsProps }) => {
               <VimeoIcon className="transition-colors hover:text-neutral-300" />
             ) : social.label === "IMDB" ? (
               <IMDBIcon className="transition-colors hover:text-neutral-300" />
+            ) : social.label === "Email" ? (
+              <Airplane className="transition-colors hover:text-neutral-300" />
             ) : null}
           </Link>
         ))}
