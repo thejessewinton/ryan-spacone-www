@@ -9,9 +9,11 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 export const ProjectNav = ({
   previous,
   next,
+  first,
 }: {
   previous: ProjectDocument | StillsSetDocument | undefined;
   next: ProjectDocument | StillsSetDocument | undefined;
+  first: ProjectDocument | StillsSetDocument | undefined;
 }) => {
   return (
     <ScrollObserver>
@@ -36,7 +38,6 @@ export const ProjectNav = ({
           <Link
             href={next.url as string}
             className="group flex items-center justify-center gap-4 text-lg"
-            aria-disabled={!next}
           >
             <h3 className="font-serif text-sm uppercase italic group-hover:text-brand">
               Next
@@ -44,10 +45,15 @@ export const ProjectNav = ({
             <LeftArrow className="rotate-180 transition-all group-hover:translate-x-2" />
           </Link>
         ) : (
-          <div className="group flex cursor-not-allowed items-center justify-center gap-4 text-lg opacity-75">
-            <h3 className="font-serif text-sm uppercase italic">Next</h3>
-            <LeftArrow className="rotate-180" />
-          </div>
+          <Link
+            href={first?.url as string}
+            className="group flex items-center justify-center gap-4 text-lg"
+          >
+            <h3 className="font-serif text-sm uppercase italic group-hover:text-brand">
+              Next
+            </h3>
+            <LeftArrow className="rotate-180 transition-all group-hover:translate-x-2" />
+          </Link>
         )}
       </div>
     </ScrollObserver>
