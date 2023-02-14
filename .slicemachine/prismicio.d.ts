@@ -329,12 +329,23 @@ interface ProjectDocumentData {
      */
     preview: prismicT.EmbedField;
     /**
+     * Category field in *Project*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.category
+     * - **Tab**: Details
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    category: prismicT.RelationField<"category">;
+    /**
      * Credits field in *Project*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
      * - **API ID Path**: project.credits[]
-     * - **Tab**: Main
+     * - **Tab**: Details
      * - **Documentation**: https://prismic.io/docs/core-concepts/group
      *
      */
@@ -345,7 +356,7 @@ interface ProjectDocumentData {
      * - **Field Type**: Group
      * - **Placeholder**: *None*
      * - **API ID Path**: project.links[]
-     * - **Tab**: Main
+     * - **Tab**: Details
      * - **Documentation**: https://prismic.io/docs/core-concepts/group
      *
      */
@@ -577,14 +588,14 @@ interface StillsSetDocumentData {
     /**
      * Title field in *Stills Set*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Title
      * - **Placeholder**: *None*
      * - **API ID Path**: stills_set.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    title: prismicT.RichTextField;
+    title: prismicT.TitleField;
     /**
      * Cover field in *Stills Set*
      *
@@ -636,15 +647,15 @@ interface StillsSetDocumentData {
  */
 export interface StillsSetDocumentDataStillsItem {
     /**
-     * Still field in *Stills Set → Stills*
+     * Image field in *Stills Set → Stills*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: stills_set.stills[].still
+     * - **API ID Path**: stills_set.stills[].image
      * - **Documentation**: https://prismic.io/docs/core-concepts/image
      *
      */
-    still: prismicT.ImageField<never>;
+    image: prismicT.ImageField<never>;
 }
 /**
  * Stills Set document from Prismic

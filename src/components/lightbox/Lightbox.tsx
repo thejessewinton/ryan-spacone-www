@@ -1,18 +1,22 @@
 "use client";
 
 import { useLightbox } from "hooks/use-lightbox";
-import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
+import type {
+  ProjectDocumentData,
+  StillsSetDocumentData,
+} from "../../../.slicemachine/prismicio";
 import Image from "next/image";
 import { useRef } from "react";
 import { useClickOutside } from "hooks/use-click-outside";
 import { CloseIcon, LeftArrow } from "components/icons/Icons";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import { useLockBodyScroll } from "hooks/use-lock-body-scroll";
+import { clsx } from "clsx";
 
 export const Lightbox = ({
   images,
 }: {
-  images: ProjectDocumentData["stills"];
+  images: ProjectDocumentData["stills"] | StillsSetDocumentData["stills"];
 }) => {
   const { toggleOpen, isOpen, currentImage, setCurrentImage } = useLightbox();
   const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +56,10 @@ export const Lightbox = ({
               blurDataURL={getBlurUrl(still.image.url as string)}
               alt="Lightbox Image"
               loading="eager"
-              className={i === currentImage ? "block" : "hidden"}
+              className={clsx(
+                i === currentImage ? "block" : "hidden",
+                "max-h-screen w-auto py-5"
+              )}
               width={still.image.dimensions?.width}
               height={still.image.dimensions?.height}
             />

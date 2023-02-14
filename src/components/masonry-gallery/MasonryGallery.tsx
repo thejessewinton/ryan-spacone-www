@@ -2,16 +2,16 @@
 
 import clsx from "clsx";
 import { useLightbox } from "hooks/use-lightbox";
-import type { ProjectProps, StillsSetProps } from "types/prismic";
+import type { StillsSetProps } from "types/prismic";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { Lightbox } from "components/lightbox/Lightbox";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 
-export const ImageGallery = ({
+export const MasonryGallery = ({
   stills,
 }: {
-  stills: ProjectProps["stills"] | StillsSetProps["stills"];
+  stills: StillsSetProps["stills"];
 }) => {
   const { isOpen, toggleOpen, setCurrentImage } = useLightbox();
 
@@ -20,7 +20,7 @@ export const ImageGallery = ({
     setCurrentImage(index);
   };
   return (
-    <div className="grid grid-cols-2">
+    <>
       {stills.map((still, i) => {
         if (!still.image.url) return null;
 
@@ -42,13 +42,13 @@ export const ImageGallery = ({
                 placeholder="blur"
                 quality={100}
                 blurDataURL={getBlurUrl(still.image.url)}
-                className="mx-auto block cursor-pointer"
+                className="mb-2 block w-full cursor-pointer"
               />
             </ScrollObserver>
           </>
         );
       })}
       {isOpen && <Lightbox images={stills} />}
-    </div>
+    </>
   );
 };

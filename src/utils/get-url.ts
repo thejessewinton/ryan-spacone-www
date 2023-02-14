@@ -3,7 +3,7 @@ export const getImageUrl = (url: string) => {
 };
 
 export const getBlurUrl = (url: string) => {
-  return `${url}&blur=200`;
+  return `${url}&q=20&blur=200`;
 };
 
 export const getVideoUrl = (url: string) => {
@@ -14,8 +14,6 @@ export const getVideoUrl = (url: string) => {
 };
 
 export const getPreviewUrl = (html: string) => {
-  // extract the src property from the iframe that is passed in and add the autoplay parameter
-
   const src = html.match(/src="([^"]+)"/)?.[1];
   if (!src) throw new Error("Could not get src from HTML");
 
