@@ -43,6 +43,18 @@
           "label": "Preview",
           "placeholder": ""
         }
+      }
+    },
+    "Details": {
+      "category": {
+        "type": "Link",
+        "config": {
+          "label": "Category",
+          "select": "document",
+          "customtypes": [
+            "category"
+          ]
+        }
       },
       "credits": {
         "type": "Group",

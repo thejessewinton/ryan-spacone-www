@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import type { StillsSetDocumentData } from "../../../.slicemachine/prismicio";
 
-export const PhotosCard = ({
+export const StillsCard = ({
   href,
   set,
 }: {
@@ -22,13 +22,9 @@ export const PhotosCard = ({
         className="cursor-pointer"
       >
         <div className="group relative flex max-h-[300px] items-center justify-center overflow-hidden">
-          <h3 className="absolute z-10 mx-auto space-x-4 text-center font-serif text-sm uppercase text-white opacity-0 transition-opacity duration-700 group-hover:opacity-100 md:text-3xl lg:space-x-6">
-            {asText(set.title)
-              .split("")
-              .map((letter, i) => (
-                <span key={`${letter}-${i}`}>{letter}</span>
-              ))}
-          </h3>
+          <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
+            {asText(set.title)}
+          </h2>
 
           <Image
             src={getImageUrl(set.cover.cover.url)}
@@ -37,8 +33,9 @@ export const PhotosCard = ({
             alt={asText(set.title)}
             className="w-full"
             placeholder="blur"
+            loading="lazy"
             blurDataURL={getBlurUrl(set.cover.cover.url)}
-            quality={100}
+            quality={75}
           />
         </div>
       </Link>

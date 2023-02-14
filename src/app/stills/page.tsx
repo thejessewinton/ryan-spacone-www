@@ -1,5 +1,7 @@
-import { PhotosCard } from "components/photos-card/PhotosCard";
+import { StillsCard } from "components/stills-card/StillsCard";
 import { getStillsPage } from "utils/prismic";
+
+export const revalidate = 60;
 
 const Index = async () => {
   const { data } = await getStillsPage();
@@ -8,7 +10,7 @@ const Index = async () => {
     <div className="space-y-2">
       {data.sets.map(({ set }) => {
         return (
-          <PhotosCard
+          <StillsCard
             key={set.uid}
             set={set.data}
             href={`/stills/${set.uid}`}
