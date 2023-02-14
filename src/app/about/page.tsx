@@ -25,7 +25,9 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
               className="mx-auto transition-transform duration-700 group-hover:scale-105"
               quality={100}
             />
-            <span className="sr-only">{item.label}</span>
+            <span className="mx-auto block text-center font-serif text-sm uppercase">
+              {item.label}
+            </span>
           </Link>
         </div>
       ))}
