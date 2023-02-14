@@ -9,8 +9,6 @@ import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 
-export const revalidate = 60;
-
 const CreditsSection = ({
   projectName,
   credits,
