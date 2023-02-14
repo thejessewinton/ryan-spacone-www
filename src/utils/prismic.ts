@@ -23,6 +23,10 @@ export const client = createClient(endpoint, {
       path: "/:uid",
     },
     {
+      type: "stills",
+      path: "/:uid",
+    },
+    {
       type: "stills_set",
       path: "/stills/:uid",
     },

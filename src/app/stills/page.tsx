@@ -1,8 +1,6 @@
 import { StillsCard } from "components/stills-card/StillsCard";
 import { getStillsPage } from "utils/prismic";
 
-export const revalidate = 60;
-
 const Index = async () => {
   const { data } = await getStillsPage();
 

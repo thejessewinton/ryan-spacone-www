@@ -6,8 +6,6 @@ import type { AboutDocumentData } from "../../../.slicemachine/prismicio";
 import Link from "next/link";
 import { getImageUrl } from "utils/get-url";
 
-export const revalidate = 60;
-
 const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
   return (
     <div className="mt-16 mb-8 grid grid-cols-3 gap-3">

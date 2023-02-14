@@ -2,8 +2,6 @@ import { ProjectCard } from "components/project-card/ProjectCard";
 
 import { getHomePage } from "utils/prismic";
 
-export const revalidate = 60;
-
 const Index = async () => {
   const { data } = await getHomePage();
   return (
