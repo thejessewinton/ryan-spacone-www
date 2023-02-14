@@ -38,7 +38,6 @@ export const MasonryGallery = ({
                 width={still.image.dimensions.width}
                 height={still.image.dimensions.height}
                 alt="Project Image"
-                loading="lazy"
                 placeholder="blur"
                 quality={100}
                 blurDataURL={getBlurUrl(still.image.url)}
