@@ -46,7 +46,10 @@ export const Lightbox = ({
       <button onClick={toggleOpen} className="group absolute right-6 top-6 p-6">
         <CloseIcon className="transition-transform group-hover:rotate-90" />
       </button>
-      <div className="relative flex items-center justify-center p-12" ref={ref}>
+      <div
+        className="relative flex flex-grow items-center justify-center p-12"
+        ref={ref}
+      >
         {images.map((still, i) => {
           return (
             <Image
@@ -58,7 +61,7 @@ export const Lightbox = ({
               loading="eager"
               className={clsx(
                 i === currentImage ? "block" : "hidden",
-                "max-h-screen w-auto py-5"
+                "max-h-screen w-full max-w-4xl py-5 lg:max-w-7xl"
               )}
               width={still.image.dimensions?.width}
               height={still.image.dimensions?.height}
