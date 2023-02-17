@@ -31,19 +31,7 @@ export const ProjectCard = ({
         aria-label={asText(project.title)}
         className="relative z-[100] h-full w-full cursor-pointer"
       >
-        <div
-          className="group relative flex aspect-widescreen items-center justify-center overflow-hidden"
-          onMouseEnter={() => console.log("hovered")}
-        >
-          <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
-            {project.client ? (
-              <span className="block text-[0.6rem] md:text-base">
-                {asText(project.client)}
-              </span>
-            ) : null}
-            {asText(project.title)}
-          </h2>
-
+        <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
           <Image
             src={getImageUrl(project.cover.widescreen.url)}
             width={project.cover.widescreen.dimensions?.width}
@@ -58,8 +46,26 @@ export const ProjectCard = ({
             <ProjectPreview
               showOnHover={previewOnHover}
               preview={project.preview}
-            />
-          ) : null}
+            >
+              <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
+                {project.client ? (
+                  <span className="block text-[0.6rem] md:text-base">
+                    {asText(project.client)}
+                  </span>
+                ) : null}
+                {asText(project.title)}
+              </h2>
+            </ProjectPreview>
+          ) : (
+            <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
+              {project.client ? (
+                <span className="block text-[0.6rem] md:text-base">
+                  {asText(project.client)}
+                </span>
+              ) : null}
+              {asText(project.title)}
+            </h2>
+          )}
         </div>
       </Link>
     </ScrollObserver>

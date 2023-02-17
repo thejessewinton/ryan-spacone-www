@@ -9,17 +9,21 @@ import Player from "@vimeo/player";
 
 export const ProjectPreview = ({
   preview,
+  children,
   showOnHover = false,
 }: {
   preview: ProjectDocumentData["preview"];
+  children?: React.ReactNode;
   showOnHover?: boolean;
 }) => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    const player = new Player(iframeRef.current);
     const playerRef = iframeRef.current;
+    const player = new Player(playerRef);
+    const containerRef = wrapperRef.current;
 
     const handleMouseEnter = () => {
       if (isPlaying) return;
@@ -40,31 +44,36 @@ export const ProjectPreview = ({
     });
 
     if (showOnHover) {
-      playerRef?.addEventListener("mouseenter", handleMouseEnter);
-      playerRef?.addEventListener("mouseleave", handleMouseLeave);
+      containerRef?.addEventListener("mouseenter", handleMouseEnter);
+      containerRef?.addEventListener("mouseleave", handleMouseLeave);
     } else {
       player.play();
     }
     return () => {
-      playerRef?.removeEventListener("mouseenter", handleMouseEnter);
-      playerRef?.removeEventListener("mouseleave", handleMouseLeave);
+      containerRef?.removeEventListener("mouseenter", handleMouseEnter);
+      containerRef?.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [showOnHover, isPlaying]);
 
   return (
-    <iframe
-      id={preview.title as string}
-      src={getPreviewUrl(preview.html as string)}
-      allowFullScreen
-      loading="lazy"
-      ref={iframeRef}
-      onMouseEnter={() => console.log("mouse enter")}
-      className={clsx(
-        "pointer-events-auto absolute h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700",
-        showOnHover
-          ? "opacity-0 group-hover:opacity-100"
-          : "opacity-0 group-hover:opacity-100 md:opacity-100"
-      )}
-    />
+    <div
+      className="absolute inset-0 z-[100] flex items-center justify-center"
+      ref={wrapperRef}
+    >
+      <iframe
+        id={preview.title as string}
+        src={getPreviewUrl(preview.html as string)}
+        allowFullScreen
+        loading="lazy"
+        ref={iframeRef}
+        className={clsx(
+          "pointer-events-none absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700",
+          showOnHover
+            ? "opacity-0 group-hover:opacity-100"
+            : "opacity-0 group-hover:opacity-100 md:opacity-100"
+        )}
+      />
+      {children}
+    </div>
   );
 };
