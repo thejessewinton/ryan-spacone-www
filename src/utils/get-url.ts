@@ -17,5 +17,5 @@ export const getPreviewUrl = (html: string) => {
   const src = html.match(/src="([^"]+)"/)?.[1];
   if (!src) throw new Error("Could not get src from HTML");
 
-  return `${src}&background=1`;
+  return `${src}&background=1&autoplay=0`;
 };
