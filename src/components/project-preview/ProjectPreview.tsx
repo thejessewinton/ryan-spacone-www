@@ -32,7 +32,13 @@ export const ProjectPreview = ({
 
     const handleMouseLeave = () => {
       if (!isPlaying) return;
-      player.pause();
+      if (showOnHover) {
+        setTimeout(() => {
+          player.pause();
+        }, 700);
+      } else {
+        player.pause();
+      }
     };
 
     player.on("play", () => {
