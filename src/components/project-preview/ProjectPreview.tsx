@@ -32,13 +32,10 @@ export const ProjectPreview = ({
 
     const handleMouseLeave = () => {
       if (!isPlaying) return;
-      if (showOnHover) {
-        setTimeout(() => {
-          player.pause();
-        }, 700);
-      } else {
+
+      setTimeout(() => {
         player.pause();
-      }
+      }, 700);
     };
 
     player.on("play", () => {
@@ -52,12 +49,16 @@ export const ProjectPreview = ({
     if (showOnHover) {
       containerRef?.addEventListener("mouseenter", handleMouseEnter);
       containerRef?.addEventListener("mouseleave", handleMouseLeave);
+      containerRef?.addEventListener("touchstart", handleMouseEnter);
+      containerRef?.addEventListener("touchend", handleMouseLeave);
     } else {
       player.play();
     }
     return () => {
       containerRef?.removeEventListener("mouseenter", handleMouseEnter);
       containerRef?.removeEventListener("mouseleave", handleMouseLeave);
+      containerRef?.removeEventListener("touchstart", handleMouseEnter);
+      containerRef?.removeEventListener("touchend", handleMouseLeave);
     };
   }, [showOnHover, isPlaying]);
 
