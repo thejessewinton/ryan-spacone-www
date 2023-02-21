@@ -6,6 +6,7 @@ import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
 import { clsx } from "clsx";
 import { useRef, useEffect, useState } from "react";
 import Player from "@vimeo/player";
+import { useScreenSize } from "hooks/use-screen-size";
 
 export const ProjectPreview = ({
   preview,
@@ -19,6 +20,8 @@ export const ProjectPreview = ({
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const size = useScreenSize();
 
   useEffect(() => {
     const playerRef = iframeRef.current;
@@ -46,7 +49,7 @@ export const ProjectPreview = ({
       setIsPlaying(false);
     });
 
-    if (showOnHover) {
+    if (showOnHover && size.width >= 768) {
       containerRef?.addEventListener("mouseenter", handleMouseEnter);
       containerRef?.addEventListener("mouseleave", handleMouseLeave);
       containerRef?.addEventListener("touchstart", handleMouseEnter);
@@ -54,13 +57,14 @@ export const ProjectPreview = ({
     } else {
       player.play();
     }
+
     return () => {
       containerRef?.removeEventListener("mouseenter", handleMouseEnter);
       containerRef?.removeEventListener("mouseleave", handleMouseLeave);
       containerRef?.removeEventListener("touchstart", handleMouseEnter);
       containerRef?.removeEventListener("touchend", handleMouseLeave);
     };
-  }, [showOnHover, isPlaying]);
+  }, [showOnHover, isPlaying, size.width]);
 
   return (
     <div
@@ -76,8 +80,8 @@ export const ProjectPreview = ({
         className={clsx(
           "pointer-events-none absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700",
           showOnHover
-            ? "opacity-0 group-hover:opacity-100"
-            : "opacity-0 group-hover:opacity-100 md:opacity-100"
+            ? "opacity-100 group-hover:opacity-100"
+            : "opacity-100 group-hover:opacity-100 md:opacity-100"
         )}
       />
       {children}
