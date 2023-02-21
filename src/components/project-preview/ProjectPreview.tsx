@@ -80,7 +80,7 @@ export const ProjectPreview = ({
         className={clsx(
           "pointer-events-none absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700",
           showOnHover
-            ? "opacity-100 group-hover:opacity-100"
+            ? "opacity-100 group-hover:opacity-100 md:opacity-0"
             : "opacity-100 group-hover:opacity-100 md:opacity-100"
         )}
       />
