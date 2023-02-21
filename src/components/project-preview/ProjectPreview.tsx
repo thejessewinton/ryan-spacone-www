@@ -49,7 +49,7 @@ export const ProjectPreview = ({
     if (showOnHover) {
       containerRef?.addEventListener("mouseenter", handleMouseEnter);
       containerRef?.addEventListener("mouseleave", handleMouseLeave);
-      containerRef?.addEventListener("touchenter", handleMouseEnter);
+      containerRef?.addEventListener("touchmove", handleMouseEnter);
       containerRef?.addEventListener("touchend", handleMouseLeave);
     } else {
       player.play();
@@ -57,7 +57,7 @@ export const ProjectPreview = ({
     return () => {
       containerRef?.removeEventListener("mouseenter", handleMouseEnter);
       containerRef?.removeEventListener("mouseleave", handleMouseLeave);
-      containerRef?.removeEventListener("touchenter", handleMouseEnter);
+      containerRef?.removeEventListener("touchmove", handleMouseEnter);
       containerRef?.removeEventListener("touchend", handleMouseLeave);
     };
   }, [showOnHover, isPlaying]);
