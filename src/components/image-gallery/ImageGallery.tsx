@@ -43,7 +43,7 @@ export const ImageGallery = ({
                 placeholder="blur"
                 quality={100}
                 blurDataURL={getBlurUrl(still.image.url)}
-                className="mx-auto block cursor-pointer"
+                className="mx-auto block w-full cursor-pointer"
               />
             </ScrollObserver>
           </>
