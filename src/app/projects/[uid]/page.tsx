@@ -88,7 +88,7 @@ const Project = async ({ params }: { params: { uid: string } }) => {
             loading="lazy"
             placeholder="blur"
             blurDataURL={getBlurUrl(project.data.cover.url)}
-            className="mx-auto block"
+            className="mx-auto block w-full"
             quality={100}
           />
         ) : null}
