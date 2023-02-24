@@ -28,9 +28,11 @@ interface ProjectParams {
 
 const CreditsSection = ({
   projectName,
+  client,
   credits,
   links,
 }: {
+  client?: ProjectProps["client"];
   projectName: ProjectProps["title"];
   credits: ProjectProps["credits"];
   links: ProjectProps["links"];
@@ -38,9 +40,14 @@ const CreditsSection = ({
   return (
     <ScrollObserver>
       <section className="grid w-full gap-4 py-8 px-3 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
-        <h4 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
+        <h2 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
+          {client ? (
+            <span className="block text-[0.6rem] md:text-base">
+              {asText(client)}
+            </span>
+          ) : null}
           {asText(projectName)}
-        </h4>
+        </h2>
 
         <div className="flex flex-col gap-4 text-right font-thin md:text-left">
           {credits && credits.length
@@ -86,7 +93,7 @@ const CreditsSection = ({
 };
 
 const Project = async ({ params }: ProjectParams) => {
-  const { project, nextProject, previousProject, firstProject } =
+  const { project, firstProject, nextProject, previousProject } =
     await getProject(params.uid);
 
   return (
@@ -108,6 +115,7 @@ const Project = async ({ params }: ProjectParams) => {
           />
         ) : null}
         <CreditsSection
+          client={project.data.client}
           projectName={project.data.title}
           credits={project.data.credits}
           links={project.data.links}
@@ -118,9 +126,9 @@ const Project = async ({ params }: ProjectParams) => {
         <ImageGallery stills={project.data.stills} />
       </div>
       <ProjectNav
+        first={firstProject}
         previous={previousProject}
         next={nextProject}
-        first={firstProject}
       />
     </>
   );

@@ -1,9 +1,5 @@
 import { LeftArrow } from "components/icons/Icons";
 import Link from "next/link";
-import type {
-  ProjectDocument,
-  StillsSetDocument,
-} from "../../../.slicemachine/prismicio";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 
 export const ProjectNav = ({
@@ -11,16 +7,16 @@ export const ProjectNav = ({
   next,
   first,
 }: {
-  previous: ProjectDocument | StillsSetDocument | undefined;
-  next: ProjectDocument | StillsSetDocument | undefined;
-  first: ProjectDocument | StillsSetDocument | undefined;
+  previous: string | undefined;
+  next: string | undefined;
+  first: string;
 }) => {
   return (
     <ScrollObserver>
       <div className="my-12 grid h-24 grid-cols-2 overflow-hidden md:my-24">
         {previous ? (
           <Link
-            href={previous.url as string}
+            href={previous}
             className="group flex items-center justify-center gap-4 text-lg"
           >
             <LeftArrow className="transition-all group-hover:-translate-x-2" />
@@ -36,7 +32,7 @@ export const ProjectNav = ({
         )}
         {next ? (
           <Link
-            href={next.url as string}
+            href={next}
             className="group flex items-center justify-center gap-4 text-lg"
           >
             <h3 className="font-serif text-sm uppercase italic group-hover:text-brand">
@@ -46,7 +42,7 @@ export const ProjectNav = ({
           </Link>
         ) : (
           <Link
-            href={first?.url as string}
+            href={first}
             className="group flex items-center justify-center gap-4 text-lg"
           >
             <h3 className="font-serif text-sm uppercase italic group-hover:text-brand">

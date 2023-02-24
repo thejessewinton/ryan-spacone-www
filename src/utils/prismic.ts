@@ -13,6 +13,8 @@ import { cache } from "react";
 const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
 export const client = createClient(endpoint, {
+  accessToken:
+    "MC5ZX2xBWkJBQUFDVUFVYWdP.77-977-9Mu-_vTZK77-9Nu-_ve-_ve-_ve-_ve-_ve-_vSLvv73vv73vv70377-9UO-_vTYz77-9bu-_vR09OEkA",
   routes: [
     {
       type: "home",
@@ -100,34 +102,41 @@ export const getProject = cache(async (uid: string) => {
     fetchLinks: ["category.uid"],
   });
 
-  const category = project.data.category.id;
+  const categoryUid = project.data.category.uid;
 
-  const previousProject = await client.get({
-    predicates: prismic.predicate.at("my.project.category", category),
-    pageSize: 1,
-    after: project.id,
-    orderings: {
-      field: "document.last_publication_date",
-      direction: "desc",
-    },
-  });
+  const allProjectsInCategory = await client.getByUID<
+    CategoryDocument & {
+      data: {
+        projects: {
+          project: {
+            url: string;
+            uid: string;
+          };
+        }[];
+      };
+    }
+  >("category", categoryUid);
 
-  const nextProject = await client.get({
-    predicates: prismic.predicate.at("my.project.category", category),
-    pageSize: 1,
-    after: project.id,
-  });
-
-  const firstProject = await client.get({
-    predicates: prismic.predicate.at("my.project.category", category),
-    pageSize: 1,
-  });
+  const currentProject = allProjectsInCategory.data.projects.findIndex(
+    (project) => project.project.uid === uid
+  );
+  // get the first project in the category
+  const firstProject =
+    allProjectsInCategory.data.projects[
+      allProjectsInCategory.data.projects.length -
+        allProjectsInCategory.data.projects.length
+    ]?.project.url;
+  const previousProject = allProjectsInCategory.data.projects[
+    currentProject - 1
+  ]?.project.url as string;
+  const nextProject = allProjectsInCategory.data.projects[currentProject + 1]
+    ?.project.url as string;
 
   return {
     project,
-    firstProject: firstProject.results[0] as ProjectDocument,
-    previousProject: previousProject.results[0] as ProjectDocument,
-    nextProject: nextProject.results[0] as ProjectDocument,
+    firstProject,
+    previousProject,
+    nextProject,
   };
 });
 
