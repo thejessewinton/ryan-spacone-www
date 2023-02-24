@@ -24,7 +24,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ryan Spacone",
+    default: "Ryan Spacone - Director of Photography",
     template: "%s — Ryan Spacone",
   },
   openGraph: {
