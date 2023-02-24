@@ -90,12 +90,20 @@ export const getCategory = cache(async (category: string) => {
 });
 
 export const getProject = cache(async (uid: string) => {
-  const project = await client.getByUID("project", uid);
+  const project = await client.getByUID<
+    ProjectDocument & {
+      data: {
+        category: CategoryDocument;
+      };
+    }
+  >("project", uid, {
+    fetchLinks: ["category.uid"],
+  });
 
-  const tag = project.tags[0] as string;
+  const category = project.data.category.id;
 
   const previousProject = await client.get({
-    predicates: prismic.predicate.at("document.tags", [tag]),
+    predicates: prismic.predicate.at("my.project.category", category),
     pageSize: 1,
     after: project.id,
     orderings: {
@@ -105,13 +113,13 @@ export const getProject = cache(async (uid: string) => {
   });
 
   const nextProject = await client.get({
-    predicates: prismic.predicate.at("document.tags", [tag]),
+    predicates: prismic.predicate.at("my.project.category", category),
     pageSize: 1,
     after: project.id,
   });
 
   const firstProject = await client.get({
-    predicates: prismic.predicate.at("document.tags", [tag]),
+    predicates: prismic.predicate.at("my.project.category", category),
     pageSize: 1,
   });
 
