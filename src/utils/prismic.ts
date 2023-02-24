@@ -1,5 +1,5 @@
 import { createClient, getRepositoryEndpoint } from "@prismicio/client";
-import { env } from "env/client.mjs";
+import { env } from "env/server.mjs";
 import * as prismic from "@prismicio/client";
 import type {
   CategoryDocument,
@@ -13,8 +13,7 @@ import { cache } from "react";
 const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
 export const client = createClient(endpoint, {
-  accessToken:
-    "MC5ZX2xBWkJBQUFDVUFVYWdP.77-977-9Mu-_vTZK77-9Nu-_ve-_ve-_ve-_ve-_ve-_vSLvv73vv73vv70377-9UO-_vTYz77-9bu-_vR09OEkA",
+  accessToken: env.PRISMIC_ACCESS_TOKEN,
   routes: [
     {
       type: "home",
@@ -160,33 +159,22 @@ export const getStillsPage = cache(async () => {
 export const getStillsSet = cache(async (uid: string) => {
   const stillsSet = await client.getByUID("stills_set", uid);
 
-  const previousStillsSet = await client.get({
-    predicates: prismic.predicate.at("document.type", "stills_set"),
-    pageSize: 1,
-    orderings: {
-      field: "my.stills_set.date",
-      direction: "desc",
-    },
-  });
+  const allStillsSets = await getStillsPage();
+  const currentSet = allStillsSets.data.sets.findIndex(
+    (set) => set.set.uid === uid
+  );
 
-  const nextStillsSet = await client.get({
-    predicates: prismic.predicate.at("document.type", "stills_set"),
-    pageSize: 1,
-    after: stillsSet.id,
-    orderings: {
-      field: "my.stills_set.date",
-    },
-  });
-
-  const firstSet = await client.get({
-    predicates: prismic.predicate.at("document.type", "stills_set"),
-    pageSize: 1,
-  });
+  const firstSet = allStillsSets.data.sets[
+    allStillsSets.data.sets.length - allStillsSets.data.sets.length
+  ]?.set.url as string;
+  const previousSet = allStillsSets.data.sets[currentSet - 1]?.set
+    .url as string;
+  const nextSet = allStillsSets.data.sets[currentSet + 1]?.set.url as string;
 
   return {
     stillsSet,
-    firstSet: firstSet.results[0] as StillsSetDocument,
-    previousSet: previousStillsSet.results[0] as StillsSetDocument,
-    nextSet: nextStillsSet.results[0] as StillsSetDocument,
+    firstSet,
+    previousSet,
+    nextSet,
   };
 });
