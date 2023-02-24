@@ -1,8 +1,17 @@
 import { ProjectCard } from "components/project-card/ProjectCard";
+import type { Metadata } from "next";
 
 import { getHomePage } from "utils/prismic";
 
 export const revalidate = 60;
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { data } = await getHomePage();
+  return {
+    title: data.meta_title,
+    description: data.meta_description,
+  };
+};
 
 const Index = async () => {
   const { data } = await getHomePage();

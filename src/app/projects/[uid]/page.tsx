@@ -8,8 +8,23 @@ import { ProjectNav } from "components/project-nav/ProjectNav";
 import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const generateMetadata = async ({
+  params,
+}: ProjectParams): Promise<Metadata> => {
+  const { project } = await getProject(params.uid);
+  return {
+    title: project.data.meta_title,
+    description: project.data.meta_description,
+  };
+};
+
+interface ProjectParams {
+  params: { uid: string };
+}
 
 const CreditsSection = ({
   projectName,
@@ -70,7 +85,7 @@ const CreditsSection = ({
   );
 };
 
-const Project = async ({ params }: { params: { uid: string } }) => {
+const Project = async ({ params }: ProjectParams) => {
   const { project, nextProject, previousProject, firstProject } =
     await getProject(params.uid);
 
