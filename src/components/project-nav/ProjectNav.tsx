@@ -9,7 +9,7 @@ export const ProjectNav = ({
 }: {
   previous: string | undefined;
   next: string | undefined;
-  first: string;
+  first: string | undefined;
 }) => {
   return (
     <ScrollObserver>
@@ -42,7 +42,7 @@ export const ProjectNav = ({
           </Link>
         ) : (
           <Link
-            href={first}
+            href={first as string}
             className="group flex items-center justify-center gap-4 text-lg"
           >
             <h3 className="font-serif text-sm uppercase italic group-hover:text-brand">
