@@ -20,6 +20,7 @@ export const ProjectPreview = ({
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [show, setShow] = useState(false);
 
   const size = useScreenSize();
 
@@ -40,6 +41,10 @@ export const ProjectPreview = ({
         player.pause();
       }, 700);
     };
+
+    player.ready().then(() => {
+      setShow(true);
+    });
 
     player.on("play", () => {
       setIsPlaying(true);
@@ -81,7 +86,8 @@ export const ProjectPreview = ({
           "pointer-events-none absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700",
           showOnHover
             ? "opacity-0 group-hover:opacity-100 md:opacity-0"
-            : "opacity-0 group-hover:opacity-100 md:opacity-100"
+            : "opacity-0 group-hover:opacity-100 md:opacity-100",
+          !show ? "invisible" : "visible"
         )}
       />
       {children}

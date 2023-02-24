@@ -6,11 +6,10 @@ import type {
   StillsSetDocumentData,
 } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useClickOutside } from "hooks/use-click-outside";
 import { CloseIcon, LeftArrow } from "components/icons/Icons";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
-import { useLockBodyScroll } from "hooks/use-lock-body-scroll";
 import { clsx } from "clsx";
 
 export const Lightbox = ({
@@ -20,7 +19,14 @@ export const Lightbox = ({
 }) => {
   const { toggleOpen, isOpen, currentImage, setCurrentImage } = useLightbox();
   const ref = useRef<HTMLDivElement>(null);
-  useLockBodyScroll(isOpen);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   const handlePrev = () => {
     if (currentImage === 0) {

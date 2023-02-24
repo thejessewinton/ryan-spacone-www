@@ -6,18 +6,31 @@ import { Header } from "components/header/Header";
 import { Footer } from "components/footer/Footer";
 import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
+import type { Metadata } from "next";
+import { env } from "env/client.mjs";
 
 const openSans = Open_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "optional",
 });
+
 const lora = Lora({
   variable: "--font-serif",
   subsets: ["latin"],
   display: "optional",
   weight: ["400", "500", "600", "700"],
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "Ryan Spacone - Director of Photography",
+    template: "%s — Ryan Spacone",
+  },
+  openGraph: {
+    images: [`${env.NEXT_PUBLIC_URL}/og.jpg`],
+  },
+};
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
   const { data } = await getSiteSettings();
