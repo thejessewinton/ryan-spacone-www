@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { Lightbox } from "components/lightbox/Lightbox";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
+import { createPortal } from "react-dom";
 
 export const ImageGallery = ({
   stills,
@@ -39,7 +40,7 @@ export const ImageGallery = ({
                 width={still.image.dimensions.width}
                 height={still.image.dimensions.height}
                 alt="Project Image"
-                loading="lazy"
+                loading="eager"
                 placeholder="blur"
                 quality={100}
                 blurDataURL={getBlurUrl(still.image.url)}
@@ -49,7 +50,7 @@ export const ImageGallery = ({
           </>
         );
       })}
-      {isOpen && <Lightbox images={stills} />}
+      {isOpen && createPortal(<Lightbox images={stills} />, document.body)}
     </div>
   );
 };
