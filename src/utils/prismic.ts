@@ -118,11 +118,6 @@ export const getProject = cache(async (uid: string) => {
     (project) => project.project.uid === uid
   );
 
-  const firstProject =
-    allProjectsInCategory.data.projects[
-      allProjectsInCategory.data.projects.length -
-        allProjectsInCategory.data.projects.length
-    ]?.project.url;
   const previousProject = allProjectsInCategory.data.projects[
     currentProject - 1
   ]?.project.url as string;
@@ -131,7 +126,6 @@ export const getProject = cache(async (uid: string) => {
 
   return {
     project,
-    firstProject,
     previousProject,
     nextProject,
   };
@@ -162,16 +156,12 @@ export const getStillsSet = cache(async (uid: string) => {
     (set) => set.set.uid === uid
   );
 
-  const firstSet = allStillsSets.data.sets[
-    allStillsSets.data.sets.length - allStillsSets.data.sets.length
-  ]?.set.url as string;
   const previousSet = allStillsSets.data.sets[currentSet - 1]?.set
     .url as string;
   const nextSet = allStillsSets.data.sets[currentSet + 1]?.set.url as string;
 
   return {
     stillsSet,
-    firstSet,
     previousSet,
     nextSet,
   };
