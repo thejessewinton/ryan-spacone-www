@@ -6,27 +6,21 @@ import type {
   StillsSetDocumentData,
 } from "../../../.slicemachine/prismicio";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useClickOutside } from "hooks/use-click-outside";
 import { CloseIcon, LeftArrow } from "components/icons/Icons";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import { clsx } from "clsx";
+import { useLockBodyScroll } from "hooks/use-lock-body-scroll";
 
 export const Lightbox = ({
   images,
 }: {
   images: ProjectDocumentData["stills"] | StillsSetDocumentData["stills"];
 }) => {
-  const { toggleOpen, isOpen, currentImage, setCurrentImage } = useLightbox();
+  const { isOpen, toggleOpen, currentImage, setCurrentImage } = useLightbox();
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isOpen]);
+  useLockBodyScroll(isOpen);
 
   const handlePrev = () => {
     if (currentImage === 0) {
