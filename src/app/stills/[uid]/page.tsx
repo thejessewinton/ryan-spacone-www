@@ -5,12 +5,14 @@ import type { Metadata } from "next";
 
 export const revalidate = 60;
 
-interface StillsParams { params: { uid: string } }
+interface StillsParams {
+  params: { uid: string };
+}
 
-export const generateMetadata = async ({ params}: StillsParams): Promise<Metadata> => {
-  const { stillsSet } = await getStillsSet(
-    params.uid
-  );
+export const generateMetadata = async ({
+  params,
+}: StillsParams): Promise<Metadata> => {
+  const { stillsSet } = await getStillsSet(params.uid);
   return {
     title: stillsSet.data.meta_title,
     description: stillsSet.data.meta_description,
@@ -18,16 +20,14 @@ export const generateMetadata = async ({ params}: StillsParams): Promise<Metadat
 };
 
 const Stills = async ({ params }: { params: { uid: string } }) => {
-  const { stillsSet, nextSet, previousSet, firstSet } = await getStillsSet(
-    params.uid
-  );
+  const { stillsSet, nextSet, previousSet } = await getStillsSet(params.uid);
 
   return (
     <>
       <div className="columns-1 gap-x-2 sm:columns-2 lg:columns-3">
         <MasonryGallery stills={stillsSet.data.stills} />
       </div>
-      <ProjectNav previous={previousSet} next={nextSet} first={firstSet} />
+      <ProjectNav previous={previousSet} next={nextSet} />
     </>
   );
 };

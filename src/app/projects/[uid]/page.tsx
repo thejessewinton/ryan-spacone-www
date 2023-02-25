@@ -97,8 +97,9 @@ const CreditsSection = ({
 };
 
 const Project = async ({ params }: ProjectParams) => {
-  const { project, firstProject, nextProject, previousProject } =
-    await getProject(params.uid);
+  const { project, nextProject, previousProject } = await getProject(
+    params.uid
+  );
 
   return (
     <>
@@ -129,11 +130,7 @@ const Project = async ({ params }: ProjectParams) => {
         ) : null}
         <ImageGallery stills={project.data.stills} />
       </div>
-      <ProjectNav
-        first={firstProject}
-        previous={previousProject}
-        next={nextProject}
-      />
+      <ProjectNav previous={previousProject} next={nextProject} />
     </>
   );
 };
