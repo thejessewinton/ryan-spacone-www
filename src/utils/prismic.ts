@@ -1,6 +1,5 @@
 import { createClient, getRepositoryEndpoint } from "@prismicio/client";
 import { env } from "env/server.mjs";
-import * as prismic from "@prismicio/client";
 import type {
   CategoryDocument,
   HomeDocument,
@@ -13,7 +12,6 @@ import { cache } from "react";
 const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
 
 export const client = createClient(endpoint, {
-  accessToken: env.PRISMIC_ACCESS_TOKEN,
   routes: [
     {
       type: "home",
