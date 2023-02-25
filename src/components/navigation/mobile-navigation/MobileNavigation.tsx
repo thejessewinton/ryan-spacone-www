@@ -4,9 +4,7 @@ import { asLink } from "@prismicio/helpers";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 import { useMobileNav } from "hooks/use-mobile-nav";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useEffect } from "react";
 import type { NavigationProps } from "types/prismic";
 
 const Hamburger = () => {
