@@ -307,6 +307,18 @@ interface ProjectDocumentData {
      */
     title: prismicT.TitleField;
     /**
+     * Coming Soon field in *Project*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: project.coming_soon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    coming_soon: prismicT.BooleanField;
+    /**
      * Cover field in *Project*
      *
      * - **Field Type**: Image

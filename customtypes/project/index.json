@@ -23,6 +23,15 @@
           "single": "heading1"
         }
       },
+      "coming_soon": {
+        "type": "Boolean",
+        "config": {
+          "label": "Coming Soon",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
       "cover": {
         "type": "Image",
         "config": {

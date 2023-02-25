@@ -18,10 +18,12 @@ interface ProjectParams {
 const CreditsSection = ({
   projectName,
   client,
+  comingSoon,
   credits,
   links,
 }: {
   client?: ProjectProps["client"];
+  comingSoon: ProjectProps["coming_soon"];
   projectName: ProjectProps["title"];
   credits: ProjectProps["credits"];
   links: ProjectProps["links"];
@@ -36,6 +38,11 @@ const CreditsSection = ({
             </span>
           ) : null}
           {asText(projectName)}
+          {comingSoon ? (
+            <span className="ml-auto mr-0 block text-[0.6rem] md:text-base">
+              Coming Soon...
+            </span>
+          ) : null}
         </h2>
 
         <div className="flex flex-col gap-4 text-right font-thin md:text-left">
@@ -112,6 +119,7 @@ const Project = async ({ params }: ProjectParams) => {
           projectName={project.data.title}
           credits={project.data.credits}
           links={project.data.links}
+          comingSoon={project.data.coming_soon}
         />
         {project.data.secondary_video.embed_url ? (
           <VimeoPlayer video={project.data.secondary_video} />
