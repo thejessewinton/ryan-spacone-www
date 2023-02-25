@@ -74,13 +74,17 @@ const CreditsSection = ({
           {links && links.length
             ? links.map((item) => {
                 return (
-                  <div key={item.label} className="md:col-span-1">
+                  <div
+                    key={item.label}
+                    className="md:text-normal text-sm md:col-span-1"
+                  >
+                    <span className="font-normal uppercase">{item.label}</span>
                     <Link
-                      className="font-medium underline"
+                      className="block underline"
                       href={asLink(item.link) as string}
                       target="_blank"
                     >
-                      {item.label}
+                      Visit
                     </Link>
                   </div>
                 );

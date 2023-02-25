@@ -119,7 +119,7 @@ export const getProject = cache(async (uid: string) => {
   const currentProject = allProjectsInCategory.data.projects.findIndex(
     (project) => project.project.uid === uid
   );
-  // get the first project in the category
+
   const firstProject =
     allProjectsInCategory.data.projects[
       allProjectsInCategory.data.projects.length -
