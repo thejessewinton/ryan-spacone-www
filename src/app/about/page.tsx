@@ -5,17 +5,8 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import type { AboutDocumentData } from "../../../.slicemachine/prismicio";
 import Link from "next/link";
 import { getImageUrl } from "utils/get-url";
-import type { Metadata } from "next";
 
 export const revalidate = 60;
-
-export const generateMetadata = async (): Promise<Metadata> => {
-  const { data } = await getAboutPage();
-  return {
-    title: data.meta_title,
-    description: data.meta_description,
-  };
-};
 
 const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
   return (
