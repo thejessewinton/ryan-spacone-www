@@ -6,6 +6,7 @@ import { Header } from "components/header/Header";
 import { Footer } from "components/footer/Footer";
 import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
+import { ScrollWrapper } from "components/scroll-wrapper/ScrollWrapper";
 
 const openSans = Open_Sans({
   variable: "--font-sans",
@@ -35,6 +36,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
         <main className="relative">{children}</main>
         <Footer socials={data.socials} />
         <AnalyticsWrapper />
+        <ScrollWrapper />
       </body>
     </html>
   );
