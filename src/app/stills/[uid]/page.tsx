@@ -9,14 +9,16 @@ interface StillsParams {
 }
 
 const Stills = async ({ params }: StillsParams) => {
-  const { stillsSet, nextSet, previousSet } = await getStillsSet(params.uid);
+  const { stillsSet, firstSet, nextSet, previousSet } = await getStillsSet(
+    params.uid
+  );
 
   return (
     <>
       <div className="columns-1 gap-x-2 sm:columns-2 lg:columns-3">
         <MasonryGallery stills={stillsSet.data.stills} />
       </div>
-      <ProjectNav previous={previousSet} next={nextSet} />
+      <ProjectNav first={firstSet} previous={previousSet} next={nextSet} />
     </>
   );
 };
