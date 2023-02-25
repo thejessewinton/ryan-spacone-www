@@ -40,14 +40,6 @@ export const MobileNavigation = ({
 }) => {
   const { isMobileNavOpen, toggleMobileNav } = useMobileNav();
 
-  useEffect(() => {
-    if (isMobileNavOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isMobileNavOpen]);
-
   return (
     <div className="flex items-center gap-2">
       <Hamburger />
