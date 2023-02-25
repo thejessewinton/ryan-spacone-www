@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { clsx } from "clsx";
 import { useLightbox } from "hooks/use-lightbox";
 import type { ProjectProps, StillsSetProps } from "types/prismic";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { Lightbox } from "components/lightbox/Lightbox";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 
 export const ImageGallery = ({
   stills,
@@ -15,11 +16,24 @@ export const ImageGallery = ({
   stills: ProjectProps["stills"] | StillsSetProps["stills"];
 }) => {
   const { isOpen, toggleOpen, setCurrentImage } = useLightbox();
+  const [clickable, setClickable] = useState(true);
 
   const handleOpen = (index: number) => {
     toggleOpen();
     setCurrentImage(index);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setClickable(false);
+    } else {
+      const timeout = setTimeout(() => {
+        setClickable(true);
+      }, 100);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isOpen]);
 
   return (
     <div className="grid grid-cols-2">
@@ -32,7 +46,11 @@ export const ImageGallery = ({
           <>
             <ScrollObserver
               key={i}
-              className={clsx("bg-neutral-900", className)}
+              className={clsx(
+                "bg-neutral-900",
+                className,
+                !clickable ? "pointer-events-none" : ""
+              )}
             >
               <Image
                 onClick={() => (isOpen ? null : handleOpen(i))}
