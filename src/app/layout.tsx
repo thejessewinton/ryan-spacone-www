@@ -30,7 +30,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
-      <body className="flex min-h-screen flex-col bg-white text-neutral-900">
+      <body className="flex flex-col bg-white text-neutral-900">
         <Header navigation={data.slices} />
         <main className="relative">{children}</main>
         <Footer socials={data.socials} />
