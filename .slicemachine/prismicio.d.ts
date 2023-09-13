@@ -396,6 +396,17 @@ interface ProjectDocumentData {
      */
     secondary_video: prismicT.EmbedField;
     /**
+     * Additional Videos field in *Project*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.additional_videos[]
+     * - **Tab**: Videos
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    additional_videos: prismicT.GroupField<Simplify<ProjectDocumentDataAdditionalVideosItem>>;
+    /**
      * Stills field in *Project*
      *
      * - **Field Type**: Group
@@ -480,6 +491,22 @@ export interface ProjectDocumentDataLinksItem {
      *
      */
     link: prismicT.LinkField;
+}
+/**
+ * Item in Project → Additional Videos
+ *
+ */
+export interface ProjectDocumentDataAdditionalVideosItem {
+    /**
+     * Embed URL field in *Project → Additional Videos*
+     *
+     * - **Field Type**: Embed
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.additional_videos[].embed_url
+     * - **Documentation**: https://prismic.io/docs/core-concepts/embed
+     *
+     */
+    embed_url: prismicT.EmbedField;
 }
 /**
  * Item in Project → Stills
@@ -833,6 +860,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, StillsSetDocumentData, StillsSetDocumentDataStillsItem, StillsSetDocument, StillsDocumentData, StillsDocumentDataSetsItem, StillsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataLinksItem, AboutDocumentDataRepresentationItem, AboutDocument, CategoryDocumentData, CategoryDocumentDataProjectsItem, CategoryDocument, HomeDocumentData, HomeDocumentDataProjectsItem, HomeDocument, ProjectDocumentData, ProjectDocumentDataCreditsItem, ProjectDocumentDataLinksItem, ProjectDocumentDataAdditionalVideosItem, ProjectDocumentDataStillsItem, ProjectDocument, SiteSettingsDocumentData, SiteSettingsDocumentDataSlicesSlice, SiteSettingsDocumentDataSocialsItem, SiteSettingsDocument, StillsSetDocumentData, StillsSetDocumentDataStillsItem, StillsSetDocument, StillsDocumentData, StillsDocumentDataSetsItem, StillsDocument, AllDocumentTypes, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

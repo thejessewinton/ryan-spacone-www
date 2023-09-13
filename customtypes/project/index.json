@@ -127,6 +127,21 @@
           "label": "Secondary Video",
           "placeholder": ""
         }
+      },
+      "additional_videos": {
+        "type": "Group",
+        "config": {
+          "label": "Additional Videos",
+          "fields": {
+            "embed_url": {
+              "type": "Embed",
+              "config": {
+                "label": "Embed URL",
+                "placeholder": ""
+              }
+            }
+          }
+        }
       }
     },
     "Stills": {

@@ -124,6 +124,11 @@ const Project = async ({ params }: ProjectParams) => {
         {project.data.secondary_video.embed_url ? (
           <VimeoPlayer video={project.data.secondary_video} />
         ) : null}
+        {project.data.additional_videos.length ? project.data.additional_videos.map((video, i) => {
+          return (
+<VimeoPlayer key={i} video={video.embed_url} />
+          )
+        }) : null}
         <ImageGallery stills={project.data.stills} />
       </div>
       <ProjectNav
