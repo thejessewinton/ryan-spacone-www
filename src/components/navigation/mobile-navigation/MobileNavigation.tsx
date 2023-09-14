@@ -19,12 +19,14 @@ const Hamburger = () => {
     >
       <span className="sr-only">Open Mobile Nav</span>
       <span
-        className={clsx(className, "w-8", isMobileNavOpen ? "rotate-45" : "")}
+        className={clsx(className, "w-8", {
+          "rotate-45": isMobileNavOpen,
+        })}
       />
       <span
         className={clsx(
-          "mr-0 ml-auto block h-[2px] bg-neutral-900 transition-transform",
-          isMobileNavOpen ? "-mt-[2px] w-8 -rotate-45" : "mt-1 w-6"
+          "ml-auto mr-0 block h-[2px] bg-neutral-900 transition-transform",
+          isMobileNavOpen ? "-mt-[2px] w-8 -rotate-45" : "mt-1 w-6",
         )}
       />
     </button>
@@ -44,8 +46,8 @@ export const MobileNavigation = ({
       {isMobileNavOpen ? (
         <motion.nav
           className={clsx(
-            "inset-0 top-24 flex-col gap-4 bg-white px-9 pt-12 md:hidden",
-            isMobileNavOpen ? "fixed flex" : ""
+            "inset-0 !top-24 z-[10000] flex-col gap-4 bg-white px-9 pt-12 md:hidden",
+            isMobileNavOpen ? "fixed flex" : "",
           )}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0, transition: { bounce: false } }}
