@@ -7,7 +7,7 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { ProjectNav } from "components/project-nav/ProjectNav";
 import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
-import { getBlurUrl, getImageUrl, getPreviewUrl } from "utils/get-url";
+import { getBlurUrl, getImageUrl } from "utils/get-url";
 import type { Metadata } from "next";
 import { AdditionalVimeoPlayer } from "components/vimeo-player/AdditionalVimeoPlayer";
 
