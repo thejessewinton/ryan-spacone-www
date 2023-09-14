@@ -6,7 +6,7 @@
 import { asText } from "@prismicio/helpers";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import Link from "next/link";
-import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
+import type { ProjectDocumentData } from "../../../prismicio-types";
 import Image from "next/image";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import { ProjectPreview } from "components/project-preview/ProjectPreview";
