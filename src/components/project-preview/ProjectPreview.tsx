@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+"use client";
 import { getPreviewUrl } from "utils/get-url";
 import type { ProjectDocumentData } from "../../../prismicio-types";
 import { clsx } from "clsx";
@@ -26,23 +24,23 @@ export const ProjectPreview = ({
 
   useEffect(() => {
     const playerRef = iframeRef.current;
-    const player = new Player(playerRef);
+    const player = new Player(playerRef as HTMLIFrameElement);
     const containerRef = wrapperRef.current;
 
     const handleMouseEnter = () => {
       if (isPlaying) return;
-      player.play();
+      void player.play();
     };
 
     const handleMouseLeave = () => {
       if (!isPlaying) return;
 
       setTimeout(() => {
-        player.pause();
+        void player.pause();
       }, 700);
     };
 
-    player.ready().then(() => {
+    void player.ready().then(() => {
       setShow(true);
     });
 
@@ -60,7 +58,7 @@ export const ProjectPreview = ({
       containerRef?.addEventListener("touchstart", handleMouseEnter);
       containerRef?.addEventListener("touchend", handleMouseLeave);
     } else {
-      player.play();
+      void player.play();
     }
 
     return () => {
@@ -87,7 +85,7 @@ export const ProjectPreview = ({
           showOnHover
             ? "opacity-0 group-hover:opacity-100 md:opacity-0"
             : "opacity-0 group-hover:opacity-100 md:opacity-100",
-          !show ? "invisible" : "visible"
+          !show ? "invisible" : "visible",
         )}
       />
       {children}

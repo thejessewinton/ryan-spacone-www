@@ -9,6 +9,7 @@ import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import type { Metadata } from "next";
+import { ProjectPreview } from "components/project-preview/ProjectPreview";
 
 export const revalidate = 60;
 
@@ -16,13 +17,15 @@ interface ProjectParams {
   params: { uid: string };
 }
 
-export const generateMetadata = async ({params}: ProjectParams): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: ProjectParams): Promise<Metadata> => {
   const { project } = await getProject(params.uid);
 
   return {
     title: project.data.meta_title,
-  }
-} 
+  };
+};
 
 const CreditsSection = ({
   projectName,
@@ -39,7 +42,7 @@ const CreditsSection = ({
 }) => {
   return (
     <ScrollObserver>
-      <section className="grid w-full gap-4 py-8 px-3 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
+      <section className="grid w-full gap-4 px-3 py-8 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
         <h2 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
           {client ? (
             <span className="block text-[0.6rem] md:text-base">
@@ -133,11 +136,11 @@ const Project = async ({ params }: ProjectParams) => {
         {project.data.secondary_video.embed_url ? (
           <VimeoPlayer video={project.data.secondary_video} />
         ) : null}
-        {project.data.additional_videos.length ? project.data.additional_videos.map((video, i) => {
-          return (
-<VimeoPlayer key={i} video={video.embed_url} />
-          )
-        }) : null}
+        {project.data.additional_videos.length
+          ? project.data.additional_videos.map((video, i) => {
+              return <VimeoPlayer key={i} video={video.embed_url} />;
+            })
+          : null}
         <ImageGallery stills={project.data.stills} />
       </div>
       <ProjectNav
