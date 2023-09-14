@@ -7,8 +7,9 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import { ProjectNav } from "components/project-nav/ProjectNav";
 import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
-import { getBlurUrl, getImageUrl } from "utils/get-url";
+import { getBlurUrl, getImageUrl, getPreviewUrl } from "utils/get-url";
 import type { Metadata } from "next";
+import { AdditionalVimeoPlayer } from "components/vimeo-player/AdditionalVimeoPlayer";
 
 export const revalidate = 60;
 
@@ -137,7 +138,12 @@ const Project = async ({ params }: ProjectParams) => {
         ) : null}
         {project.data.additional_videos.length
           ? project.data.additional_videos.map((video, i) => {
-              return <VimeoPlayer key={i} video={video.embed_url} />;
+              return (
+                <AdditionalVimeoPlayer
+                  key={i}
+                  html={video.embed_url.html as string}
+                />
+              );
             })
           : null}
         <ImageGallery stills={project.data.stills} />
