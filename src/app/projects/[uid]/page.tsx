@@ -9,7 +9,6 @@ import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
 import type { Metadata } from "next";
-import { AdditionalVimeoPlayer } from "components/vimeo-player/AdditionalVimeoPlayer";
 
 export const revalidate = 60;
 
