@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { Lora, Open_Sans } from "@next/font/google";
+import { Lora, Open_Sans } from "next/font/google";
 
 import "../styles/globals.css";
 import { Header } from "components/header/Header";
