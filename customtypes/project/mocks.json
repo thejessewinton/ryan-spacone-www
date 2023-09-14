@@ -1,0 +1,307 @@
+[
+  {
+    "client": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Nearer"
+          }
+        }
+      ]
+    },
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Forest"
+          }
+        }
+      ]
+    },
+    "coming_soon": {
+      "__TYPE__": "BooleanContent",
+      "value": true
+    },
+    "cover": {
+      "__TYPE__": "ImageContent",
+      "origin": {
+        "id": "main",
+        "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+        "width": 4380,
+        "height": 2895
+      },
+      "url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
+      "width": 4380,
+      "height": 2895,
+      "edit": {
+        "zoom": 1,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "background": "transparent"
+      },
+      "thumbnails": {
+        "widescreen": {
+          "origin": {
+            "id": "widescreen",
+            "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+            "width": 3024,
+            "height": 3778
+          },
+          "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a?rect=0%2C1361%2C3024%2C1056&w=1440&h=503",
+          "width": 1440,
+          "height": 503,
+          "edit": {
+            "zoom": 1,
+            "crop": {
+              "x": 0,
+              "y": 1361
+            },
+            "background": "transparent"
+          }
+        }
+      }
+    },
+    "preview": {
+      "embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
+      "author_name": "Tim Benniks",
+      "author_url": "https://twitter.com/timbenniks",
+      "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I’ve been diving deep on <a href=\"https://twitter.com/prismicio?ref_src=twsrc%5Etfw\">@prismicio</a> <a href=\"https://twitter.com/hashtag/slicemachine?src=hash&amp;ref_src=twsrc%5Etfw\">#slicemachine</a> today. I made all my own components and I used custom slices. It works like a charm with <a href=\"https://twitter.com/nuxt_js?ref_src=twsrc%5Etfw\">@nuxt_js</a>. Also\": I’m coding with this view. <a href=\"https://t.co/F0I8X9gz39\">pic.twitter.com/F0I8X9gz39</a></p>&mdash; Tim Benniks (@timbenniks) <a href=\"https://twitter.com/timbenniks/status/1304146886832594944?ref_src=twsrc%5Etfw\">September 10, 2020</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+      "width": 550,
+      "height": null,
+      "type": "rich",
+      "cache_age": "3153600000",
+      "provider_name": "Twitter",
+      "provider_url": "http://www.twitter.com/",
+      "version": "1.0",
+      "all": {
+        "embed_url": "https://twitter.com/timbenniks/status/1304146886832594944",
+        "author_name": "Tim Benniks",
+        "author_url": "https://twitter.com/timbenniks",
+        "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">I’ve been diving deep on <a href=\"https://twitter.com/prismicio?ref_src=twsrc%5Etfw\">@prismicio</a> <a href=\"https://twitter.com/hashtag/slicemachine?src=hash&amp;ref_src=twsrc%5Etfw\">#slicemachine</a> today. I made all my own components and I used custom slices. It works like a charm with <a href=\"https://twitter.com/nuxt_js?ref_src=twsrc%5Etfw\">@nuxt_js</a>. Also\": I’m coding with this view. <a href=\"https://t.co/F0I8X9gz39\">pic.twitter.com/F0I8X9gz39</a></p>&mdash; Tim Benniks (@timbenniks) <a href=\"https://twitter.com/timbenniks/status/1304146886832594944?ref_src=twsrc%5Etfw\">September 10, 2020</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+        "width": 550,
+        "height": null,
+        "type": "rich",
+        "cache_age": "3153600000",
+        "provider_name": "Twitter",
+        "provider_url": "http://www.twitter.com/",
+        "version": "1.0"
+      },
+      "__TYPE__": "EmbedContent"
+    },
+    "category": {
+      "__TYPE__": "LinkContent",
+      "value": {
+        "__TYPE__": "DocumentLink",
+        "id": "mock_document_id"
+      }
+    },
+    "credits": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "label",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "family",
+                "type": "Text"
+              }
+            ],
+            [
+              "details",
+              {
+                "__TYPE__": "StructuredTextContent",
+                "value": [
+                  {
+                    "type": "paragraph",
+                    "content": {
+                      "text": "Proident laborum aliquip et et velit nisi amet ut sint cillum ipsum exercitation ad Lorem. Tempor dolore cupidatat ipsum veniam nisi cillum sunt labore. Eu qui do voluptate quis irure."
+                    }
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "links": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "label",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "affect",
+                "type": "Text"
+              }
+            ],
+            [
+              "link",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "ExternalLink",
+                  "url": "http://twitter.com"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "video": {
+      "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+      "author_name": "Prismic",
+      "author_url": "https://twitter.com/prismicio",
+      "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+      "width": 550,
+      "height": null,
+      "type": "rich",
+      "cache_age": "3153600000",
+      "provider_name": "Twitter",
+      "provider_url": "http://www.twitter.com/",
+      "version": "1.0",
+      "all": {
+        "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+        "author_name": "Prismic",
+        "author_url": "https://twitter.com/prismicio",
+        "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+        "width": 550,
+        "height": null,
+        "type": "rich",
+        "cache_age": "3153600000",
+        "provider_name": "Twitter",
+        "provider_url": "http://www.twitter.com/",
+        "version": "1.0"
+      },
+      "__TYPE__": "EmbedContent"
+    },
+    "secondary_video": {
+      "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+      "author_name": "Prismic",
+      "author_url": "https://twitter.com/prismicio",
+      "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+      "width": 550,
+      "height": null,
+      "type": "rich",
+      "cache_age": "3153600000",
+      "provider_name": "Twitter",
+      "provider_url": "http://www.twitter.com/",
+      "version": "1.0",
+      "all": {
+        "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+        "author_name": "Prismic",
+        "author_url": "https://twitter.com/prismicio",
+        "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+        "width": 550,
+        "height": null,
+        "type": "rich",
+        "cache_age": "3153600000",
+        "provider_name": "Twitter",
+        "provider_url": "http://www.twitter.com/",
+        "version": "1.0"
+      },
+      "__TYPE__": "EmbedContent"
+    },
+    "additional_videos": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "embed_url",
+              {
+                "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+                "author_name": "Prismic",
+                "author_url": "https://twitter.com/prismicio",
+                "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+                "width": 550,
+                "height": null,
+                "type": "rich",
+                "cache_age": "3153600000",
+                "provider_name": "Twitter",
+                "provider_url": "http://www.twitter.com/",
+                "version": "1.0",
+                "all": {
+                  "embed_url": "https://twitter.com/prismicio/status/1354835716430319617",
+                  "author_name": "Prismic",
+                  "author_url": "https://twitter.com/prismicio",
+                  "html": "<blockquote class=\"twitter-tweet\"><p lang=\"en\" dir=\"ltr\">Does anyone want to create a wildly popular website for discussing &#39;Wall Street Bets&#39; using Prismic?<br><br>It may or may not have to look a lot like <a href=\"https://twitter.com/hashtag/reddit?src=hash&amp;ref_src=twsrc%5Etfw\">#reddit</a> and we won&#39;t make it private.<br><br>Just asking for some friends...</p>&mdash; Prismic (@prismicio) <a href=\"https://twitter.com/prismicio/status/1354835716430319617?ref_src=twsrc%5Etfw\">January 28, 2021</a></blockquote>\n<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>\n",
+                  "width": 550,
+                  "height": null,
+                  "type": "rich",
+                  "cache_age": "3153600000",
+                  "provider_name": "Twitter",
+                  "provider_url": "http://www.twitter.com/",
+                  "version": "1.0"
+                },
+                "__TYPE__": "EmbedContent"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "stills": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "image",
+              {
+                "__TYPE__": "ImageContent",
+                "origin": {
+                  "id": "main",
+                  "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+                  "width": 3024,
+                  "height": 3778
+                },
+                "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
+                "width": 3024,
+                "height": 3778,
+                "edit": {
+                  "zoom": 1,
+                  "crop": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "background": "transparent"
+                },
+                "thumbnails": {}
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "parent"
+    },
+    "meta_title": {
+      "__TYPE__": "FieldContent",
+      "value": "rays",
+      "type": "Text"
+    },
+    "meta_description": {
+      "__TYPE__": "FieldContent",
+      "value": "dollar",
+      "type": "Text"
+    }
+  }
+]

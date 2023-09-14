@@ -1,0 +1,49 @@
+[
+  {
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Solid"
+          }
+        }
+      ]
+    },
+    "projects": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "project",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "DocumentLink",
+                  "id": "mock_document_id"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "wheel"
+    },
+    "meta_title": {
+      "__TYPE__": "FieldContent",
+      "value": "television",
+      "type": "Text"
+    },
+    "meta_description": {
+      "__TYPE__": "FieldContent",
+      "value": "rock",
+      "type": "Text"
+    }
+  }
+]

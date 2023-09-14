@@ -1,0 +1,7 @@
+{
+  "apiEndpoint": "https://ryan-spacone.prismic.io/api/v2",
+  "repositoryName": "ryan-spacone",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./src/components/slices"],
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}

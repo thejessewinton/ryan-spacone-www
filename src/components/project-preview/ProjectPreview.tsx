@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { getPreviewUrl } from "utils/get-url";
-import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
+import type { ProjectDocumentData } from "../../../prismicio-types";
 import { clsx } from "clsx";
 import { useRef, useEffect, useState } from "react";
 import Player from "@vimeo/player";

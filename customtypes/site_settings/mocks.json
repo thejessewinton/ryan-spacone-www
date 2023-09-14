@@ -1,0 +1,94 @@
+[
+  {
+    "slices": {
+      "__TYPE__": "SliceContentType",
+      "value": [
+        {
+          "key": "navigation_item$1e3dcf0c-ab8a-4d66-a7ba-a896532e9ac4",
+          "name": "navigation_item",
+          "widget": {
+            "__TYPE__": "SharedSliceContent",
+            "variation": "default",
+            "primary": {
+              "label": {
+                "__TYPE__": "FieldContent",
+                "value": "stood",
+                "type": "Text"
+              },
+              "link": {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "ExternalLink",
+                  "url": "https://prismic.io"
+                }
+              }
+            },
+            "items": [
+              {
+                "__TYPE__": "GroupItemContent",
+                "value": [
+                  [
+                    "label",
+                    {
+                      "__TYPE__": "FieldContent",
+                      "value": "dozen",
+                      "type": "Text"
+                    }
+                  ],
+                  [
+                    "link",
+                    {
+                      "__TYPE__": "LinkContent",
+                      "value": {
+                        "__TYPE__": "ExternalLink",
+                        "url": "https://slicemachine.dev"
+                      }
+                    }
+                  ]
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "socials": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "label",
+              {
+                "__TYPE__": "FieldContent",
+                "value": "mysterious",
+                "type": "Text"
+              }
+            ],
+            [
+              "link",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "ExternalLink",
+                  "url": "https://slicemachine.dev"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "meta_title": {
+      "__TYPE__": "FieldContent",
+      "value": "wind",
+      "type": "Text"
+    },
+    "meta_description": {
+      "__TYPE__": "FieldContent",
+      "value": "smoke",
+      "type": "Text"
+    }
+  }
+]

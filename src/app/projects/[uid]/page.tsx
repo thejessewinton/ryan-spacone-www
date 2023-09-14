@@ -8,12 +8,21 @@ import { ProjectNav } from "components/project-nav/ProjectNav";
 import Link from "next/link";
 import { ImageGallery } from "components/image-gallery/ImageGallery";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
 
 interface ProjectParams {
   params: { uid: string };
 }
+
+export const generateMetadata = async ({params}: ProjectParams): Promise<Metadata> => {
+  const { project } = await getProject(params.uid);
+
+  return {
+    title: project.data.meta_title,
+  }
+} 
 
 const CreditsSection = ({
   projectName,

@@ -1,44 +1,14 @@
-import { createClient, getRepositoryEndpoint } from "@prismicio/client";
-import { env } from "env/server.mjs";
 import type {
   CategoryDocument,
   HomeDocument,
   StillsSetDocument,
   ProjectDocument,
   StillsDocument,
-} from "../../.slicemachine/prismicio";
+} from "../../prismicio-types";
 import { cache } from "react";
+import { createClient } from "prismicio";
 
-const endpoint = getRepositoryEndpoint(env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME);
-
-export const client = createClient(endpoint, {
-  routes: [
-    {
-      type: "home",
-      path: "/",
-    },
-    {
-      type: "about",
-      path: "/:uid",
-    },
-    {
-      type: "stills",
-      path: "/:uid",
-    },
-    {
-      type: "stills_set",
-      path: "/stills/:uid",
-    },
-    {
-      type: "project",
-      path: "/projects/:uid",
-    },
-    {
-      type: "category",
-      path: "/category/:uid",
-    },
-  ],
-});
+const client = createClient();
 
 export const getSiteSettings = cache(async () => {
   return await client.getSingle("site_settings");

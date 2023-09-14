@@ -1,0 +1,104 @@
+[
+  {
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Influence"
+          }
+        }
+      ]
+    },
+    "cover": {
+      "__TYPE__": "ImageContent",
+      "origin": {
+        "id": "main",
+        "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+        "width": 3168,
+        "height": 4752
+      },
+      "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+      "width": 3168,
+      "height": 4752,
+      "edit": {
+        "zoom": 1,
+        "crop": {
+          "x": 0,
+          "y": 0
+        },
+        "background": "transparent"
+      },
+      "thumbnails": {
+        "cover": {
+          "origin": {
+            "id": "cover",
+            "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
+            "width": 4480,
+            "height": 4480
+          },
+          "url": "https://images.unsplash.com/photo-1587840171670-8b850147754e?rect=0%2C1458%2C4480%2C1565&w=1440&h=503",
+          "width": 1440,
+          "height": 503,
+          "edit": {
+            "zoom": 1,
+            "crop": {
+              "x": 0,
+              "y": 1458
+            },
+            "background": "transparent"
+          }
+        }
+      }
+    },
+    "stills": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "image",
+              {
+                "__TYPE__": "ImageContent",
+                "origin": {
+                  "id": "main",
+                  "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+                  "width": 5616,
+                  "height": 3744
+                },
+                "url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
+                "width": 5616,
+                "height": 3744,
+                "edit": {
+                  "zoom": 1,
+                  "crop": {
+                    "x": 0,
+                    "y": 0
+                  },
+                  "background": "transparent"
+                },
+                "thumbnails": {}
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "trick"
+    },
+    "meta_title": {
+      "__TYPE__": "FieldContent",
+      "value": "atomic",
+      "type": "Text"
+    },
+    "meta_description": {
+      "__TYPE__": "FieldContent",
+      "value": "driven",
+      "type": "Text"
+    }
+  }
+]

@@ -7,6 +7,7 @@ import { Footer } from "components/footer/Footer";
 import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
 import { getSiteSettings } from "utils/prismic";
 import { ScrollWrapper } from "components/scroll-wrapper/ScrollWrapper";
+import type { Metadata } from "next";
 
 const openSans = Open_Sans({
   variable: "--font-sans",
@@ -20,6 +21,13 @@ const lora = Lora({
   display: "optional",
   weight: ["400", "500", "600", "700"],
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: 'Ryan Spacone',
+    template: '%s — Ryan Spacone',
+  }
+}
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
   const { data } = await getSiteSettings();

@@ -4,7 +4,7 @@ import { useLightbox } from "hooks/use-lightbox";
 import type {
   ProjectDocumentData,
   StillsSetDocumentData,
-} from "../../../.slicemachine/prismicio";
+} from "../../../prismicio-types";
 import Image from "next/image";
 import { useRef } from "react";
 import { useClickOutside } from "hooks/use-click-outside";

@@ -3,7 +3,7 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import Image from "next/image";
 import Link from "next/link";
 import { getBlurUrl, getImageUrl } from "utils/get-url";
-import type { StillsSetDocumentData } from "../../../.slicemachine/prismicio";
+import type { StillsSetDocumentData } from "../../../prismicio-types";
 
 export const StillsCard = ({
   href,

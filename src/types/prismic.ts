@@ -3,7 +3,7 @@ import type {
   SiteSettingsDocumentDataSlicesSlice,
   SiteSettingsDocumentDataSocialsItem,
   StillsSetDocument,
-} from "../../.slicemachine/prismicio";
+} from "../../prismicio-types";
 
 export type NavigationProps = SiteSettingsDocumentDataSlicesSlice[];
 export type SocialsProps = SiteSettingsDocumentDataSocialsItem[];

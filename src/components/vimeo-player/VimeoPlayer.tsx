@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { getVideoUrl } from "utils/get-url";
-import type { ProjectDocumentData } from "../../../.slicemachine/prismicio";
+import type { ProjectDocumentData } from "../../../prismicio-types";
 
 export const VimeoPlayer = ({
   video,

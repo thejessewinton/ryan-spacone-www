@@ -1,0 +1,49 @@
+[
+  {
+    "title": {
+      "__TYPE__": "StructuredTextContent",
+      "value": [
+        {
+          "type": "heading1",
+          "content": {
+            "text": "Planet"
+          }
+        }
+      ]
+    },
+    "sets": {
+      "__TYPE__": "GroupContentType",
+      "value": [
+        {
+          "__TYPE__": "GroupItemContent",
+          "value": [
+            [
+              "set",
+              {
+                "__TYPE__": "LinkContent",
+                "value": {
+                  "__TYPE__": "DocumentLink",
+                  "id": "mock_document_id"
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "alphabet"
+    },
+    "meta_title": {
+      "__TYPE__": "FieldContent",
+      "value": "war",
+      "type": "Text"
+    },
+    "meta_description": {
+      "__TYPE__": "FieldContent",
+      "value": "once",
+      "type": "Text"
+    }
+  }
+]

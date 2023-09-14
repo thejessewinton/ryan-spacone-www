@@ -2,11 +2,20 @@ import { asHTML, asLink } from "@prismicio/helpers";
 import { getAboutPage } from "utils/prismic";
 import Image from "next/image";
 import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
-import type { AboutDocumentData } from "../../../.slicemachine/prismicio";
+import type { AboutDocumentData } from "../../../prismicio-types";
 import Link from "next/link";
 import { getImageUrl } from "utils/get-url";
+import type { Metadata } from "next";
 
 export const revalidate = 60;
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { data} = await getAboutPage()
+  
+  return {
+    title: data.meta_title,
+  };
+}
 
 const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
   return (
