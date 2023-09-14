@@ -138,12 +138,7 @@ const Project = async ({ params }: ProjectParams) => {
         ) : null}
         {project.data.additional_videos.length
           ? project.data.additional_videos.map((video, i) => {
-              return (
-                <AdditionalVimeoPlayer
-                  key={i}
-                  html={video.embed_url.html as string}
-                />
-              );
+              return <VimeoPlayer key={i} video={video.embed_url} />;
             })
           : null}
         <ImageGallery stills={project.data.stills} />
