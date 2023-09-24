@@ -9,9 +9,6 @@
 const config = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    appDir: true,
-  },
   images: {
     domains: ["images.prismic.io", "i.vimeocdn.com"],
   },

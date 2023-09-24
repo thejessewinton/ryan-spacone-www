@@ -4,7 +4,7 @@ import { Lora, Open_Sans } from "next/font/google";
 import "../styles/globals.css";
 import { Header } from "components/header/Header";
 import { Footer } from "components/footer/Footer";
-import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper";
+import { AnalyticsWrapper } from "components/analytics-wrapper/AnalyticsWrapper";
 import { getSiteSettings } from "utils/prismic";
 import { ScrollWrapper } from "components/scroll-wrapper/ScrollWrapper";
 import type { Metadata } from "next";

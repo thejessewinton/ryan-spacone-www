@@ -11,5 +11,8 @@ export const env = createEnv({
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+    NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME:
+      process.env.NEXT_PUBLIC_PRISMIC_REPOSITORY_NAME,
   },
 });
