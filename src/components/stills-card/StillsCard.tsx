@@ -15,7 +15,10 @@ export const StillsCard = ({
   if (!set.cover.cover.url) return null;
 
   return (
-    <ScrollObserver>
+    <ScrollObserver
+      initial="translate-y-[50px] opacity-0"
+      whileInView="translate-y-0 opacity-100"
+    >
       <Link
         href={href}
         aria-label={asText(set.title)}

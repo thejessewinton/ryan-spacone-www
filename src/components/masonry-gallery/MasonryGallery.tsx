@@ -31,6 +31,8 @@ export const MasonryGallery = ({
             <ScrollObserver
               key={i}
               className={clsx("bg-neutral-900", className)}
+              initial="translate-y-[50px] opacity-0"
+              whileInView="translate-y-0 opacity-100"
             >
               <Image
                 onClick={() => handleOpen(i)}

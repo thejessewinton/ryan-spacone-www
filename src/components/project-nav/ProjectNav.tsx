@@ -12,7 +12,10 @@ export const ProjectNav = ({
   first: string | undefined;
 }) => {
   return (
-    <ScrollObserver>
+    <ScrollObserver
+      initial="translate-y-[50px] opacity-0"
+      whileInView="translate-y-0 opacity-100"
+    >
       <div className="my-12 grid h-24 grid-cols-2 overflow-hidden md:my-24">
         {previous ? (
           <Link
