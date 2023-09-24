@@ -45,8 +45,6 @@ export const ImageGallery = ({
         return (
           <>
             <ScrollObserver
-              initial="translate-y-[50px] opacity-0"
-              whileInView="translate-y-0 opacity-100"
               key={i}
               className={clsx(
                 "bg-neutral-900",

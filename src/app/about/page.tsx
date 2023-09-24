@@ -74,10 +74,7 @@ const About = async () => {
   const { data } = await getAboutPage();
   return (
     <div className="mx-auto max-w-4xl">
-      <ScrollObserver
-        initial="translate-y-[50px] opacity-0"
-        whileInView="translate-y-0 opacity-100"
-      >
+      <ScrollObserver>
         <Image
           src={data.image.url as string}
           width={data.image.dimensions?.width}

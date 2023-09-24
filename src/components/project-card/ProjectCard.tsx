@@ -11,21 +11,15 @@ import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 export const ProjectCard = ({
   href,
   project,
-  preview,
-  previewOnHover = false,
 }: {
   href: string;
   project: ProjectDocumentData;
   preview?: ProjectDocumentData["preview"];
-  previewOnHover?: boolean;
 }) => {
   if (!project.cover.widescreen.url) return null;
 
   return (
-    <ScrollObserver
-      initial="translate-y-[50px] opacity-0"
-      whileInView="translate-y-0 opacity-100"
-    >
+    <ScrollObserver>
       <Link href={href} aria-label={asText(project.title)}>
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
           <Image
@@ -38,21 +32,8 @@ export const ProjectCard = ({
             blurDataURL={getBlurUrl(project.cover.widescreen.url)}
             quality={100}
           />
-          {preview ? (
-            <ProjectPreview
-              showOnHover={previewOnHover}
-              preview={project.preview}
-            >
-              <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
-                {project.client ? (
-                  <span className="block text-[0.6rem] md:text-base">
-                    {asText(project.client)}
-                  </span>
-                ) : null}
-                {asText(project.title)}
-              </h2>
-            </ProjectPreview>
-          ) : (
+
+          <ProjectPreview preview={project.preview}>
             <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
               {project.client ? (
                 <span className="block text-[0.6rem] md:text-base">
@@ -61,7 +42,7 @@ export const ProjectCard = ({
               ) : null}
               {asText(project.title)}
             </h2>
-          )}
+          </ProjectPreview>
         </div>
       </Link>
     </ScrollObserver>

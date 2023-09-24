@@ -6,14 +6,15 @@ import type { ComponentPropsWithRef, ElementRef } from "react";
 import { useRef } from "react";
 
 type ScrollObserverProps = ComponentPropsWithRef<"div"> & {
-  initial: string;
-  whileInView: string;
+  initial?: string;
+  whileInView?: string;
 };
 
 export const ScrollObserver = ({
   children,
-  initial,
-  whileInView,
+  initial = "translate-y-[50px] opacity-0",
+  whileInView = "translate-y-0 opacity-100",
+
   className,
   ...props
 }: ScrollObserverProps) => {

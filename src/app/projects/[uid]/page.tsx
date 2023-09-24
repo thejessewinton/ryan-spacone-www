@@ -50,10 +50,7 @@ const CreditsSection = ({
   links: ProjectProps["links"];
 }) => {
   return (
-    <ScrollObserver
-      initial="translate-y-[50px] opacity-0"
-      whileInView="translate-y-0 opacity-100"
-    >
+    <ScrollObserver>
       <section className="grid w-full gap-4 px-3 py-8 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
         <h2 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
           {client ? (

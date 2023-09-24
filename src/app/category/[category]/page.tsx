@@ -8,13 +8,15 @@ interface CategoryParams {
   params: { category: string };
 }
 
-export const generateMetadata = async ({ params}: CategoryParams): Promise<Metadata> => {
-  const { data} = await getCategory(params.category)
-  
+export const generateMetadata = async ({
+  params,
+}: CategoryParams): Promise<Metadata> => {
+  const { data } = await getCategory(params.category);
+
   return {
     title: data.meta_title,
   };
-}
+};
 
 const Index = async ({ params }: CategoryParams) => {
   const { data } = await getCategory(params.category);
@@ -27,7 +29,6 @@ const Index = async ({ params }: CategoryParams) => {
           key={project.uid}
           project={project.data}
           preview={project.data.preview}
-          previewOnHover={true}
         />
       ))}
     </div>
