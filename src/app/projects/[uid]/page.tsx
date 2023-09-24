@@ -1,5 +1,5 @@
 import type { ProjectProps } from "types/prismic";
-import { getProject } from "utils/prismic";
+import { getProject, getProjects } from "utils/prismic";
 import { asLink, asText } from "@prismicio/helpers";
 import { VimeoPlayer } from "components/vimeo-player/VimeoPlayer";
 import Image from "next/image";
@@ -15,6 +15,16 @@ export const revalidate = 60;
 interface ProjectParams {
   params: { uid: string };
 }
+
+export const generateStaticParams = async () => {
+  const { results } = await getProjects();
+
+  return results.map((page) => ({
+    params: {
+      uid: page.uid,
+    },
+  }));
+};
 
 export const generateMetadata = async ({
   params,

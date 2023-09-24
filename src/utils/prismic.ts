@@ -85,7 +85,7 @@ export const getProject = cache(async (uid: string) => {
   >("category", categoryUid);
 
   const currentProject = allProjectsInCategory.data.projects.findIndex(
-    (project) => project.project.uid === uid
+    (project) => project.project.uid === uid,
   );
 
   const firstProject =
@@ -129,7 +129,7 @@ export const getStillsSet = cache(async (uid: string) => {
 
   const allStillsSets = await getStillsPage();
   const currentSet = allStillsSets.data.sets.findIndex(
-    (set) => set.set.uid === uid
+    (set) => set.set.uid === uid,
   );
 
   const firstSet = allStillsSets.data.sets[

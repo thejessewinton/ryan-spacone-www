@@ -8,6 +8,7 @@ import { AnalyticsWrapper } from "components/analytics-wrapper/analytics-wrapper
 import { getSiteSettings } from "utils/prismic";
 import { ScrollWrapper } from "components/scroll-wrapper/ScrollWrapper";
 import type { Metadata } from "next";
+import { env } from "env.mjs";
 
 const openSans = Open_Sans({
   variable: "--font-sans",
@@ -24,10 +25,31 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Ryan Spacone',
-    template: '%s — Ryan Spacone',
-  }
-}
+    default: "Ryan Spacone",
+    template: "%s — Ryan Spacone",
+  },
+  twitter: {
+    title: "Ryan Spacone",
+    card: "summary_large_image",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: env.NEXT_PUBLIC_URL,
+    title: "Ryan Spacone",
+    description: "",
+    images: [
+      {
+        url: "/og.jpg",
+      },
+    ],
+  },
+  metadataBase: new URL(env.NEXT_PUBLIC_URL),
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
   const { data } = await getSiteSettings();
