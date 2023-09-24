@@ -43,29 +43,27 @@ export const ImageGallery = ({
         const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
 
         return (
-          <>
-            <ScrollObserver
-              key={i}
-              className={clsx(
-                "bg-neutral-900",
-                className,
-                !clickable ? "pointer-events-none" : "",
-              )}
-            >
-              <Image
-                onClick={() => (isOpen ? null : handleOpen(i))}
-                src={getImageUrl(still.image.url)}
-                width={still.image.dimensions.width}
-                height={still.image.dimensions.height}
-                alt="Project Image"
-                loading="eager"
-                placeholder="blur"
-                quality={100}
-                blurDataURL={getBlurUrl(still.image.url)}
-                className="mx-auto block w-full cursor-pointer"
-              />
-            </ScrollObserver>
-          </>
+          <ScrollObserver
+            key={still.image.url}
+            className={clsx(
+              "bg-neutral-900",
+              className,
+              !clickable ? "pointer-events-none" : "",
+            )}
+          >
+            <Image
+              onClick={() => (isOpen ? null : handleOpen(i))}
+              src={getImageUrl(still.image.url)}
+              width={still.image.dimensions.width}
+              height={still.image.dimensions.height}
+              alt="Project Image"
+              loading="eager"
+              placeholder="blur"
+              quality={100}
+              blurDataURL={getBlurUrl(still.image.url)}
+              className="mx-auto block w-full cursor-pointer"
+            />
+          </ScrollObserver>
         );
       })}
       {isOpen && createPortal(<Lightbox images={stills} />, document.body)}

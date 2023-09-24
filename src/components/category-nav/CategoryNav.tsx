@@ -5,18 +5,18 @@ import Link from "next/link";
 export const CategoryNav = () => {
   return (
     <ScrollObserver>
-      <div className="container mx-auto py-20">
-        <nav className="flex flex-col justify-between md:flex-row">
+      <div className="container mx-auto px-8 py-20">
+        <nav className="flex justify-between">
           <Link
             href="/category/narrative"
-            className="tracking-loose group relative flex items-center justify-center text-lg font-normal uppercase text-neutral-600"
+            className="tracking-loose group relative flex items-center justify-center text-center text-sm font-normal uppercase text-neutral-600 md:text-base"
           >
             Narrative
             <HoverLine />
           </Link>
           <Link
-            href="/category/narrative"
-            className="tracking-loose group relative flex items-center justify-center text-lg font-normal uppercase text-neutral-600"
+            href="/category/commercial"
+            className="tracking-loose group relative flex items-center justify-center text-center text-sm font-normal uppercase text-neutral-600 md:text-base"
           >
             Commercial
             <HoverLine />
