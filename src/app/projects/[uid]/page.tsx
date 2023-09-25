@@ -140,25 +140,27 @@ const Project = async ({ params }: ProjectParams) => {
         {project.data.secondary_video.embed_url ? (
           <VimeoPlayer video={project.data.secondary_video} />
         ) : null}
-        {}
-        <div
-          className={clsx("grid gap-2", {
-            "md:grid-cols-2":
-              project.data.additional_videos &&
-              project.data.additional_videos.length % 2 === 0,
-          })}
-        >
-          {project.data.additional_videos &&
-          project.data.additional_videos.length
-            ? project.data.additional_videos.map((video, i) => {
-                return (
-                  <ScrollObserver key={i}>
-                    <VimeoPlayer video={video.embed_url} />
-                  </ScrollObserver>
-                );
-              })
-            : null}
-        </div>
+        {project.data.additional_videos && (
+          <>
+            <div
+              className={clsx("grid gap-2", {
+                "md:grid-cols-2":
+                  project.data.additional_videos &&
+                  project.data.additional_videos.length % 2 === 0,
+              })}
+            >
+              {project.data.additional_videos.length
+                ? project.data.additional_videos.map((video, i) => {
+                    return (
+                      <ScrollObserver key={i}>
+                        <VimeoPlayer video={video.embed_url} />
+                      </ScrollObserver>
+                    );
+                  })
+                : null}
+            </div>
+          </>
+        )}
         <ImageGallery stills={project.data.stills} />
       </div>
       <ProjectNav
