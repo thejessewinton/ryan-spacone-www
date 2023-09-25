@@ -5,8 +5,8 @@ import Link from "next/link";
 export const CategoryNav = () => {
   return (
     <ScrollObserver>
-      <div className="container mx-auto px-10 py-20">
-        <nav className="grid grid-cols-2 justify-between">
+      <div className="container mx-auto p-20">
+        <nav className="flex justify-between">
           <Link
             href="/category/narrative"
             className="tracking-loose group relative flex items-center justify-center text-center font-serif text-sm font-normal uppercase text-neutral-600 md:text-base"
