@@ -76,23 +76,19 @@ const About = async () => {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <ScrollObserver>
-        <BioSlider images={data.stills} />
-        <div className="px-3">
-          <div
-            className="mb-8 block text-sm font-light"
-            dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
-          />
+      <BioSlider images={data.stills} />
+      <div className="px-3">
+        <div
+          className="mb-8 block text-sm font-light"
+          dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
+        />
 
-          {data.links && data.links.length ? (
-            <Links links={data.links} />
-          ) : null}
+        {data.links && data.links.length ? <Links links={data.links} /> : null}
 
-          {data.representation && data.representation.length ? (
-            <Representation representation={data.representation} />
-          ) : null}
-        </div>
-      </ScrollObserver>
+        {data.representation && data.representation.length ? (
+          <Representation representation={data.representation} />
+        ) : null}
+      </div>
     </div>
   );
 };

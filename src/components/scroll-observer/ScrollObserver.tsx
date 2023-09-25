@@ -14,7 +14,6 @@ export const ScrollObserver = ({
   children,
   initial = "translate-y-[50px] opacity-0",
   whileInView = "translate-y-0 opacity-100",
-
   className,
   ...props
 }: ScrollObserverProps) => {
