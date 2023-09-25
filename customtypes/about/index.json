@@ -5,12 +5,26 @@
   "status": true,
   "json": {
     "Main": {
-      "image": {
-        "type": "Image",
+      "stills": {
+        "type": "Group",
         "config": {
-          "label": "Image",
-          "constraint": {},
-          "thumbnails": []
+          "label": "Stills",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": [
+                  {
+                    "name": "thumbnail",
+                    "width": 1200,
+                    "height": 675
+                  }
+                ]
+              }
+            }
+          }
         }
       },
       "bio": {

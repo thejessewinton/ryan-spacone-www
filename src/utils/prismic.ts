@@ -36,6 +36,8 @@ export const getAboutPage = cache(async () => {
   return await client.getSingle("about");
 });
 
+export type AboutPage = Awaited<ReturnType<typeof getAboutPage>>;
+
 export const getProjects = cache(async () => {
   return await client.getByType("project");
 });
