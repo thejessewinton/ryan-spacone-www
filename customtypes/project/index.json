@@ -46,6 +46,20 @@
           ]
         }
       },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured Image",
+          "constraint": {},
+          "thumbnails": [
+            {
+              "name": "widescreen",
+              "width": 1440,
+              "height": 503
+            }
+          ]
+        }
+      },
       "preview": {
         "type": "Embed",
         "config": {

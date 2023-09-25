@@ -348,6 +348,7 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/embed
    *
    */
+  featured_image: prismicT.ImageField<"featured_image">;
   preview: prismicT.EmbedField;
   /**
    * Category field in *Project*

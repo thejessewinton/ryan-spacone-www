@@ -123,6 +123,18 @@ const Project = async ({ params }: ProjectParams) => {
       <div className="flex flex-col gap-2">
         {project.data.video.embed_url ? (
           <VimeoPlayer video={project.data.video} />
+        ) : project.data.featured_image && project.data.featured_image.url ? (
+          <Image
+            src={getImageUrl(project.data.featured_image.url)}
+            width={project.data.featured_image.dimensions.width}
+            height={project.data.featured_image.dimensions.height}
+            alt="Project Image"
+            loading="lazy"
+            placeholder="blur"
+            blurDataURL={getBlurUrl(project.data.featured_image.url)}
+            className="mx-auto block w-full"
+            quality={100}
+          />
         ) : project.data.cover && project.data.cover.url ? (
           <Image
             src={getImageUrl(project.data.cover.url)}
@@ -143,7 +155,7 @@ const Project = async ({ params }: ProjectParams) => {
         {project.data.additional_videos && (
           <>
             <div
-              className={clsx("grid gap-2", {
+              className={clsx("mb-10 grid gap-2", {
                 "md:grid-cols-2":
                   project.data.additional_videos &&
                   project.data.additional_videos.length % 2 === 0,
