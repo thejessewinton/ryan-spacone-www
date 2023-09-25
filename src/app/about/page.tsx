@@ -6,6 +6,7 @@ import type { AboutDocumentData } from "../../../prismicio-types";
 import Link from "next/link";
 import { getImageUrl } from "utils/get-url";
 import type { Metadata } from "next";
+import { BioSlider } from "components/bio-slider/BioSlider";
 
 export const revalidate = 60;
 
@@ -75,16 +76,7 @@ const About = async () => {
   return (
     <div className="mx-auto max-w-4xl">
       <ScrollObserver>
-        <Image
-          src={data.image.url as string}
-          width={data.image.dimensions?.width}
-          height={data.image.dimensions?.height}
-          alt="Project Image"
-          className="mb-8 mt-8 w-full"
-          placeholder="blur"
-          quality={100}
-          blurDataURL={`${data.image.url as string}&blur=200`}
-        />
+        <BioSlider images={data.images} />
         <div className="px-3">
           <div
             className="mb-8 block text-sm font-light"

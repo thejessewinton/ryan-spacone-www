@@ -13,6 +13,22 @@
           "thumbnails": []
         }
       },
+      "stills": {
+        "type": "Group",
+        "config": {
+          "label": "Stills",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "Image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
       "bio": {
         "type": "StructuredText",
         "config": {
