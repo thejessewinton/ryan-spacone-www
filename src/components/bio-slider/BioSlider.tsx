@@ -3,9 +3,19 @@
 import { type AboutPage } from "utils/prismic";
 import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
+import type { KeenSliderPlugin } from "keen-slider/react";
 import { useKeenSlider } from "keen-slider/react";
 import { getImageUrl } from "utils/get-url";
 import { useState } from "react";
+
+const AdaptiveHeight: KeenSliderPlugin = (slider) => {
+  function updateHeight() {
+    slider.container.style.height =
+      slider.slides[slider.track.details.rel]?.offsetHeight + "px";
+  }
+  slider.on("created", updateHeight);
+  slider.on("slideChanged", updateHeight);
+};
 
 export const BioSlider = ({
   images,
@@ -36,7 +46,7 @@ export const BioSlider = ({
           if (mouseOver) return;
           timeout = setTimeout(() => {
             slider.next();
-          }, 6000);
+          }, 4000);
         }
         slider.on("created", () => {
           slider.container.addEventListener("mouseover", () => {
@@ -53,6 +63,7 @@ export const BioSlider = ({
         slider.on("animationEnded", nextTimeout);
         slider.on("updated", nextTimeout);
       },
+      AdaptiveHeight,
     ],
   );
 

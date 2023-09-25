@@ -58,8 +58,8 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
           {project.starring && project.starring.length ? (
             <div className="text-sm font-thin md:text-center">
               <span className="font-normal uppercase">Starring</span>
-              {project.starring.map((item) => (
-                <span key={item.name} className="md:text-normal block text-sm">
+              {project.starring.map((item, index) => (
+                <span key={index} className="md:text-normal block text-sm">
                   {item.name}
                 </span>
               ))}
@@ -69,10 +69,10 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
 
         <div className="flex flex-col gap-4 text-right font-thin md:text-left">
           {project.credits && project.credits.length
-            ? project.credits.map((credit) => {
+            ? project.credits.map((credit, index) => {
                 return (
                   <div
-                    key={credit.label}
+                    key={index}
                     className="md:text-normal text-sm md:col-span-1"
                   >
                     <span className="font-normal uppercase">
@@ -90,10 +90,10 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
               })
             : null}
           {project.links && project.links.length
-            ? project.links.map((item) => {
+            ? project.links.map((item, index) => {
                 return (
                   <div
-                    key={item.label}
+                    key={index}
                     className="md:text-normal text-sm md:col-span-1"
                   >
                     <span className="font-normal uppercase">{item.label}</span>
@@ -163,11 +163,7 @@ const Project = async ({ params }: ProjectParams) => {
             >
               {project.data.additional_videos.length
                 ? project.data.additional_videos.map((video, i) => {
-                    return (
-                      <ScrollObserver key={i}>
-                        <VimeoPlayer video={video.embed_url} />
-                      </ScrollObserver>
-                    );
+                    return <VimeoPlayer key={i} video={video.embed_url} />;
                   })
                 : null}
             </div>

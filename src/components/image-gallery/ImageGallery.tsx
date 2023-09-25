@@ -44,7 +44,7 @@ export const ImageGallery = ({
 
         return (
           <ScrollObserver
-            key={still.image.url}
+            key={i}
             className={clsx(
               "bg-neutral-900",
               className,
