@@ -74,8 +74,6 @@ const Representation = ({
 const About = async () => {
   const { data } = await getAboutPage();
 
-  console.log("datafetch", data.stills);
-
   return (
     <div className="mx-auto max-w-4xl">
       <ScrollObserver>
