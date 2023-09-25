@@ -73,10 +73,13 @@ const Representation = ({
 
 const About = async () => {
   const { data } = await getAboutPage();
+
+  console.log("datafetch", data.stills);
+
   return (
     <div className="mx-auto max-w-4xl">
       <ScrollObserver>
-        <BioSlider images={data.images} />
+        <BioSlider images={data.stills} />
         <div className="px-3">
           <div
             className="mb-8 block text-sm font-light"

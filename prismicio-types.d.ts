@@ -18,7 +18,6 @@ interface AboutDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  image: prismicT.ImageField<never>;
   /**
    * Bio field in *About*
    *
@@ -29,7 +28,7 @@ interface AboutDocumentData {
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  images: prismicT.GroupField<Simplify<AboutDocumentDataImagesItem>>;
+  stills: prismicT.GroupField<Simplify<AboutDocumentDataImagesItem>>;
   bio: prismicT.RichTextField;
   /**
    * Links field in *About*
@@ -575,7 +574,7 @@ export interface AboutDocumentDataImagesItem {
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
-  image: prismicT.ImageField<never>;
+  image: prismicT.ImageField<"thumbnail">;
 }
 /**
  * Project document from Prismic
