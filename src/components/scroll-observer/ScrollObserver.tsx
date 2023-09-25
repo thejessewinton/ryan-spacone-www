@@ -1,24 +1,40 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import clsx from "clsx";
+import { useInView } from "framer-motion";
+import type { ComponentPropsWithRef, ElementRef } from "react";
+import { useRef } from "react";
+
+type ScrollObserverProps = ComponentPropsWithRef<"div"> & {
+  initial?: string;
+  whileInView?: string;
+};
 
 export const ScrollObserver = ({
   children,
+  initial = "translate-y-[50px] opacity-0",
+  whileInView = "translate-y-0 opacity-100",
+
   className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
+  ...props
+}: ScrollObserverProps) => {
+  const ref = useRef<ElementRef<"div">>(null);
+
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+  });
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={className}
-      viewport={{ once: true }}
+    <div
+      ref={ref}
+      className={clsx("transition-all duration-500", className, {
+        [initial]: !isInView,
+        [whileInView]: isInView,
+      })}
+      {...props}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
