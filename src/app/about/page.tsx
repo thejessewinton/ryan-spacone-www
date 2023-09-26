@@ -1,12 +1,12 @@
 import { asHTML, asLink } from "@prismicio/helpers";
 import { getAboutPage } from "utils/prismic";
 import Image from "next/image";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 import type { AboutDocumentData } from "../../../prismicio-types";
 import Link from "next/link";
 import { getImageUrl } from "utils/get-url";
 import type { Metadata } from "next";
 import { BioSlider } from "components/bio-slider/BioSlider";
+import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
 
 export const revalidate = 60;
 
@@ -75,21 +75,25 @@ const About = async () => {
   const { data } = await getAboutPage();
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <BioSlider images={data.stills} />
-      <div className="px-3">
-        <div
-          className="mb-8 block text-sm font-light"
-          dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
-        />
+    <ScrollObserver>
+      <div className="mx-auto max-w-4xl">
+        <BioSlider images={data.stills} />
+        <div className="px-3">
+          <div
+            className="mb-8 block text-sm font-light"
+            dangerouslySetInnerHTML={{ __html: asHTML(data.bio) }}
+          />
 
-        {data.links && data.links.length ? <Links links={data.links} /> : null}
+          {data.links && data.links.length ? (
+            <Links links={data.links} />
+          ) : null}
 
-        {data.representation && data.representation.length ? (
-          <Representation representation={data.representation} />
-        ) : null}
+          {data.representation && data.representation.length ? (
+            <Representation representation={data.representation} />
+          ) : null}
+        </div>
       </div>
-    </div>
+    </ScrollObserver>
   );
 };
 

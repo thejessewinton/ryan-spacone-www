@@ -21,7 +21,6 @@ export const ScrollObserver = ({
 
   const isInView = useInView(ref, {
     once: true,
-    amount: 0.3,
   });
 
   return (
