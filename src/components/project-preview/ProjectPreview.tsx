@@ -52,7 +52,7 @@ export const ProjectPreview = ({
       setIsPlaying(false);
     });
 
-    if (showOnHover) {
+    if (showOnHover && size.width >= 1024) {
       containerRef?.addEventListener("mouseenter", handleMouseEnter);
       containerRef?.addEventListener("mouseleave", handleMouseLeave);
       containerRef?.addEventListener("touchstart", handleMouseEnter);

@@ -70,7 +70,7 @@ export const BioSlider = ({
   return (
     <div
       ref={ref}
-      className="relative mb-10 h-[300px] overflow-hidden md:h-[500px]"
+      className="relative mb-10 aspect-video overflow-hidden md:h-[500px]"
     >
       {images && images.length
         ? images.map(({ image }, index) => {
