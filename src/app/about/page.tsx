@@ -1,24 +1,24 @@
-import { asHTML, asLink } from "@prismicio/helpers";
-import { getAboutPage } from "utils/prismic";
-import Image from "next/image";
-import type { AboutDocumentData } from "../../../prismicio-types";
-import Link from "next/link";
-import { getImageUrl } from "utils/get-url";
-import type { Metadata } from "next";
-import { BioSlider } from "components/bio-slider/BioSlider";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
+import { asHTML, asLink } from '@prismicio/helpers'
+import { getAboutPage } from 'utils/prismic'
+import Image from 'next/image'
+import type { AboutDocumentData } from '../../../prismicio-types'
+import Link from 'next/link'
+import { getImageUrl } from 'utils/get-url'
+import type { Metadata } from 'next'
+import { BioSlider } from 'components/bio-slider/BioSlider'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 
-export const revalidate = 60;
+export const revalidate = 60
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { data } = await getAboutPage();
+  const { data } = await getAboutPage()
 
   return {
     title: data.meta_title,
-  };
-};
+  }
+}
 
-const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
+const Links = ({ links }: { links: AboutDocumentData['links'] }) => {
   return (
     <div className="mb-8 mt-16 grid grid-cols-3 gap-3">
       {links.map((item) => (
@@ -45,13 +45,13 @@ const Links = ({ links }: { links: AboutDocumentData["links"] }) => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
 const Representation = ({
   representation,
 }: {
-  representation: AboutDocumentData["representation"];
+  representation: AboutDocumentData['representation']
 }) => {
   return (
     <div className="mb-8 mt-16 block text-center font-light">
@@ -68,11 +68,11 @@ const Representation = ({
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const About = async () => {
-  const { data } = await getAboutPage();
+  const { data } = await getAboutPage()
 
   return (
     <ScrollObserver>
@@ -94,7 +94,7 @@ const About = async () => {
         </div>
       </div>
     </ScrollObserver>
-  );
-};
+  )
+}
 
-export default About;
+export default About

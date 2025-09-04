@@ -1,7 +1,7 @@
-import clsx from "clsx";
-import type { SVGAttributes } from "react";
+import clsx from 'clsx'
+import type { SVGAttributes } from 'react'
 
-const baseClass = "h-8 w-8";
+const baseClass = 'h-8 w-8'
 
 export const Logo = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
   return (
@@ -11,7 +11,7 @@ export const Logo = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
       viewBox="0 0 124 114"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={clsx("h-10 w-auto", className)}
+      className={clsx('h-10 w-auto', className)}
       {...rest}
     >
       <path
@@ -21,8 +21,8 @@ export const Logo = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
         fill="black"
       />
     </svg>
-  );
-};
+  )
+}
 
 export const IMDBIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
   return (
@@ -37,8 +37,8 @@ export const IMDBIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
     >
       <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM21.3 229.2H21c.1-.1.2-.3.3-.4zM97 319.8H64V192h33zm113.2 0h-28.7v-86.4l-11.6 86.4h-20.6l-12.2-84.5v84.5h-29V192h42.8c3.3 19.8 6 39.9 8.7 59.9l7.6-59.9h43zm11.4 0V192h24.6c17.6 0 44.7-1.6 49 20.9 1.7 7.6 1.4 16.3 1.4 24.4 0 88.5 11.1 82.6-75 82.5zm160.9-29.2c0 15.7-2.4 30.9-22.2 30.9-9 0-15.2-3-20.9-9.8l-1.9 8.1h-29.8V192h31.7v41.7c6-6.5 12-9.2 20.9-9.2 21.4 0 22.2 12.8 22.2 30.1zM265 229.9c0-9.7 1.6-16-10.3-16v83.7c12.2.3 10.3-8.7 10.3-18.4zm85.5 26.1c0-5.4 1.1-12.7-6.2-12.7-6 0-4.9 8.9-4.9 12.7 0 .6-1.1 39.6 1.1 44.7.8 1.6 2.2 2.4 3.8 2.4 7.8 0 6.2-9 6.2-14.4z"></path>
     </svg>
-  );
-};
+  )
+}
 
 export const InstagramIcon = ({
   className,
@@ -56,8 +56,8 @@ export const InstagramIcon = ({
     >
       <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
     </svg>
-  );
-};
+  )
+}
 
 export const VimeoIcon = ({
   className,
@@ -75,8 +75,8 @@ export const VimeoIcon = ({
     >
       <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-16.2 149.6c-1.4 31.1-23.2 73.8-65.3 127.9-43.5 56.5-80.3 84.8-110.4 84.8-18.7 0-34.4-17.2-47.3-51.6-25.2-92.3-35.9-146.4-56.7-146.4-2.4 0-10.8 5-25.1 15.1L64 192c36.9-32.4 72.1-68.4 94.1-70.4 24.9-2.4 40.2 14.6 46 51.1 20.5 129.6 29.6 149.2 66.8 90.5 13.4-21.2 20.6-37.2 21.5-48.3 3.4-32.8-25.6-30.6-45.2-22.2 15.7-51.5 45.8-76.5 90.1-75.1 32.9 1 48.4 22.4 46.5 64z"></path>
     </svg>
-  );
-};
+  )
+}
 
 export const PlayIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
   return (
@@ -85,8 +85,8 @@ export const PlayIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={clsx(
-        "fill-transparent stroke-white transition-all hover:fill-white",
-        className
+        'fill-transparent stroke-white transition-all hover:fill-white',
+        className,
       )}
       {...rest}
     >
@@ -95,8 +95,8 @@ export const PlayIcon = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
         strokeWidth={0.35}
       />
     </svg>
-  );
-};
+  )
+}
 
 export const CloseIcon = ({
   className,
@@ -109,7 +109,7 @@ export const CloseIcon = ({
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={clsx("text-white", baseClass, className)}
+      className={clsx('text-white', baseClass, className)}
       {...rest}
     >
       <path
@@ -118,8 +118,8 @@ export const CloseIcon = ({
         d="M6 18L18 6M6 6l12 12"
       />
     </svg>
-  );
-};
+  )
+}
 
 export const Airplane = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
   return (
@@ -138,8 +138,8 @@ export const Airplane = ({ className, ...rest }: SVGAttributes<SVGElement>) => {
         d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
       />
     </svg>
-  );
-};
+  )
+}
 
 export const RightArrow = ({
   className,
@@ -161,8 +161,8 @@ export const RightArrow = ({
         d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
       />
     </svg>
-  );
-};
+  )
+}
 
 export const LeftArrow = ({
   className,
@@ -184,8 +184,8 @@ export const LeftArrow = ({
         d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
       />
     </svg>
-  );
-};
+  )
+}
 
 export const ChevronDown = ({
   className,
@@ -207,5 +207,5 @@ export const ChevronDown = ({
         d="M19.5 8.25l-7.5 7.5-7.5-7.5"
       />
     </svg>
-  );
-};
+  )
+}

@@ -4,148 +4,147 @@ import type {
   StillsSetDocument,
   ProjectDocument,
   StillsDocument,
-} from "../../prismicio-types";
-import { cache } from "react";
-import { createClient } from "prismicio";
+} from '../../prismicio-types'
+import { cache } from 'react'
+import { createClient } from 'prismicio'
 
-const client = createClient();
+const client = createClient()
 
 export const getSiteSettings = cache(async () => {
-  return await client.getSingle("site_settings");
-});
+  return await client.getSingle('site_settings')
+})
 
 export const getHomePage = cache(async () => {
   return await client.getSingle<
     HomeDocument & {
       data: {
-        projects: { project: ProjectDocument }[];
-      };
+        projects: { project: ProjectDocument }[]
+      }
     }
-  >("home", {
+  >('home', {
     fetchLinks: [
-      "project.title",
-      "project.client",
-      "project.cover",
-      "project.uid",
-      "project.preview",
+      'project.title',
+      'project.client',
+      'project.cover',
+      'project.uid',
+      'project.preview',
     ],
-  });
-});
+  })
+})
 
 export const getAboutPage = cache(async () => {
-  return await client.getSingle("about");
-});
+  return await client.getSingle('about')
+})
 
-export type AboutPage = Awaited<ReturnType<typeof getAboutPage>>;
+export type AboutPage = Awaited<ReturnType<typeof getAboutPage>>
 
 export const getProjects = cache(async () => {
-  return await client.getByType("project");
-});
+  return await client.getByType('project')
+})
 
 export const getCategory = async (category: string) => {
   return await client.getByUID<
     CategoryDocument & {
       data: {
-        projects: { project: ProjectDocument }[];
-      };
+        projects: { project: ProjectDocument }[]
+      }
     }
-  >("category", category, {
+  >('category', category, {
     fetchLinks: [
-      "project.title",
-      "project.client",
-      "project.cover",
-      "project.uid",
-      "project.preview",
+      'project.title',
+      'project.client',
+      'project.cover',
+      'project.uid',
+      'project.preview',
     ],
-  });
-};
+  })
+}
 
 export const getProject = cache(async (uid: string) => {
   const project = await client.getByUID<
     ProjectDocument & {
       data: {
-        category: CategoryDocument;
-      };
+        category: CategoryDocument
+      }
     }
-  >("project", uid, {
-    fetchLinks: ["category.uid"],
-  });
+  >('project', uid, {
+    fetchLinks: ['category.uid'],
+  })
 
-  const categoryUid = project.data.category.uid;
+  const categoryUid = project.data.category.uid
 
   const allProjectsInCategory = await client.getByUID<
     CategoryDocument & {
       data: {
         projects: {
           project: {
-            url: string;
-            uid: string;
-          };
-        }[];
-      };
+            url: string
+            uid: string
+          }
+        }[]
+      }
     }
-  >("category", categoryUid);
+  >('category', categoryUid)
 
   const currentProject = allProjectsInCategory.data.projects.findIndex(
     (project) => project.project.uid === uid,
-  );
+  )
 
   const firstProject =
     allProjectsInCategory.data.projects[
       allProjectsInCategory.data.projects.length -
         allProjectsInCategory.data.projects.length
-    ]?.project.url;
+    ]?.project.url
   const previousProject = allProjectsInCategory.data.projects[
     currentProject - 1
-  ]?.project.url as string;
+  ]?.project.url as string
   const nextProject = allProjectsInCategory.data.projects[currentProject + 1]
-    ?.project.url as string;
+    ?.project.url as string
 
   return {
     project,
     firstProject,
     previousProject,
     nextProject,
-  };
-});
+  }
+})
 
 export const getStillsPage = cache(async () => {
   return await client.getSingle<
     StillsDocument & {
       data: {
-        sets: { set: StillsSetDocument }[];
-      };
+        sets: { set: StillsSetDocument }[]
+      }
     }
-  >("stills", {
+  >('stills', {
     fetchLinks: [
-      "stills_set.title",
-      "stills_set.cover",
-      "stills_setstills_set.uid",
-      "stills_set.preview",
+      'stills_set.title',
+      'stills_set.cover',
+      'stills_setstills_set.uid',
+      'stills_set.preview',
     ],
-  });
-});
+  })
+})
 
 export const getStillsSet = cache(async (uid: string) => {
-  const stillsSet = await client.getByUID("stills_set", uid);
+  const stillsSet = await client.getByUID('stills_set', uid)
 
-  const allStillsSets = await getStillsPage();
+  const allStillsSets = await getStillsPage()
   const currentSet = allStillsSets.data.sets.findIndex(
     (set) => set.set.uid === uid,
-  );
+  )
 
   const firstSet = allStillsSets.data.sets[
     allStillsSets.data.sets.length - allStillsSets.data.sets.length
-  ]?.set.url as string;
+  ]?.set.url as string
 
-  const previousSet = allStillsSets.data.sets[currentSet - 1]?.set
-    .url as string;
-  const nextSet = allStillsSets.data.sets[currentSet + 1]?.set.url as string;
+  const previousSet = allStillsSets.data.sets[currentSet - 1]?.set.url as string
+  const nextSet = allStillsSets.data.sets[currentSet + 1]?.set.url as string
 
   return {
     firstSet,
     stillsSet,
     previousSet,
     nextSet,
-  };
-});
+  }
+})

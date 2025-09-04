@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { asLink } from "@prismicio/helpers";
-import type { SocialsProps } from "types/prismic";
-import { Airplane, IMDBIcon, InstagramIcon, VimeoIcon } from "../icons/Icons";
+import Link from 'next/link'
+import { asLink } from '@prismicio/helpers'
+import type { SocialsProps } from 'types/prismic'
+import { Airplane, IMDBIcon, InstagramIcon, VimeoIcon } from '../icons/Icons'
 
 export const Footer = ({ socials }: { socials: SocialsProps }) => {
   return (
@@ -10,13 +10,13 @@ export const Footer = ({ socials }: { socials: SocialsProps }) => {
         {socials.map((social) => (
           <Link href={asLink(social.link) as string} key={social.label}>
             <span className="sr-only">{social.label}</span>
-            {social.label === "Instagram" ? (
+            {social.label === 'Instagram' ? (
               <InstagramIcon className="transition-colors hover:text-neutral-300" />
-            ) : social.label === "Vimeo" ? (
+            ) : social.label === 'Vimeo' ? (
               <VimeoIcon className="transition-colors hover:text-neutral-300" />
-            ) : social.label === "IMDB" ? (
+            ) : social.label === 'IMDB' ? (
               <IMDBIcon className="transition-colors hover:text-neutral-300" />
-            ) : social.label === "Email" ? (
+            ) : social.label === 'Email' ? (
               <Airplane className="transition-colors hover:text-neutral-300" />
             ) : null}
           </Link>
@@ -26,5 +26,5 @@ export const Footer = ({ socials }: { socials: SocialsProps }) => {
         ©{new Date().getFullYear()} Ryan Spacone. All rights reserved.
       </span>
     </footer>
-  );
-};
+  )
+}

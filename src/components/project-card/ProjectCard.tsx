@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { asText } from "@prismicio/helpers";
-import Link from "next/link";
-import type { ProjectDocumentData } from "../../../prismicio-types";
-import Image from "next/image";
-import { getBlurUrl, getImageUrl } from "utils/get-url";
-import { ProjectPreview } from "components/project-preview/ProjectPreview";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
+import { asText } from '@prismicio/helpers'
+import Link from 'next/link'
+import type { ProjectDocumentData } from '../../../prismicio-types'
+import Image from 'next/image'
+import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { ProjectPreview } from 'components/project-preview/ProjectPreview'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 
 export const ProjectCard = ({
   href,
@@ -14,12 +14,12 @@ export const ProjectCard = ({
   preview,
   previewOnHover = false,
 }: {
-  href: string;
-  project: ProjectDocumentData;
-  preview?: ProjectDocumentData["preview"];
-  previewOnHover?: boolean;
+  href: string
+  project: ProjectDocumentData
+  preview?: ProjectDocumentData['preview']
+  previewOnHover?: boolean
 }) => {
-  if (!project.cover.widescreen.url) return null;
+  if (!project.cover.widescreen.url) return null
 
   return (
     <ScrollObserver>
@@ -62,5 +62,5 @@ export const ProjectCard = ({
         </div>
       </Link>
     </ScrollObserver>
-  );
-};
+  )
+}

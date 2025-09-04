@@ -1,13 +1,13 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { getVideoUrl } from "utils/get-url";
-import type { ProjectDocumentData } from "../../../prismicio-types";
+import { motion } from 'framer-motion'
+import { getVideoUrl } from 'utils/get-url'
+import type { ProjectDocumentData } from '../../../prismicio-types'
 
 export const VimeoPlayer = ({
   video,
 }: {
-  video: ProjectDocumentData["video"];
+  video: ProjectDocumentData['video']
 }) => {
   return (
     <motion.div
@@ -22,5 +22,5 @@ export const VimeoPlayer = ({
         allowFullScreen
       />
     </motion.div>
-  );
-};
+  )
+}

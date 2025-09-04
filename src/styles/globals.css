@@ -1,14 +1,12 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --aspect-widescreen: 3/1;
+  --aspect-widescreen: 3 / 1;
 
-  --font-serif:
-    var(--font-serif), ui-serif, Georgia, Cambria, 'Times New Roman', Times,
-    serif;
-  --font-sans:
-    var(--font-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman",
+    Times, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-brand: #904d27;
   --color-primary: #111111;

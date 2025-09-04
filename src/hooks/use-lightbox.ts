@@ -1,10 +1,10 @@
-import { create } from "zustand";
+import { create } from 'zustand'
 
 export interface LightboxState {
-  isOpen: boolean;
-  toggleOpen: () => void;
-  currentImage: number;
-  setCurrentImage: (index: number) => void;
+  isOpen: boolean
+  toggleOpen: () => void
+  currentImage: number
+  setCurrentImage: (index: number) => void
 }
 
 export const useLightbox = create<LightboxState>((set) => ({
@@ -12,4 +12,4 @@ export const useLightbox = create<LightboxState>((set) => ({
   toggleOpen: () => set((state) => ({ isOpen: !state.isOpen })),
   currentImage: 0,
   setCurrentImage: (index: number) => set(() => ({ currentImage: index })),
-}));
+}))

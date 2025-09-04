@@ -55,9 +55,9 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
           {project.starring ? (
             <div className="text-sm font-thin md:text-center">
               <span className="font-normal uppercase">Starring</span>
-              {project.starring.map((item, index) => (
+              {project.starring.map((item) => (
                 <span
-                  key={index}
+                  key={item.name}
                   className="md:text-normal block space-y-2 text-sm"
                 >
                   {item.name}

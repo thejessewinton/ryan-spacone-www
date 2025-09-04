@@ -1,18 +1,18 @@
-import { asText } from "@prismicio/helpers";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
-import Image from "next/image";
-import Link from "next/link";
-import { getBlurUrl, getImageUrl } from "utils/get-url";
-import type { StillsSetDocumentData } from "../../../prismicio-types";
+import { asText } from '@prismicio/helpers'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
+import Image from 'next/image'
+import Link from 'next/link'
+import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import type { StillsSetDocumentData } from '../../../prismicio-types'
 
 export const StillsCard = ({
   href,
   set,
 }: {
-  href: string;
-  set: StillsSetDocumentData;
+  href: string
+  set: StillsSetDocumentData
 }) => {
-  if (!set.cover.cover.url) return null;
+  if (!set.cover.cover.url) return null
 
   return (
     <ScrollObserver>
@@ -40,5 +40,5 @@ export const StillsCard = ({
         </div>
       </Link>
     </ScrollObserver>
-  );
-};
+  )
+}

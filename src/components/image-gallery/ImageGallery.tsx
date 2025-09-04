@@ -1,54 +1,54 @@
-"use client";
+'use client'
 
-import { clsx } from "clsx";
-import { useLightbox } from "hooks/use-lightbox";
-import type { ProjectProps, StillsSetProps } from "types/prismic";
-import Image from "next/image";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
-import { Lightbox } from "components/lightbox/Lightbox";
-import { getBlurUrl, getImageUrl } from "utils/get-url";
-import { createPortal } from "react-dom";
-import { useEffect, useState } from "react";
+import { clsx } from 'clsx'
+import { useLightbox } from 'hooks/use-lightbox'
+import type { ProjectProps, StillsSetProps } from 'types/prismic'
+import Image from 'next/image'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
+import { Lightbox } from 'components/lightbox/Lightbox'
+import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { createPortal } from 'react-dom'
+import { useEffect, useState } from 'react'
 
 export const ImageGallery = ({
   stills,
 }: {
-  stills: ProjectProps["stills"] | StillsSetProps["stills"];
+  stills: ProjectProps['stills'] | StillsSetProps['stills']
 }) => {
-  const { isOpen, toggleOpen, setCurrentImage } = useLightbox();
-  const [clickable, setClickable] = useState(true);
+  const { isOpen, toggleOpen, setCurrentImage } = useLightbox()
+  const [clickable, setClickable] = useState(true)
 
   const handleOpen = (index: number) => {
-    toggleOpen();
-    setCurrentImage(index);
-  };
+    toggleOpen()
+    setCurrentImage(index)
+  }
 
   useEffect(() => {
     if (isOpen) {
-      setClickable(false);
+      setClickable(false)
     } else {
       const timeout = setTimeout(() => {
-        setClickable(true);
-      }, 100);
+        setClickable(true)
+      }, 100)
 
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(timeout)
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   return (
     <div className="grid grid-cols-2">
       {stills.map((still, i) => {
-        if (!still.image.url) return null;
+        if (!still.image.url) return null
 
-        const className = i % 5 === 0 ? "col-span-2" : "col-span-1";
+        const className = i % 5 === 0 ? 'col-span-2' : 'col-span-1'
 
         return (
           <ScrollObserver
             key={i}
             className={clsx(
-              "bg-neutral-900",
+              'bg-neutral-900',
               className,
-              !clickable ? "pointer-events-none" : "",
+              !clickable ? 'pointer-events-none' : '',
             )}
           >
             <Image
@@ -64,9 +64,9 @@ export const ImageGallery = ({
               className="mx-auto block w-full cursor-pointer"
             />
           </ScrollObserver>
-        );
+        )
       })}
       {isOpen && createPortal(<Lightbox images={stills} />, document.body)}
     </div>
-  );
-};
+  )
+}

@@ -1,15 +1,15 @@
-import { LeftArrow } from "components/icons/Icons";
-import Link from "next/link";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
+import { LeftArrow } from 'components/icons/Icons'
+import Link from 'next/link'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 
 export const ProjectNav = ({
   previous,
   next,
   first,
 }: {
-  previous: string | undefined;
-  next: string | undefined;
-  first: string | undefined;
+  previous: string | undefined
+  next: string | undefined
+  first: string | undefined
 }) => {
   return (
     <ScrollObserver>
@@ -53,5 +53,5 @@ export const ProjectNav = ({
         )}
       </div>
     </ScrollObserver>
-  );
-};
+  )
+}

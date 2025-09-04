@@ -4,17 +4,17 @@ import { RichText } from 'prismic-reactjs'
 const Nav = ({ slice }) => (
   <section>
     <span className="title">
-      {
-        slice.primary.title ?
-        <RichText render={slice.primary.title}/>
-        : <h2>Template slice, update me!</h2>
-      }
+      {slice.primary.title ? (
+        <RichText render={slice.primary.title} />
+      ) : (
+        <h2>Template slice, update me!</h2>
+      )}
     </span>
-    {
-      slice.primary.description ?
-      <RichText render={slice.primary.description}/>
-      : <p>start by editing this slice from inside Slice Machine!</p>
-    }
+    {slice.primary.description ? (
+      <RichText render={slice.primary.description} />
+    ) : (
+      <p>start by editing this slice from inside Slice Machine!</p>
+    )}
     <style jsx>{`
         section {
           max-width: 600px;

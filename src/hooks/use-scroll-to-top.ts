@@ -1,10 +1,10 @@
-import { useSelectedLayoutSegments } from "next/navigation";
-import { useEffect } from "react";
+import { useSelectedLayoutSegments } from 'next/navigation'
+import { useEffect } from 'react'
 
 export const useScrollToTop = () => {
-  const pathname = useSelectedLayoutSegments();
+  const pathname = useSelectedLayoutSegments()
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-};
+    window.scrollTo(0, 0)
+  }, [pathname])
+}

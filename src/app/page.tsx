@@ -1,20 +1,20 @@
-import { CategoryNav } from "components/category-nav/CategoryNav";
-import { ProjectCard } from "components/project-card/ProjectCard";
-import type { Metadata } from "next";
+import { CategoryNav } from 'components/category-nav/CategoryNav'
+import { ProjectCard } from 'components/project-card/ProjectCard'
+import type { Metadata } from 'next'
 
-import { getHomePage } from "utils/prismic";
+import { getHomePage } from 'utils/prismic'
 
-export const revalidate = 60;
+export const revalidate = 60
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { data } = await getHomePage();
+  const { data } = await getHomePage()
   return {
     title: data.meta_title,
-  };
-};
+  }
+}
 
 const Index = async () => {
-  const { data } = await getHomePage();
+  const { data } = await getHomePage()
   return (
     <div className="space-y-2">
       {data.projects.map(({ project }) => (
@@ -28,7 +28,7 @@ const Index = async () => {
       ))}
       <CategoryNav />
     </div>
-  );
-};
+  )
+}
 
-export default Index;
+export default Index

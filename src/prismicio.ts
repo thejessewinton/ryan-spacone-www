@@ -1,11 +1,11 @@
-import * as prismic from "@prismicio/client";
-import * as prismicNext from "@prismicio/next";
-import config from "../slicemachine.config.json";
+import * as prismic from '@prismicio/client'
+import * as prismicNext from '@prismicio/next'
+import config from '../slicemachine.config.json'
 
 /**
  * The project's Prismic repository name.
  */
-export const repositoryName = config.repositoryName;
+export const repositoryName = config.repositoryName
 
 /**
  * A list of Route Resolver objects that define how a document's `url` field is resolved.
@@ -13,32 +13,32 @@ export const repositoryName = config.repositoryName;
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
 // TODO: Update the routes array to match your project's route structure.
-const routes: prismic.ClientConfig["routes"] = [
+const routes: prismic.ClientConfig['routes'] = [
   {
-    type: "home",
-    path: "/",
+    type: 'home',
+    path: '/',
   },
   {
-    type: "about",
-    path: "/:uid",
+    type: 'about',
+    path: '/:uid',
   },
   {
-    type: "stills",
-    path: "/:uid",
+    type: 'stills',
+    path: '/:uid',
   },
   {
-    type: "stills_set",
-    path: "/stills/:uid",
+    type: 'stills_set',
+    path: '/stills/:uid',
   },
   {
-    type: "project",
-    path: "/projects/:uid",
+    type: 'project',
+    path: '/projects/:uid',
   },
   {
-    type: "category",
-    path: "/category/:uid",
+    type: 'category',
+    path: '/category/:uid',
   },
-];
+]
 
 /**
  * Creates a Prismic client for the project's repository. The client is used to
@@ -50,13 +50,13 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(repositoryName, {
     routes,
     ...config,
-  });
+  })
 
   prismicNext.enableAutoPreviews({
     client,
     previewData: config.previewData,
     req: config.req,
-  });
+  })
 
-  return client;
-};
+  return client
+}

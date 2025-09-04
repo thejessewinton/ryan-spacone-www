@@ -24,9 +24,7 @@
               "config": {
                 "label": "Set",
                 "select": "document",
-                "customtypes": [
-                  "stills_set"
-                ]
+                "customtypes": ["stills_set"]
               }
             }
           }

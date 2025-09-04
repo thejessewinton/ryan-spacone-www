@@ -24,9 +24,7 @@
               "config": {
                 "label": "Project",
                 "select": "document",
-                "customtypes": [
-                  "project"
-                ]
+                "customtypes": ["project"]
               }
             }
           }

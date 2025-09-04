@@ -1,6 +1,6 @@
-import { HoverLine } from "components/hover-line/HoverLine";
-import { ScrollObserver } from "components/scroll-observer/ScrollObserver";
-import Link from "next/link";
+import { HoverLine } from 'components/hover-line/HoverLine'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
+import Link from 'next/link'
 
 export const CategoryNav = () => {
   return (
@@ -24,5 +24,5 @@ export const CategoryNav = () => {
         </nav>
       </div>
     </ScrollObserver>
-  );
-};
+  )
+}

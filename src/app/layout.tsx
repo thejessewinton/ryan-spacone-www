@@ -1,46 +1,46 @@
-import type { PropsWithChildren } from "react";
-import { Lora, Open_Sans } from "next/font/google";
+import type { PropsWithChildren } from 'react'
+import { Lora, Open_Sans } from 'next/font/google'
 
-import "../styles/globals.css";
-import { Header } from "components/header/Header";
-import { Footer } from "components/footer/Footer";
-import { AnalyticsWrapper } from "components/analytics-wrapper/AnalyticsWrapper";
-import { getSiteSettings } from "utils/prismic";
-import { ScrollWrapper } from "components/scroll-wrapper/ScrollWrapper";
-import type { Metadata } from "next";
-import { env } from "env.mjs";
+import '../styles/globals.css'
+import { Header } from 'components/header/Header'
+import { Footer } from 'components/footer/Footer'
+import { AnalyticsWrapper } from 'components/analytics-wrapper/AnalyticsWrapper'
+import { getSiteSettings } from 'utils/prismic'
+import { ScrollWrapper } from 'components/scroll-wrapper/ScrollWrapper'
+import type { Metadata } from 'next'
+import { env } from 'env.mjs'
 
 const openSans = Open_Sans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  display: "optional",
-});
+  variable: '--font-sans',
+  subsets: ['latin'],
+  display: 'optional',
+})
 
 const lora = Lora({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  display: "optional",
-  weight: ["400", "500", "600", "700"],
-});
+  variable: '--font-serif',
+  subsets: ['latin'],
+  display: 'optional',
+  weight: ['400', '500', '600', '700'],
+})
 
 export const metadata: Metadata = {
   title: {
-    default: "Ryan Spacone",
-    template: "%s — Ryan Spacone",
+    default: 'Ryan Spacone',
+    template: '%s — Ryan Spacone',
   },
   twitter: {
-    title: "Ryan Spacone",
-    card: "summary_large_image",
+    title: 'Ryan Spacone',
+    card: 'summary_large_image',
   },
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
     url: env.NEXT_PUBLIC_URL,
-    title: "Ryan Spacone",
-    description: "",
+    title: 'Ryan Spacone',
+    description: '',
     images: [
       {
-        url: "/og.jpg",
+        url: '/og.jpg',
       },
     ],
   },
@@ -49,10 +49,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+}
 
 const RootLayout = async ({ children }: PropsWithChildren) => {
-  const { data } = await getSiteSettings();
+  const { data } = await getSiteSettings()
 
   return (
     <html
@@ -69,7 +69,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
         <ScrollWrapper />
       </body>
     </html>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

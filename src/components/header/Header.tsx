@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { clsx } from "clsx";
-import { useScroll } from "hooks/use-scroll";
-import Link from "next/link";
-import type { NavigationProps } from "types/prismic";
-import { MobileNavigation } from "../navigation/mobile-navigation/MobileNavigation";
-import { Navigation } from "../navigation/Navigation";
+import { clsx } from 'clsx'
+import { useScroll } from 'hooks/use-scroll'
+import Link from 'next/link'
+import type { NavigationProps } from 'types/prismic'
+import { MobileNavigation } from '../navigation/mobile-navigation/MobileNavigation'
+import { Navigation } from '../navigation/Navigation'
 
 const Logo = () => {
   return (
@@ -24,16 +24,16 @@ const Logo = () => {
         className="fill-neutral-900"
       />
     </svg>
-  );
-};
+  )
+}
 
 export const Header = ({ navigation }: { navigation: NavigationProps }) => {
-  const scrolling = useScroll();
+  const scrolling = useScroll()
   return (
     <header
       className={clsx(
-        "z-10000 flex h-24 w-full items-center justify-between px-9",
-        scrolling && "drop-shadow-xs",
+        'z-10000 flex h-24 w-full items-center justify-between px-9',
+        scrolling && 'drop-shadow-xs',
       )}
     >
       <Link href="/">
@@ -44,5 +44,5 @@ export const Header = ({ navigation }: { navigation: NavigationProps }) => {
         <MobileNavigation navigation={navigation} />
       </div>
     </header>
-  );
-};
+  )
+}

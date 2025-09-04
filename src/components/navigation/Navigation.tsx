@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import { asLink } from "@prismicio/helpers";
-import Link from "next/link";
-import type { NavigationProps } from "types/prismic";
-import { HoverLine } from "components/hover-line/HoverLine";
+import { asLink } from '@prismicio/helpers'
+import Link from 'next/link'
+import type { NavigationProps } from 'types/prismic'
+import { HoverLine } from 'components/hover-line/HoverLine'
 
 // const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
 //   return (
@@ -30,7 +30,7 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
         return (
           <Link
             href={
-              item.items.length ? "" : (asLink(item.primary.link) as string)
+              item.items.length ? '' : (asLink(item.primary.link) as string)
             }
             key={item.primary.label}
             className="tracking-loose group relative flex items-center justify-center text-sm font-normal uppercase text-neutral-600"
@@ -38,8 +38,8 @@ export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
             {item.primary.label}
             <HoverLine />
           </Link>
-        );
+        )
       })}
     </nav>
-  );
-};
+  )
+}

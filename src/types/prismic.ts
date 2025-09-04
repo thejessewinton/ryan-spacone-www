@@ -3,9 +3,9 @@ import type {
   SiteSettingsDocumentDataSlicesSlice,
   SiteSettingsDocumentDataSocialsItem,
   StillsSetDocument,
-} from "../../prismicio-types";
+} from '../../prismicio-types'
 
-export type NavigationProps = SiteSettingsDocumentDataSlicesSlice[];
-export type SocialsProps = SiteSettingsDocumentDataSocialsItem[];
-export type ProjectProps = ProjectDocument["data"];
-export type StillsSetProps = StillsSetDocument["data"];
+export type NavigationProps = SiteSettingsDocumentDataSlicesSlice[]
+export type SocialsProps = SiteSettingsDocumentDataSocialsItem[]
+export type ProjectProps = ProjectDocument['data']
+export type StillsSetProps = StillsSetDocument['data']
