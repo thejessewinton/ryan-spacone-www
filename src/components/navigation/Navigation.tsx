@@ -7,7 +7,7 @@ import { HoverLine } from "components/hover-line/HoverLine";
 
 // const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
 //   return (
-//     <div className="absolute right-0 z-10 flex flex-col gap-4 rounded-sm bg-white py-4 px-8 drop-shadow-lg transition-opacity group-hover:visible group-hover:opacity-100">
+//     <div className="absolute right-0 z-10 flex flex-col gap-4 rounded-xs bg-white py-4 px-8 drop-shadow-lg transition-opacity group-hover:visible group-hover:opacity-100">
 //       {items.map((item) => {
 //         return (
 //           <Link

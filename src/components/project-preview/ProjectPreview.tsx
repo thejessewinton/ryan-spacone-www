@@ -71,7 +71,7 @@ export const ProjectPreview = ({
 
   return (
     <div
-      className="absolute inset-0 z-[100] flex items-center justify-center"
+      className="absolute inset-0 z-100 flex items-center justify-center"
       ref={wrapperRef}
     >
       <iframe

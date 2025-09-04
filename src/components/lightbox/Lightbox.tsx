@@ -42,12 +42,12 @@ export const Lightbox = ({
   if (!images || !images[currentImage]?.image.url) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-xs">
       <button onClick={toggleOpen} className="group absolute right-6 top-6 p-6">
         <CloseIcon className="transition-transform group-hover:rotate-90" />
       </button>
       <div
-        className="relative flex flex-grow items-center justify-center p-12"
+        className="relative flex grow items-center justify-center p-12"
         ref={ref}
       >
         {images.map((still, i) => {
