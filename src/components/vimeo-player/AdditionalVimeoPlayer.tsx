@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { getPreviewUrl } from 'utils/get-url'
+import { motion } from "motion/react";
+import { getPreviewUrl } from "utils/get-url";
 
 export const AdditionalVimeoPlayer = ({ html }: { html: string }) => {
   return (
@@ -17,5 +17,5 @@ export const AdditionalVimeoPlayer = ({ html }: { html: string }) => {
         allowFullScreen
       />
     </motion.div>
-  )
-}
+  );
+};
