@@ -1,29 +1,25 @@
-import { getStillsSet } from 'utils/prismic'
-import { ProjectNav } from 'components/project-nav/ProjectNav'
-import { MasonryGallery } from 'components/masonry-gallery/MasonryGallery'
-import type { Metadata } from 'next'
+import { getStillsSet } from "utils/prismic";
+import { ProjectNav } from "components/project-nav/ProjectNav";
+import { MasonryGallery } from "components/masonry-gallery/MasonryGallery";
+import type { Metadata } from "next";
 
-export const revalidate = 60
-
-interface StillsParams {
-  params: { uid: string }
-}
+export const revalidate = 60;
 
 export const generateMetadata = async ({
   params,
-}: StillsParams): Promise<Metadata> => {
-  const { stillsSet } = await getStillsSet(params.uid)
+}: PageProps<"/stills/[uid]">): Promise<Metadata> => {
+  const uid = (await params).uid;
+  const { stillsSet } = await getStillsSet(uid);
 
   return {
     title: stillsSet.data.meta_title,
     description: stillsSet.data.meta_description,
-  }
-}
+  };
+};
 
-const Stills = async ({ params }: StillsParams) => {
-  const { stillsSet, firstSet, nextSet, previousSet } = await getStillsSet(
-    params.uid,
-  )
+const Stills = async ({ params }: PageProps<"/stills/[uid]">) => {
+  const uid = (await params).uid;
+  const { stillsSet, firstSet, nextSet, previousSet } = await getStillsSet(uid);
 
   return (
     <>
@@ -32,7 +28,7 @@ const Stills = async ({ params }: StillsParams) => {
       </div>
       <ProjectNav first={firstSet} previous={previousSet} next={nextSet} />
     </>
-  )
-}
+  );
+};
 
-export default Stills
+export default Stills;
