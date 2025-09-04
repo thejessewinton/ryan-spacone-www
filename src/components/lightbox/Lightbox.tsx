@@ -1,45 +1,45 @@
-'use client'
+"use client";
 
-import { useLightbox } from 'hooks/use-lightbox'
+import { useLightbox } from "hooks/use-lightbox";
 import type {
   ProjectDocumentData,
   StillsSetDocumentData,
-} from '../../../prismicio-types'
-import Image from 'next/image'
-import { useRef } from 'react'
-import { useClickOutside } from 'hooks/use-click-outside'
-import { CloseIcon, LeftArrow } from 'components/icons/Icons'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
-import { clsx } from 'clsx'
-import { useLockBodyScroll } from 'hooks/use-lock-body-scroll'
+} from "../../../prismicio-types";
+import Image from "next/image";
+import { useRef } from "react";
+import { useClickOutside } from "hooks/use-click-outside";
+import { CloseIcon, LeftArrow } from "components/icons/Icons";
+import { getBlurUrl, getImageUrl } from "utils/get-url";
+import { clsx } from "clsx";
+import { useLockBodyScroll } from "hooks/use-lock-body-scroll";
 
 export const Lightbox = ({
   images,
 }: {
-  images: ProjectDocumentData['stills'] | StillsSetDocumentData['stills']
+  images: ProjectDocumentData["stills"] | StillsSetDocumentData["stills"];
 }) => {
-  const { isOpen, toggleOpen, currentImage, setCurrentImage } = useLightbox()
-  const ref = useRef<HTMLDivElement>(null)
-  useLockBodyScroll(isOpen)
+  const { isOpen, toggleOpen, currentImage, setCurrentImage } = useLightbox();
+  const ref = useRef<HTMLDivElement | null>(null);
+  useLockBodyScroll(isOpen);
 
   const handlePrev = () => {
     if (currentImage === 0) {
-      toggleOpen()
+      toggleOpen();
     }
-    setCurrentImage(currentImage - 1)
-  }
+    setCurrentImage(currentImage - 1);
+  };
 
   const handleNext = () => {
     if (currentImage >= images.length - 1) {
-      toggleOpen()
+      toggleOpen();
     } else {
-      setCurrentImage(currentImage + 1)
+      setCurrentImage(currentImage + 1);
     }
-  }
+  };
 
-  useClickOutside(ref, toggleOpen)
+  useClickOutside(ref, toggleOpen);
 
-  if (!images || !images[currentImage]?.image.url) return null
+  if (!images || !images[currentImage]?.image.url) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-xs">
@@ -60,13 +60,13 @@ export const Lightbox = ({
               alt="Lightbox Image"
               loading="eager"
               className={clsx(
-                i === currentImage ? 'block' : 'hidden',
-                'max-h-screen w-full max-w-4xl py-5 lg:max-w-7xl',
+                i === currentImage ? "block" : "hidden",
+                "max-h-screen w-full max-w-4xl py-5 lg:max-w-7xl"
               )}
               width={still.image.dimensions?.width}
               height={still.image.dimensions?.height}
             />
-          )
+          );
         })}
 
         <div className="absolute flex h-full w-full items-center justify-between">
@@ -85,5 +85,5 @@ export const Lightbox = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
