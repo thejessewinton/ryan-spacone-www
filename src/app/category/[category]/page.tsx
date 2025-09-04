@@ -4,34 +4,42 @@ import { getCategory } from "utils/prismic";
 
 export const revalidate = 60;
 
-interface CategoryParams {
-  params: { category: string };
-}
-
 export const generateMetadata = async ({
   params,
-}: CategoryParams): Promise<Metadata> => {
-  const { data } = await getCategory(params.category);
+}: PageProps<"/category/[category]">): Promise<Metadata> => {
+  const category = (await params).category;
+  const { data } = await getCategory(category);
 
   return {
     title: data.meta_title,
   };
 };
 
-const Index = async ({ params }: CategoryParams) => {
-  const { data } = await getCategory(params.category);
+const Index = async ({ params }: PageProps<"/category/[category]">) => {
+  const category = (await params).category;
+  const { data } = await getCategory(category);
+
+  console.log(
+    JSON.stringify(
+      data.projects.filter(({ project }) => !project.data?.preview),
+      null,
+      2,
+    ),
+  );
 
   return (
     <div className="space-y-2">
-      {data.projects.map(({ project }) => (
-        <ProjectCard
-          href={`/projects/${project.uid}`}
-          key={project.uid}
-          project={project.data}
-          preview={project.data.preview}
-          previewOnHover={true}
-        />
-      ))}
+      {data.projects.map(({ project }, i) => {
+        return (
+          <ProjectCard
+            href={`/projects/${project.uid}`}
+            key={project.uid}
+            project={project.data}
+            preview={project.data.preview}
+            previewOnHover={true}
+          />
+        );
+      })}
     </div>
   );
 };

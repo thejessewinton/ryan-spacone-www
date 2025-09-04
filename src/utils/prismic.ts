@@ -42,7 +42,7 @@ export const getProjects = cache(async () => {
   return await client.getByType("project");
 });
 
-export const getCategory = cache(async (category: string) => {
+export const getCategory = async (category: string) => {
   return await client.getByUID<
     CategoryDocument & {
       data: {
@@ -58,7 +58,7 @@ export const getCategory = cache(async (category: string) => {
       "project.preview",
     ],
   });
-});
+};
 
 export const getProject = cache(async (uid: string) => {
   const project = await client.getByUID<

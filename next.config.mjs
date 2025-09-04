@@ -8,7 +8,6 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     unoptimized: true,
     domains: ["images.prismic.io", "i.vimeocdn.com"],
