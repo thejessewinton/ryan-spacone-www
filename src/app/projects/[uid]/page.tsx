@@ -13,10 +13,6 @@ import clsx from "clsx";
 
 export const revalidate = 60;
 
-interface ProjectParams {
-  params: { uid: string };
-}
-
 export const generateStaticParams = async () => {
   const { results } = await getProjects();
 
@@ -29,8 +25,9 @@ export const generateStaticParams = async () => {
 
 export const generateMetadata = async ({
   params,
-}: ProjectParams): Promise<Metadata> => {
-  const { project } = await getProject(params.uid);
+}: PageProps<"/projects/[uid]">): Promise<Metadata> => {
+  const uid = (await params).uid;
+  const { project } = await getProject(uid);
 
   return {
     title: project.data.meta_title,
@@ -117,9 +114,9 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
   );
 };
 
-const Project = async ({ params }: ProjectParams) => {
+const Project = async ({ params }: PageProps<"/projects/[uid]">) => {
   const { project, firstProject, nextProject, previousProject } =
-    await getProject(params.uid);
+    await getProject((await params).uid);
 
   return (
     <>
