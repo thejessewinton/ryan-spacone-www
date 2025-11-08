@@ -7,6 +7,7 @@ import type {
 } from '../../prismicio-types'
 import { cache } from 'react'
 import { createClient } from 'prismicio'
+import { notFound } from 'next/navigation'
 
 const client = createClient()
 
@@ -61,6 +62,7 @@ export const getCategory = async (category: string) => {
 }
 
 export const getProject = cache(async (uid: string) => {
+  try {
   const project = await client.getByUID<
     ProjectDocument & {
       data: {
@@ -70,6 +72,7 @@ export const getProject = cache(async (uid: string) => {
   >('project', uid, {
     fetchLinks: ['category.uid'],
   })
+
 
   const categoryUid = project.data.category.uid
 
@@ -107,6 +110,9 @@ export const getProject = cache(async (uid: string) => {
     previousProject,
     nextProject,
   }
+} catch (error) {
+  return notFound()
+}
 })
 
 export const getStillsPage = cache(async () => {
