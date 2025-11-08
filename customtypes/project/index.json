@@ -104,7 +104,7 @@
       "starring": {
         "type": "Group",
         "config": {
-          "label": "Starring",
+          "label": "Featuring",
           "fields": {
             "name": {
               "type": "Text",
