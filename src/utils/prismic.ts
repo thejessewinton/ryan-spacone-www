@@ -116,6 +116,7 @@ export const getProject = cache(async (uid: string) => {
 })
 
 export const getStillsPage = cache(async () => {
+  try {
   return await client.getSingle<
     StillsDocument & {
       data: {
@@ -130,9 +131,13 @@ export const getStillsPage = cache(async () => {
       'stills_set.preview',
     ],
   })
+} catch (error) {
+  return notFound()
+}
 })
 
 export const getStillsSet = cache(async (uid: string) => {
+  try { 
   const stillsSet = await client.getByUID('stills_set', uid)
 
   const allStillsSets = await getStillsPage()
@@ -153,4 +158,7 @@ export const getStillsSet = cache(async (uid: string) => {
     previousSet,
     nextSet,
   }
+} catch (error) {
+  return notFound()
+}
 })
