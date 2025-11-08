@@ -35,7 +35,7 @@ export const StillsCard = ({
             placeholder="blur"
             loading="lazy"
             blurDataURL={getBlurUrl(set.cover.cover.url)}
-            quality={100}
+            quality={90}
           />
         </div>
       </Link>

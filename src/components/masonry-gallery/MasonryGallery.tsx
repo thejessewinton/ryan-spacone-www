@@ -27,24 +27,22 @@ export const MasonryGallery = ({
         const className = i % 5 === 0 ? 'col-span-2' : 'col-span-1'
 
         return (
-          <>
-            <ScrollObserver
-              key={i}
-              className={clsx('bg-neutral-900', className)}
-            >
-              <Image
-                onClick={() => handleOpen(i)}
-                src={getImageUrl(still.image.url)}
-                width={still.image.dimensions.width}
-                height={still.image.dimensions.height}
-                alt="Project Image"
-                placeholder="blur"
-                quality={100}
-                blurDataURL={getBlurUrl(still.image.url)}
-                className="mb-2 block w-full cursor-pointer"
-              />
-            </ScrollObserver>
-          </>
+          <ScrollObserver
+            key={still.image.url ?? i}
+            className={clsx('bg-neutral-900', className)}
+          >
+            <Image
+              onClick={() => handleOpen(i)}
+              src={getImageUrl(still.image.url)}
+              width={still.image.dimensions.width}
+              height={still.image.dimensions.height}
+              alt="Project Image"
+              placeholder="blur"
+              quality={90}
+              blurDataURL={getBlurUrl(still.image.url)}
+              className="mb-2 block w-full cursor-pointer"
+            />
+          </ScrollObserver>
         )
       })}
       {isOpen && <Lightbox images={stills} />}

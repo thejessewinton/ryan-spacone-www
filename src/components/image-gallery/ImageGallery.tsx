@@ -44,7 +44,7 @@ export const ImageGallery = ({
 
         return (
           <ScrollObserver
-            key={i}
+            key={still.image.url ?? i}
             className={clsx(
               'bg-neutral-900',
               className,
@@ -57,9 +57,9 @@ export const ImageGallery = ({
               width={still.image.dimensions.width}
               height={still.image.dimensions.height}
               alt="Project Image"
-              loading="eager"
+              loading="lazy"
               placeholder="blur"
-              quality={100}
+              quality={90}
               blurDataURL={getBlurUrl(still.image.url)}
               className="mx-auto block w-full cursor-pointer"
             />

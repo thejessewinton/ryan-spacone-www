@@ -56,7 +56,7 @@ const Representation = ({
   return (
     <div className="mb-8 mt-16 block text-center font-light">
       <h2 className="mb-8 font-serif text-2xl">Representation</h2>
-      <div className="mb-4 flex flex-col flex-wrap items-center justify-center gap-8 md:flex-row md:gap-20">
+      <div className="mb-4 grid md:grid-cols-3 grid-cols-1  gap-8 md:gap-20">
         {representation.map((rep) => (
           <div key={rep.title}>
             <h3 className="mb-2 font-serif">{rep.title}</h3>

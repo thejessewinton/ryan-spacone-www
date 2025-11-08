@@ -1,5 +1,3 @@
-'use client'
-
 import { asText } from '@prismicio/helpers'
 import Link from 'next/link'
 import type { ProjectDocumentData } from '../../../prismicio-types'
@@ -33,7 +31,7 @@ export const ProjectCard = ({
             className="z-50 w-full"
             placeholder="blur"
             blurDataURL={getBlurUrl(project.cover.widescreen.url)}
-            quality={100}
+            quality={90}
           />
           {preview ? (
             <ProjectPreview
