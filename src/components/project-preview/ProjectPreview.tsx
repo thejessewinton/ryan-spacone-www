@@ -134,6 +134,7 @@ export const ProjectPreview = ({
     >
       <iframe
         id={preview.title as string}
+        title={preview.title as string}
         src={getPreviewUrl(preview.html as string)}
         allowFullScreen
         loading="lazy"
