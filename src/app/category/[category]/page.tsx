@@ -36,7 +36,6 @@ const Index = async ({ params }: PageProps<'/category/[category]'>) => {
             key={project.uid}
             project={project.data}
             preview={project.data.preview}
-            previewOnHover={true}
           />
         )
       })}
