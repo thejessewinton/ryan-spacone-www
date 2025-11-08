@@ -52,7 +52,7 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
               </span>
             ) : null}
           </h2>
-          {project.starring ? (
+          {project.starring.length > 0 ? (
             <div className="text-sm font-thin md:text-center">
               <span className="font-normal uppercase">Starring</span>
               {project.starring.map((item) => (
