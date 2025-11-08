@@ -54,7 +54,7 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
           </h2>
           {project.starring.length > 0 ? (
             <div className="text-sm font-thin md:text-center">
-              <span className="font-normal uppercase">Starring</span>
+              <span className="font-normal uppercase">Featuring</span>
               {project.starring.map((item) => (
                 <span
                   key={item.name}
@@ -68,7 +68,7 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
         </div>
 
         <div className="flex flex-col gap-4 text-right font-thin md:text-left">
-          {project.credits && project.credits.length
+          {project.credits && project.credits.length > 0
             ? project.credits.map((credit, index) => {
                 return (
                   <div
@@ -89,8 +89,9 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
                 );
               })
             : null}
-          {project.links && project.links.length
+          {project.links && project.links.length > 0 
             ? project.links.map((item, index) => {
+              if (!item.link.link_type.length) return null;
                 return (
                   <div
                     key={index}
@@ -99,7 +100,7 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
                     <span className="font-normal uppercase">{item.label}</span>
                     <Link
                       className="block underline"
-                      href={asLink(item.link) as string}
+                      href={asLink(item.link) ?? ''}
                       target="_blank"
                     >
                       Visit
@@ -149,10 +150,10 @@ const Project = async ({ params }: PageProps<"/projects/[uid]">) => {
           />
         ) : null}
         <CreditsSection project={project.data} />
-        {project.data.secondary_video.embed_url ? (
+        {project.data.secondary_video && project.data.secondary_video.embed_url ? (
           <VimeoPlayer video={project.data.secondary_video} />
         ) : null}
-        {project.data.additional_videos && (
+        {project.data.additional_videos && project.data.additional_videos.length > 0 ? (
           <>
             <div
               className={clsx("mb-10 grid gap-2", {
@@ -161,14 +162,15 @@ const Project = async ({ params }: PageProps<"/projects/[uid]">) => {
                   project.data.additional_videos.length % 2 === 0,
               })}
             >
-              {project.data.additional_videos.length
+              {project.data.additional_videos.length > 0
                 ? project.data.additional_videos.map((video, i) => {
+                  if (!video.embed_url.length) return null;
                     return <VimeoPlayer key={i} video={video.embed_url} />;
                   })
                 : null}
             </div>
           </>
-        )}
+        ) : null}
         <ImageGallery stills={project.data.stills} />
       </div>
       <ProjectNav
