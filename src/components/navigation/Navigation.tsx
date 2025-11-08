@@ -5,24 +5,6 @@ import Link from 'next/link'
 import type { NavigationProps } from 'types/prismic'
 import { HoverLine } from 'components/hover-line/HoverLine'
 
-// const Dropdown = ({ items }: { items: NavigationItemSliceDefaultItem[] }) => {
-//   return (
-//     <div className="absolute right-0 z-10 flex flex-col gap-4 rounded-xs bg-white py-4 px-8 drop-shadow-lg transition-opacity group-hover:visible group-hover:opacity-100">
-//       {items.map((item) => {
-//         return (
-//           <Link
-//             href={asLink(item.link) as string}
-//             key={item.label}
-//             className="group text-sm uppercase"
-//           >
-//             {item.label}
-//           </Link>
-//         );
-//       })}
-//     </div>
-//   );
-// };
-
 export const Navigation = ({ navigation }: { navigation: NavigationProps }) => {
   return (
     <nav className="hidden items-center gap-x-8 md:flex">

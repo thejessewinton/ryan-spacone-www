@@ -104,7 +104,8 @@
       "starring": {
         "type": "Group",
         "config": {
-          "label": "Starring",
+          "label": "Featuring",
+          "default_value": [],
           "fields": {
             "name": {
               "type": "Text",
@@ -120,6 +121,7 @@
         "type": "Group",
         "config": {
           "label": "Links",
+          "default_value": [],
           "fields": {
             "label": {
               "type": "Text",
@@ -159,6 +161,7 @@
         "type": "Group",
         "config": {
           "label": "Additional Videos",
+          "default_value": [],
           "fields": {
             "embed_url": {
               "type": "Embed",
