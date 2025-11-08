@@ -37,6 +37,7 @@ export const ProjectCard = ({
             <ProjectPreview
               showOnHover={previewOnHover}
               preview={project.preview}
+              eager={true}
             >
               <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
                 {project.client ? (

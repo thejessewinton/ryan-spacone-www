@@ -3,38 +3,64 @@ import { getPreviewUrl } from 'utils/get-url'
 import type { ProjectDocumentData } from '../../../prismicio-types'
 import { clsx } from 'clsx'
 import { useRef, useEffect, useState, type ReactNode } from 'react'
-import type PlayerType from '@vimeo/player'
+import Player from '@vimeo/player'
 import { useScreenSize } from 'hooks/use-screen-size'
 
 export const ProjectPreview = ({
   preview,
   children,
   showOnHover = false,
+  eager = false, // Add this prop
 }: {
   preview: ProjectDocumentData['preview']
   children?: ReactNode
   showOnHover?: boolean
+  eager?: boolean
 }) => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null)
   const wrapperRef = useRef<HTMLDivElement | null>(null)
-  const playerRef = useRef<PlayerType | null>(null)
+  const playerRef = useRef<Player | null>(null)
   const isPlayingRef = useRef(false)
+  const [shouldLoad, setShouldLoad] = useState(eager) // Start true if eager
   const [show, setShow] = useState(false)
 
   const size = useScreenSize()
 
+  // Intersection observer - skip if eager
   useEffect(() => {
-    let isMounted = true
-    const containerRef = wrapperRef.current
-    let detachHoverListeners: (() => void) | undefined
-    let cleanupPlayer: (() => void) | undefined
-    let pauseTimeout: ReturnType<typeof setTimeout> | undefined
+    if (eager) return
 
-    const setupPlayer = async () => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setShouldLoad(true)
+          observer.disconnect()
+        }
+      },
+      {
+        rootMargin: '100px',
+        threshold: 0.01,
+      },
+    )
+
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [eager])
+
+  // Player setup
+  useEffect(() => {
+    if (!shouldLoad) return
+
+    const mountTimer = setTimeout(() => {
       if (!iframeRef.current) return
 
-      const { default: Player } = await import('@vimeo/player')
-      if (!iframeRef.current || !isMounted) return
+      let isMounted = true
+      const containerRef = wrapperRef.current
+      let detachHoverListeners: (() => void) | undefined
+      let pauseTimeout: ReturnType<typeof setTimeout> | undefined
 
       const player = new Player(iframeRef.current)
       playerRef.current = player
@@ -50,14 +76,7 @@ export const ProjectPreview = ({
       player.on('play', handlePlay)
       player.on('pause', handlePause)
 
-      try {
-        await player.ready()
-        if (isMounted) {
-          setShow(true)
-        }
-      } catch {
-        // Ignore readiness errors, we'll retry on next visibility.
-      }
+      setShow(true)
 
       const handleMouseEnter = () => {
         if (pauseTimeout) {
@@ -91,62 +110,45 @@ export const ProjectPreview = ({
           containerRef.removeEventListener('touchend', handleMouseLeave)
         }
       } else {
-        try {
-          await player.play()
-        } catch {
-          // Autoplay may be blocked; ignore error.
-        }
-
-        detachHoverListeners = undefined
+        void player.play().catch(() => {})
       }
 
-      cleanupPlayer = () => {
+      return () => {
+        isMounted = false
+        detachHoverListeners?.()
         if (pauseTimeout) {
           clearTimeout(pauseTimeout)
-          pauseTimeout = undefined
         }
-
-        detachHoverListeners?.()
-        player.off('play', handlePlay)
-        player.off('pause', handlePause)
+        void playerRef.current?.destroy()
+        playerRef.current = null
+        isPlayingRef.current = false
       }
-    }
+    }, 50)
 
-    void setupPlayer()
-
-    return () => {
-      isMounted = false
-      cleanupPlayer?.()
-      if (pauseTimeout) {
-        clearTimeout(pauseTimeout)
-        pauseTimeout = undefined
-      }
-      void playerRef.current?.destroy()
-      playerRef.current = null
-      isPlayingRef.current = false
-    }
-  }, [showOnHover, size.width])
+    return () => clearTimeout(mountTimer)
+  }, [shouldLoad, showOnHover, size.width])
 
   return (
     <div
       className="absolute inset-0 z-100 flex items-center justify-center"
       ref={wrapperRef}
     >
-      <iframe
-        id={preview.title as string}
-        title={preview.title as string}
-        src={getPreviewUrl(preview.html as string)}
-        allowFullScreen
-        loading="lazy"
-        ref={iframeRef}
-        className={clsx(
-          'pointer-events-none absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700',
-          showOnHover
-            ? 'opacity-0 group-hover:opacity-100 md:opacity-0'
-            : 'opacity-0 group-hover:opacity-100 md:opacity-100',
-          !show ? 'invisible' : 'visible',
-        )}
-      />
+      {shouldLoad && (
+        <iframe
+          id={preview.title as string}
+          title={preview.title as string}
+          src={getPreviewUrl(preview.html as string)}
+          allowFullScreen
+          ref={iframeRef}
+          className={clsx(
+            'pointer-events-none absolute z-0 h-[169%] min-h-full w-auto min-w-full max-w-none transition-opacity duration-700',
+            showOnHover
+              ? 'opacity-0 group-hover:opacity-100 md:opacity-0'
+              : 'opacity-0 group-hover:opacity-100 md:opacity-100',
+            !show ? 'invisible' : 'visible',
+          )}
+        />
+      )}
       {children}
     </div>
   )

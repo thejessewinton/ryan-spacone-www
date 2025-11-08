@@ -61,6 +61,9 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
     >
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link href="/favicon.ico" rel="shortcut icon" />
+      <link rel="preconnect" href="https://player.vimeo.com" />
+      <link rel="preconnect" href="https://i.vimeocdn.com" />
+      <link rel="preconnect" href="https://f.vimeocdn.com" />
       <body className="flex flex-col bg-white text-neutral-900">
         <Header navigation={data.slices} />
         <main className="relative">{children}</main>
