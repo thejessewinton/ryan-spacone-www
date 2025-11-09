@@ -1,4 +1,3 @@
-import { HoverLine } from 'components/hover-line/HoverLine'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 import Link from 'next/link'
 
@@ -9,17 +8,15 @@ export const CategoryNav = () => {
         <nav className="flex justify-between">
           <Link
             href="/category/commercial"
-            className="group relative flex items-center justify-center text-center font-normal font-serif text-neutral-600 text-sm uppercase tracking-loose md:text-base"
+            className="group relative flex items-center justify-center text-center font-normal font-serif text-neutral-500 text-sm uppercase tracking-loose hover:text-neutral-900 md:text-base"
           >
             Commercial
-            <HoverLine />
           </Link>
           <Link
             href="/category/narrative"
-            className="group relative flex items-center justify-center text-center font-normal font-serif text-neutral-600 text-sm uppercase tracking-loose md:text-base"
+            className="group relative flex items-center justify-center text-center font-normal font-serif text-neutral-500 text-sm uppercase tracking-loose hover:text-neutral-900 md:text-base"
           >
             Narrative
-            <HoverLine />
           </Link>
         </nav>
       </div>
