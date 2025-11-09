@@ -19,14 +19,6 @@ const Index = async ({ params }: PageProps<'/category/[category]'>) => {
   const category = (await params).category
   const { data } = await getCategory(category)
 
-  console.log(
-    JSON.stringify(
-      data.projects.filter(({ project }) => !project.data?.preview),
-      null,
-      2,
-    ),
-  )
-
   return (
     <div className="space-y-2">
       {data.projects.map(({ project }, i) => {
