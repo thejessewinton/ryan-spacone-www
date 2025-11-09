@@ -1,10 +1,10 @@
 import { asText } from '@prismicio/helpers'
-import Link from 'next/link'
-import type { ProjectDocumentData } from '../../../prismicio-types'
-import Image from 'next/image'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
 import { ProjectPreview } from 'components/project-preview/ProjectPreview'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
+import Image from 'next/image'
+import Link from 'next/link'
+import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import type { ProjectDocumentData } from '../../../prismicio-types'
 
 export const ProjectCard = ({
   href,
@@ -19,6 +19,21 @@ export const ProjectCard = ({
 }) => {
   if (!project.cover.widescreen.url) return null
 
+  const TitleContent = () => {
+    return (
+      <h2 className="absolute z-10 flex flex-col items-center text-center font-serif text-white uppercase opacity-100 transition-opacity duration-700 after:absolute after:right-8 after:left-0 after:block after:content-[''] lg:opacity-0 lg:group-hover:opacity-100">
+        {project.client ? (
+          <span className="text-sm tracking-[0.75rem] md:text-3xl md:tracking-[1.725rem]">
+            {asText(project.client)}
+          </span>
+        ) : null}
+        <span className="mt-2 text-[0.55rem] tracking-[0.45rem] md:text-xl md:tracking-[1.05rem]">
+          {asText(project.title)}
+        </span>
+      </h2>
+    )
+  }
+
   return (
     <ScrollObserver>
       <Link href={href} aria-label={asText(project.title)}>
@@ -27,7 +42,7 @@ export const ProjectCard = ({
             src={getImageUrl(project.cover.widescreen.url)}
             width={project.cover.widescreen.dimensions?.width}
             height={project.cover.widescreen.dimensions?.height}
-            alt={asText(project.title)}
+            alt={asText(project.title) ?? ''}
             className="z-50 w-full"
             placeholder="blur"
             blurDataURL={getBlurUrl(project.cover.widescreen.url)}
@@ -39,24 +54,10 @@ export const ProjectCard = ({
               preview={project.preview}
               eager={true}
             >
-              <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
-                {project.client ? (
-                  <span className="block text-[0.6rem] md:text-base">
-                    {asText(project.client)}
-                  </span>
-                ) : null}
-                {asText(project.title)}
-              </h2>
+              <TitleContent />
             </ProjectPreview>
           ) : (
-            <h2 className="absolute z-10 text-center font-serif text-sm uppercase tracking-[0.75rem] text-white opacity-0 transition-opacity duration-700 after:absolute after:left-0 after:right-8 after:block after:content-[''] group-hover:opacity-100 md:text-3xl md:tracking-[1.725rem]">
-              {project.client ? (
-                <span className="block text-[0.6rem] md:text-base">
-                  {asText(project.client)}
-                </span>
-              ) : null}
-              {asText(project.title)}
-            </h2>
+            <TitleContent />
           )}
         </div>
       </Link>
