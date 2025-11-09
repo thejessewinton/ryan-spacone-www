@@ -1,15 +1,15 @@
-import type { ProjectProps } from 'types/prismic'
-import { getProject, getProjects } from 'utils/prismic'
 import { asLink, asText } from '@prismicio/helpers'
-import { VimeoPlayer } from 'components/vimeo-player/VimeoPlayer'
-import Image from 'next/image'
-import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
-import { ProjectNav } from 'components/project-nav/ProjectNav'
-import Link from 'next/link'
-import { ImageGallery } from 'components/image-gallery/ImageGallery'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
-import type { Metadata } from 'next'
 import clsx from 'clsx'
+import { ImageGallery } from 'components/image-gallery/ImageGallery'
+import { ProjectNav } from 'components/project-nav/ProjectNav'
+import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
+import { VimeoPlayer } from 'components/vimeo-player/VimeoPlayer'
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import type { ProjectProps } from 'types/prismic'
+import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { getProject, getProjects } from 'utils/prismic'
 
 export const revalidate = 60
 
@@ -35,30 +35,41 @@ export const generateMetadata = async ({
 }
 
 const CreditsSection = ({ project }: { project: ProjectProps }) => {
+  const clientText = asText(project.client)
+  const titleText = asText(project.title)
+  const hasClient = Boolean(clientText)
+  const hasTitle = Boolean(titleText)
+  const titleClasses = clsx('block', {
+    'text-[0.6rem] md:text-base': !hasClient,
+  })
+  const clientClasses = clsx('block text-[0.6rem] md:text-base', {
+    'mt-2': hasTitle,
+  })
+
   return (
     <ScrollObserver>
       <section className="grid w-full gap-4 px-3 py-8 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
         <div className="flex flex-col gap-4">
-          <h2 className="text-md font-serif uppercase tracking-[0.2em] md:text-center md:text-2xl">
-            {project.client ? (
-              <span className="block text-[0.6rem] md:text-base">
-                {asText(project.client)}
-              </span>
+          <h2 className="font-serif text-md uppercase tracking-[0.2em] md:text-center md:text-2xl">
+            {hasTitle ? (
+              <span className={clientClasses}>{titleText}</span>
             ) : null}
-            {asText(project.title)}
+            {hasClient ? (
+              <span className={titleClasses}>{clientText}</span>
+            ) : null}
             {project.coming_soon ? (
-              <span className="ml-auto mr-0 block text-[0.6rem] md:text-base">
+              <span className="mr-0 ml-auto block text-[0.6rem] md:text-base">
                 Coming Soon...
               </span>
             ) : null}
           </h2>
           {project.starring.length > 0 ? (
-            <div className="text-sm font-thin md:text-center">
+            <div className="font-thin text-sm md:text-center">
               <span className="font-normal uppercase">Featuring</span>
               {project.starring.map((item) => (
                 <span
                   key={item.name}
-                  className="md:text-normal block space-y-2 text-sm"
+                  className="block space-y-2 text-sm md:text-normal"
                 >
                   {item.name}
                 </span>
@@ -73,7 +84,7 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
                 return (
                   <div
                     key={index}
-                    className="md:text-normal text-sm md:col-span-1"
+                    className="text-sm md:col-span-1 md:text-normal"
                   >
                     <span className="font-normal uppercase">
                       {credit.label}
@@ -95,7 +106,7 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
                 return (
                   <div
                     key={index}
-                    className="md:text-normal text-sm md:col-span-1"
+                    className="text-sm md:col-span-1 md:text-normal"
                   >
                     <span className="font-normal uppercase">{item.label}</span>
                     <Link
@@ -119,59 +130,74 @@ const Project = async ({ params }: PageProps<'/projects/[uid]'>) => {
   const { project, firstProject, nextProject, previousProject } =
     await getProject((await params).uid)
 
+  const renderPrimaryVisual = () => {
+    const featuredImage = project.data.featured_image
+    if (featuredImage?.url && featuredImage.dimensions) {
+      const { width, height } = featuredImage.dimensions
+      return (
+        <Image
+          src={getImageUrl(featuredImage.url)}
+          width={width}
+          height={height}
+          alt="Project Image"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={getBlurUrl(featuredImage.url)}
+          className="mx-auto block w-full"
+          quality={100}
+        />
+      )
+    }
+
+    const coverImage = project.data.cover
+    if (coverImage?.url && coverImage.dimensions) {
+      const { width, height } = coverImage.dimensions
+      return (
+        <Image
+          src={getImageUrl(coverImage.url)}
+          width={width}
+          height={height}
+          alt="Project Image"
+          loading="lazy"
+          placeholder="blur"
+          blurDataURL={getBlurUrl(coverImage.url)}
+          className="mx-auto block w-full"
+          quality={100}
+        />
+      )
+    }
+
+    return null
+  }
+
+  const additionalVideos = project.data.additional_videos ?? []
+  const hasAdditionalVideos = additionalVideos.length > 0
+  const isAdditionalVideosEven =
+    hasAdditionalVideos && additionalVideos.length % 2 === 0
+
   return (
     <>
       <div className="flex flex-col gap-2">
         {project.data.video.embed_url ? (
           <VimeoPlayer video={project.data.video} />
-        ) : project.data.featured_image && project.data.featured_image.url ? (
-          <Image
-            src={getImageUrl(project.data.featured_image.url)}
-            width={project.data.featured_image.dimensions.width}
-            height={project.data.featured_image.dimensions.height}
-            alt="Project Image"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL={getBlurUrl(project.data.featured_image.url)}
-            className="mx-auto block w-full"
-            quality={100}
-          />
-        ) : project.data.cover && project.data.cover.url ? (
-          <Image
-            src={getImageUrl(project.data.cover.url)}
-            width={project.data.cover.dimensions.width}
-            height={project.data.cover.dimensions.height}
-            alt="Project Image"
-            loading="lazy"
-            placeholder="blur"
-            blurDataURL={getBlurUrl(project.data.cover.url)}
-            className="mx-auto block w-full"
-            quality={100}
-          />
-        ) : null}
+        ) : (
+          renderPrimaryVisual()
+        )}
         <CreditsSection project={project.data} />
-        {project.data.secondary_video &&
-        project.data.secondary_video.embed_url ? (
+        {project.data.secondary_video?.embed_url ? (
           <VimeoPlayer video={project.data.secondary_video} />
         ) : null}
-        {project.data.additional_videos &&
-        project.data.additional_videos.length > 0 ? (
-          <>
-            <div
-              className={clsx('mb-10 grid gap-2', {
-                'md:grid-cols-2':
-                  project.data.additional_videos &&
-                  project.data.additional_videos.length % 2 === 0,
-              })}
-            >
-              {project.data.additional_videos.length > 0
-                ? project.data.additional_videos.map((video, i) => {
-                    if (!video.embed_url.length) return null
-                    return <VimeoPlayer key={i} video={video.embed_url} />
-                  })
-                : null}
-            </div>
-          </>
+        {hasAdditionalVideos ? (
+          <div
+            className={clsx('mb-10 grid gap-2', {
+              'md:grid-cols-2': isAdditionalVideosEven,
+            })}
+          >
+            {additionalVideos.map((video, i) => {
+              if (!video.embed_url.length) return null
+              return <VimeoPlayer key={i} video={video.embed_url} />
+            })}
+          </div>
         ) : null}
         <ImageGallery stills={project.data.stills} />
       </div>

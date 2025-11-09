@@ -1,6 +1,6 @@
 import { LeftArrow } from 'components/icons/Icons'
-import Link from 'next/link'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
+import Link from 'next/link'
 
 export const ProjectNav = ({
   previous,
@@ -19,7 +19,7 @@ export const ProjectNav = ({
             href={previous}
             className="group flex items-center justify-center gap-4 text-lg"
           >
-            <LeftArrow className="transition-all group-hover:-translate-x-2" />
+            <LeftArrow className="group-hover:-translate-x-2 transition-all" />
             <h3 className="font-serif text-sm uppercase italic group-hover:text-brand">
               Previous
             </h3>
