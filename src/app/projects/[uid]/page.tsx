@@ -51,16 +51,16 @@ const CreditsSection = ({ project }: { project: ProjectProps }) => {
       <section className="grid w-full gap-4 px-3 py-8 md:grid-cols-2 md:items-center md:px-0 lg:py-24">
         <div className="flex flex-col gap-4">
           <h2 className="font-serif text-md uppercase tracking-[0.2em] md:text-center md:text-2xl">
-            {hasTitle ? (
-              <span className={clientClasses}>{titleText}</span>
+            {project.coming_soon ? (
+              <span className="my-3 mr-0 ml-auto block text-[0.6rem] tracking-[0.2em] md:text-xs">
+                Coming Soon...
+              </span>
             ) : null}
             {hasClient ? (
               <span className={titleClasses}>{clientText}</span>
             ) : null}
-            {project.coming_soon ? (
-              <span className="mr-0 ml-auto block text-[0.6rem] md:text-base">
-                Coming Soon...
-              </span>
+            {hasTitle ? (
+              <span className={clientClasses}>{titleText}</span>
             ) : null}
           </h2>
           {project.starring.length > 0 ? (
@@ -175,6 +175,8 @@ const Project = async ({ params }: PageProps<'/projects/[uid]'>) => {
   const isAdditionalVideosEven =
     hasAdditionalVideos && additionalVideos.length % 2 === 0
 
+  console.log(hasAdditionalVideos)
+
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -194,7 +196,7 @@ const Project = async ({ params }: PageProps<'/projects/[uid]'>) => {
             })}
           >
             {additionalVideos.map((video, i) => {
-              if (!video.embed_url.length) return null
+              if (!Object.keys(video.embed_url).length) return null
               return <VimeoPlayer key={i} video={video.embed_url} />
             })}
           </div>
