@@ -21,13 +21,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const Links = ({ links }: { links: AboutDocumentData['links'] }) => {
   return (
     <div className="mb-8 mt-16 grid grid-cols-3 gap-3">
-      {links.map((item) => (
+      {links.map((item) => { 
+        if (!item.link) return null;
+        return (
         <div
           key={item.label}
           className="group overflow-hidden border border-neutral-200 px-6 py-4"
         >
           <Link
-            href={asLink(item.link) as string}
+            href={asLink(item.link) ?? ''}
             className="group relative flex justify-center"
           >
             <Image
@@ -43,7 +45,7 @@ const Links = ({ links }: { links: AboutDocumentData['links'] }) => {
             </span>
           </Link>
         </div>
-      ))}
+      )})}
     </div>
   )
 }
@@ -59,6 +61,16 @@ const Representation = ({
       <div className="mb-4 grid md:grid-cols-3 grid-cols-1  gap-8 md:gap-20">
         {representation.map((rep) => (
           <div key={rep.title}>
+            {rep.image?.url && (
+              <Image
+                src={getImageUrl(rep.image.url)}
+                width={rep.image.dimensions?.width}
+                height={rep.image.dimensions?.height}
+                alt={rep.title || 'Representation'}
+                className="mb-4 mx-auto"
+                quality={100}
+              />
+            )}
             <h3 className="mb-2 font-serif">{rep.title}</h3>
             <div
               className="text-sm leading-loose"
