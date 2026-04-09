@@ -21,13 +21,15 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const Links = ({ links }: { links: AboutDocumentData['links'] }) => {
   return (
     <div className="mb-8 mt-16 grid grid-cols-3 gap-3">
-      {links.map((item) => (
+      {links.map((item) => { 
+        if (!item.link) return null;
+        return (
         <div
           key={item.label}
           className="group overflow-hidden border border-neutral-200 px-6 py-4"
         >
           <Link
-            href={asLink(item.link) as string}
+            href={asLink(item.link) ?? ''}
             className="group relative flex justify-center"
           >
             <Image
@@ -43,7 +45,7 @@ const Links = ({ links }: { links: AboutDocumentData['links'] }) => {
             </span>
           </Link>
         </div>
-      ))}
+      )})}
     </div>
   )
 }
