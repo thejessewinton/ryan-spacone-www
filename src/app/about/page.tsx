@@ -59,6 +59,16 @@ const Representation = ({
       <div className="mb-4 grid md:grid-cols-3 grid-cols-1  gap-8 md:gap-20">
         {representation.map((rep) => (
           <div key={rep.title}>
+            {rep.image?.url && (
+              <Image
+                src={getImageUrl(rep.image.url)}
+                width={rep.image.dimensions?.width}
+                height={rep.image.dimensions?.height}
+                alt={rep.title || 'Representation'}
+                className="mb-4 mx-auto"
+                quality={100}
+              />
+            )}
             <h3 className="mb-2 font-serif">{rep.title}</h3>
             <div
               className="text-sm leading-loose"

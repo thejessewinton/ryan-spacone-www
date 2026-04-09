@@ -119,6 +119,16 @@ export interface AboutDocumentDataLinksItem {
  */
 export interface AboutDocumentDataRepresentationItem {
   /**
+   * Image field in *About → Representation*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.representation[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<never>
+  /**
    * Title field in *About → Representation*
    *
    * - **Field Type**: Text
