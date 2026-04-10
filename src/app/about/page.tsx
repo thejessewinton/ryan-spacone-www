@@ -56,9 +56,9 @@ const Representation = ({
   representation: AboutDocumentData['representation']
 }) => {
   return (
-    <div className="mb-8 mt-16 block text-center font-light">
+    <div className="mb-24 mt-16 block text-center font-light">
       <h2 className="mb-8 font-serif text-2xl">Representation</h2>
-      <div className="mb-4 grid md:grid-cols-3 grid-cols-1  gap-8 md:gap-20">
+      <div className="mb-12 flex flex-col gap-8 md:gap-12">
         {representation.map((rep) => (
           <div key={rep.title}>
             {rep.image?.url && (
@@ -67,7 +67,7 @@ const Representation = ({
                 width={rep.image.dimensions?.width}
                 height={rep.image.dimensions?.height}
                 alt={rep.title || 'Representation'}
-                className="mb-4 mx-auto"
+                className="mb-4 mx-auto w-60"
                 quality={100}
               />
             )}
