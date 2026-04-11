@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 import { useInView } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import type { ComponentPropsWithRef } from 'react'
 
 type ScrollObserverProps = ComponentPropsWithRef<'div'> & {
@@ -17,27 +17,18 @@ export const ScrollObserver = ({
   className,
   ...props
 }: ScrollObserverProps) => {
-  const [hasEnteredView, setHasEnteredView] = useState(false)
   const elementRef = useRef<HTMLDivElement | null>(null)
   const isInView = useInView(elementRef, {
     once: true,
     margin: '-10% 0px',
   })
 
-  useEffect(() => {
-    if (isInView) {
-      setHasEnteredView(true)
-    }
-  }, [isInView])
-
-  const shouldShow = hasEnteredView || isInView
-
   return (
     <div
       ref={elementRef}
       className={clsx('transition-all duration-500', className, {
-        [initial]: !shouldShow,
-        [whileInView]: shouldShow,
+        [initial]: !isInView,
+        [whileInView]: isInView,
       })}
       {...props}
     >

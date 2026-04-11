@@ -5,7 +5,6 @@ import 'keen-slider/keen-slider.min.css'
 import Image from 'next/image'
 import type { KeenSliderPlugin } from 'keen-slider/react'
 import { useKeenSlider } from 'keen-slider/react'
-import { getImageUrl } from 'utils/get-url'
 import { useState } from 'react'
 
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
@@ -82,7 +81,7 @@ export const BioSlider = ({
                 style={{ opacity: opacities[index] }}
               >
                 <Image
-                  src={getImageUrl(image.thumbnail.url)}
+                  src={image.thumbnail.url}
                   alt={(image.thumbnail.alt as string) || ''}
                   width={image.thumbnail.dimensions.width}
                   height={image.thumbnail.dimensions.height}

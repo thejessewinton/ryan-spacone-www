@@ -3,7 +3,7 @@ import { ProjectPreview } from 'components/project-preview/ProjectPreview'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { getBlurUrl } from 'utils/get-url'
 import type { ProjectDocumentData } from '../../../prismicio-types'
 
 export const ProjectCard = ({
@@ -50,7 +50,7 @@ export const ProjectCard = ({
       <Link href={href} aria-label={titleText}>
         <div className="group relative flex aspect-widescreen items-center justify-center overflow-hidden">
           <Image
-            src={getImageUrl(project.cover.widescreen.url)}
+            src={project.cover.widescreen.url}
             width={project.cover.widescreen.dimensions?.width}
             height={project.cover.widescreen.dimensions?.height}
             alt={asText(project.title) ?? ''}

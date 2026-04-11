@@ -3,7 +3,6 @@ import { getAboutPage } from 'utils/prismic'
 import Image from 'next/image'
 import type { AboutDocumentData } from '../../../prismicio-types'
 import Link from 'next/link'
-import { getImageUrl } from 'utils/get-url'
 import type { Metadata } from 'next'
 import { BioSlider } from 'components/bio-slider/BioSlider'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
@@ -33,7 +32,7 @@ const Links = ({ links }: { links: AboutDocumentData['links'] }) => {
             className="group relative flex justify-center"
           >
             <Image
-              src={getImageUrl(item.icon.url as string)}
+              src={item.icon.url as string}
               width={item.icon.dimensions?.width}
               height={item.icon.dimensions?.height}
               alt="Project Image"
@@ -63,7 +62,7 @@ const Representation = ({
           <div key={rep.title}>
             {rep.image?.url && (
               <Image
-                src={getImageUrl(rep.image.url)}
+                src={rep.image.url}
                 width={rep.image.dimensions?.width}
                 height={rep.image.dimensions?.height}
                 alt={rep.title || 'Representation'}

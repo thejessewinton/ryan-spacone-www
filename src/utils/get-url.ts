@@ -1,7 +1,3 @@
-export const getImageUrl = (url: string) => {
-  return `${url}`
-}
-
 export const getBlurUrl = (url: string) => {
   return `${url}&q=20&blur=200`
 }
