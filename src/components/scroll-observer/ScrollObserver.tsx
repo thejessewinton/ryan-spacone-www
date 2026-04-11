@@ -1,8 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import { useInView } from 'motion/react'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import type { ComponentPropsWithRef } from 'react'
 
 type ScrollObserverProps = ComponentPropsWithRef<'div'> & {
@@ -18,10 +17,25 @@ export const ScrollObserver = ({
   ...props
 }: ScrollObserverProps) => {
   const elementRef = useRef<HTMLDivElement | null>(null)
-  const isInView = useInView(elementRef, {
-    once: true,
-    margin: '-10% 0px',
-  })
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const el = elementRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '-10% 0px' },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div
