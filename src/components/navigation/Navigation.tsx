@@ -1,5 +1,3 @@
-'use client'
-
 import { asLink } from '@prismicio/helpers'
 import Link from 'next/link'
 import type { NavigationProps } from 'types/prismic'

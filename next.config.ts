@@ -13,7 +13,6 @@ const config: NextConfig = {
         hostname: 'i.vimeocdn.com',
       },
     ],
-    unoptimized: true,
     qualities: [90, 75],
   },
   redirects: async () => {
