@@ -43,7 +43,7 @@ export const getProjects = cache(async () => {
   return await client.getByType('project')
 })
 
-export const getCategory = async (category: string) => {
+export const getCategory = cache(async (category: string) => {
   return await client.getByUID<
     CategoryDocument & {
       data: {
@@ -59,7 +59,7 @@ export const getCategory = async (category: string) => {
       'project.preview',
     ],
   })
-}
+})
 
 export const getProject = cache(async (uid: string) => {
   try {
@@ -93,10 +93,7 @@ export const getProject = cache(async (uid: string) => {
     )
 
     const firstProject =
-      allProjectsInCategory.data.projects[
-        allProjectsInCategory.data.projects.length -
-          allProjectsInCategory.data.projects.length
-      ]?.project.url
+      allProjectsInCategory.data.projects[0]?.project.url
     const previousProject = allProjectsInCategory.data.projects[
       currentProject - 1
     ]?.project.url as string
@@ -144,9 +141,7 @@ export const getStillsSet = cache(async (uid: string) => {
       (set) => set.set.uid === uid,
     )
 
-    const firstSet = allStillsSets.data.sets[
-      allStillsSets.data.sets.length - allStillsSets.data.sets.length
-    ]?.set.url as string
+    const firstSet = allStillsSets.data.sets[0]?.set.url as string
 
     const previousSet = allStillsSets.data.sets[currentSet - 1]?.set
       .url as string

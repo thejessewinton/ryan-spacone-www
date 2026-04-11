@@ -2,7 +2,7 @@ import { asText } from '@prismicio/helpers'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 import Image from 'next/image'
 import Link from 'next/link'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { getBlurUrl } from 'utils/get-url'
 import type { StillsSetDocumentData } from '../../../prismicio-types'
 
 export const StillsCard = ({
@@ -27,7 +27,7 @@ export const StillsCard = ({
           </h2>
 
           <Image
-            src={getImageUrl(set.cover.cover.url)}
+            src={set.cover.cover.url}
             width={set.cover.cover.dimensions?.width}
             height={set.cover.cover.dimensions?.height}
             alt={asText(set.title)}

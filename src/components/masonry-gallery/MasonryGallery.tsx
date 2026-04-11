@@ -6,7 +6,7 @@ import type { StillsSetProps } from 'types/prismic'
 import Image from 'next/image'
 import { ScrollObserver } from 'components/scroll-observer/ScrollObserver'
 import { Lightbox } from 'components/lightbox/Lightbox'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { getBlurUrl } from 'utils/get-url'
 
 export const MasonryGallery = ({
   stills,
@@ -33,7 +33,7 @@ export const MasonryGallery = ({
           >
             <Image
               onClick={() => handleOpen(i)}
-              src={getImageUrl(still.image.url)}
+              src={still.image.url}
               width={still.image.dimensions.width}
               height={still.image.dimensions.height}
               alt="Project Image"
