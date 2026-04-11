@@ -13,13 +13,13 @@ import { env } from 'env.mjs'
 const openSans = Open_Sans({
   variable: '--font-sans',
   subsets: ['latin'],
-  display: 'optional',
+  display: 'swap',
 })
 
 const lora = Lora({
   variable: '--font-serif',
   subsets: ['latin'],
-  display: 'optional',
+  display: 'swap',
   weight: ['400', '500', '600', '700'],
 })
 
