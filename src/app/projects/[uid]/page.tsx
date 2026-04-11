@@ -8,7 +8,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { ProjectProps } from 'types/prismic'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
+import { getBlurUrl } from 'utils/get-url'
 import { getProject, getProjects } from 'utils/prismic'
 
 export const revalidate = 60
@@ -136,7 +136,7 @@ const Project = async ({ params }: PageProps<'/projects/[uid]'>) => {
       const { width, height } = featuredImage.dimensions
       return (
         <Image
-          src={getImageUrl(featuredImage.url)}
+          src={featuredImage.url}
           width={width}
           height={height}
           alt="Project Image"
@@ -154,7 +154,7 @@ const Project = async ({ params }: PageProps<'/projects/[uid]'>) => {
       const { width, height } = coverImage.dimensions
       return (
         <Image
-          src={getImageUrl(coverImage.url)}
+          src={coverImage.url}
           width={width}
           height={height}
           alt="Project Image"
@@ -174,8 +174,6 @@ const Project = async ({ params }: PageProps<'/projects/[uid]'>) => {
   const hasAdditionalVideos = additionalVideos.length > 0
   const isAdditionalVideosEven =
     hasAdditionalVideos && additionalVideos.length % 2 === 0
-
-  console.log(hasAdditionalVideos)
 
   return (
     <>

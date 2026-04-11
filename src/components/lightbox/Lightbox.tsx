@@ -9,8 +9,7 @@ import Image from 'next/image'
 import { useRef } from 'react'
 import { useClickOutside } from 'hooks/use-click-outside'
 import { CloseIcon, LeftArrow } from 'components/icons/Icons'
-import { getBlurUrl, getImageUrl } from 'utils/get-url'
-import { clsx } from 'clsx'
+import { getBlurUrl } from 'utils/get-url'
 import { useLockBodyScroll } from 'hooks/use-lock-body-scroll'
 
 export const Lightbox = ({
@@ -24,17 +23,16 @@ export const Lightbox = ({
 
   const handlePrev = () => {
     if (currentImage === 0) {
-      toggleOpen()
+      return toggleOpen()
     }
     setCurrentImage(currentImage - 1)
   }
 
   const handleNext = () => {
     if (currentImage >= images.length - 1) {
-      toggleOpen()
-    } else {
-      setCurrentImage(currentImage + 1)
+      return toggleOpen()
     }
+    setCurrentImage(currentImage + 1)
   }
 
   useClickOutside(ref, toggleOpen)
@@ -50,24 +48,17 @@ export const Lightbox = ({
         className="relative flex grow items-center justify-center p-12"
         ref={ref}
       >
-        {images.map((still, i) => {
-          return (
-            <Image
-              key={i}
-              src={getImageUrl(still.image.url as string)}
-              placeholder="blur"
-              blurDataURL={getBlurUrl(still.image.url as string)}
-              alt="Lightbox Image"
-              loading="eager"
-              className={clsx(
-                i === currentImage ? 'block' : 'hidden',
-                'max-h-screen w-full max-w-4xl py-5 lg:max-w-7xl',
-              )}
-              width={still.image.dimensions?.width}
-              height={still.image.dimensions?.height}
-            />
-          )
-        })}
+        <Image
+          key={currentImage}
+          src={images[currentImage].image.url as string}
+          placeholder="blur"
+          blurDataURL={getBlurUrl(images[currentImage].image.url as string)}
+          alt="Lightbox Image"
+          loading="eager"
+          className="max-h-screen w-full max-w-4xl py-5 lg:max-w-7xl"
+          width={images[currentImage].image.dimensions?.width}
+          height={images[currentImage].image.dimensions?.height}
+        />
 
         <div className="absolute flex h-full w-full items-center justify-between">
           <button
