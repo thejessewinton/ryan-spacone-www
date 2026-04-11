@@ -11,6 +11,14 @@ import { notFound } from 'next/navigation'
 
 const client = createClient()
 
+interface ProjectNavItem {
+  project: { url: string; uid: string }
+}
+
+interface StillsNavItem {
+  set: { url: string; uid: string }
+}
+
 export const getSiteSettings = cache(async () => {
   return await client.getSingle('site_settings')
 })
@@ -75,30 +83,17 @@ export const getProject = cache(async (uid: string) => {
 
     const categoryUid = project.data.category.uid
 
-    const allProjectsInCategory = await client.getByUID<
-      CategoryDocument & {
-        data: {
-          projects: {
-            project: {
-              url: string
-              uid: string
-            }
-          }[]
-        }
-      }
-    >('category', categoryUid)
+    const allProjectsInCategory = await client.getByUID('category', categoryUid)
+    const projects = allProjectsInCategory.data
+      .projects as unknown as ProjectNavItem[]
 
-    const currentProject = allProjectsInCategory.data.projects.findIndex(
+    const currentProject = projects.findIndex(
       (project) => project.project.uid === uid,
     )
 
-    const firstProject =
-      allProjectsInCategory.data.projects[0]?.project.url
-    const previousProject = allProjectsInCategory.data.projects[
-      currentProject - 1
-    ]?.project.url as string
-    const nextProject = allProjectsInCategory.data.projects[currentProject + 1]
-      ?.project.url as string
+    const firstProject = projects[0]?.project.url
+    const previousProject = projects[currentProject - 1]?.project.url as string
+    const nextProject = projects[currentProject + 1]?.project.url as string
 
     return {
       project,
@@ -137,15 +132,12 @@ export const getStillsSet = cache(async (uid: string) => {
     const stillsSet = await client.getByUID('stills_set', uid)
 
     const allStillsSets = await getStillsPage()
-    const currentSet = allStillsSets.data.sets.findIndex(
-      (set) => set.set.uid === uid,
-    )
+    const sets = allStillsSets.data.sets as unknown as StillsNavItem[]
+    const currentSet = sets.findIndex((set) => set.set.uid === uid)
 
-    const firstSet = allStillsSets.data.sets[0]?.set.url as string
-
-    const previousSet = allStillsSets.data.sets[currentSet - 1]?.set
-      .url as string
-    const nextSet = allStillsSets.data.sets[currentSet + 1]?.set.url as string
+    const firstSet = sets[0]?.set.url as string
+    const previousSet = sets[currentSet - 1]?.set.url as string
+    const nextSet = sets[currentSet + 1]?.set.url as string
 
     return {
       firstSet,
