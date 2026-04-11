@@ -57,7 +57,6 @@ export const ProjectPreview = ({
     const mountTimer = setTimeout(() => {
       if (!iframeRef.current) return
 
-      let isMounted = true
       const containerRef = wrapperRef.current
       let detachHoverListeners: (() => void) | undefined
       let pauseTimeout: ReturnType<typeof setTimeout> | undefined
@@ -114,7 +113,6 @@ export const ProjectPreview = ({
       }
 
       return () => {
-        isMounted = false
         detachHoverListeners?.()
         if (pauseTimeout) {
           clearTimeout(pauseTimeout)
