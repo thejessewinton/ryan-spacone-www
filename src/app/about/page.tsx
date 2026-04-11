@@ -67,7 +67,7 @@ const Representation = ({
                 width={rep.image.dimensions?.width}
                 height={rep.image.dimensions?.height}
                 alt={rep.title || 'Representation'}
-                className="mb-4 mx-auto w-60"
+                className="mb-4 mx-auto w-30"
                 quality={100}
               />
             )}
