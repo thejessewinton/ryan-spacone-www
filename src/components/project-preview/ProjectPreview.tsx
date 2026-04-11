@@ -4,13 +4,12 @@ import type { ProjectDocumentData } from '../../../prismicio-types'
 import { clsx } from 'clsx'
 import { useRef, useEffect, useState, type ReactNode } from 'react'
 import Player from '@vimeo/player'
-import { useScreenSize } from 'hooks/use-screen-size'
 
 export const ProjectPreview = ({
   preview,
   children,
   showOnHover = false,
-  eager = false, // Add this prop
+  eager = false,
 }: {
   preview: ProjectDocumentData['preview']
   children?: ReactNode
@@ -21,12 +20,10 @@ export const ProjectPreview = ({
   const wrapperRef = useRef<HTMLDivElement | null>(null)
   const playerRef = useRef<Player | null>(null)
   const isPlayingRef = useRef(false)
-  const [shouldLoad, setShouldLoad] = useState(eager) // Start true if eager
+  const [shouldLoad, setShouldLoad] = useState(eager)
   const [show, setShow] = useState(false)
 
-  const size = useScreenSize()
-
-  // Intersection observer - skip if eager
+  // Intersection observer for lazy loading - skip if eager
   useEffect(() => {
     if (eager) return
 
@@ -50,7 +47,7 @@ export const ProjectPreview = ({
     return () => observer.disconnect()
   }, [eager])
 
-  // Player setup
+  // Player setup - no longer depends on window size
   useEffect(() => {
     if (!shouldLoad) return
 
@@ -96,7 +93,10 @@ export const ProjectPreview = ({
         }, 700)
       }
 
-      if (containerRef && showOnHover && size.width >= 1024) {
+      // Check width at setup time, not reactively
+      const isDesktop = window.innerWidth >= 1024
+
+      if (containerRef && showOnHover && isDesktop) {
         containerRef.addEventListener('mouseenter', handleMouseEnter)
         containerRef.addEventListener('mouseleave', handleMouseLeave)
         containerRef.addEventListener('touchstart', handleMouseEnter)
@@ -124,7 +124,7 @@ export const ProjectPreview = ({
     }, 50)
 
     return () => clearTimeout(mountTimer)
-  }, [shouldLoad, showOnHover, size.width])
+  }, [shouldLoad, showOnHover])
 
   return (
     <div

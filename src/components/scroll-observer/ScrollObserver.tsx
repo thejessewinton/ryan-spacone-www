@@ -17,7 +17,7 @@ export const ScrollObserver = ({
   ...props
 }: ScrollObserverProps) => {
   const elementRef = useRef<HTMLDivElement | null>(null)
-  const [isInView, setIsInView] = useState(false)
+  const [state, setState] = useState<'ssr' | 'hidden' | 'visible'>('ssr')
 
   useEffect(() => {
     const el = elementRef.current
@@ -26,8 +26,10 @@ export const ScrollObserver = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
-          setIsInView(true)
+          setState('visible')
           observer.disconnect()
+        } else {
+          setState('hidden')
         }
       },
       { rootMargin: '-10% 0px' },
@@ -40,10 +42,12 @@ export const ScrollObserver = ({
   return (
     <div
       ref={elementRef}
-      className={clsx('transition-all duration-500', className, {
-        [initial]: !isInView,
-        [whileInView]: isInView,
-      })}
+      className={clsx(
+        className,
+        state !== 'ssr' && 'transition-all duration-500',
+        state === 'hidden' && initial,
+        state === 'visible' && whileInView,
+      )}
       {...props}
     >
       {children}

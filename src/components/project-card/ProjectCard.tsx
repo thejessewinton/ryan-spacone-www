@@ -24,26 +24,24 @@ export const ProjectCard = ({
   const hasClient = Boolean(clientText)
   const hasTitle = Boolean(titleText)
 
-  const TitleContent = () => {
-    return (
-      <h2 className="absolute z-10 flex flex-col items-center text-center font-serif text-white uppercase opacity-100 transition-opacity duration-700 after:absolute after:right-8 after:left-0 after:block after:content-[''] lg:opacity-0 lg:group-hover:opacity-100">
-        {hasClient ? (
-          <span className="text-sm tracking-[0.75rem] md:text-3xl md:tracking-[1.725rem]">
-            {clientText}
-          </span>
-        ) : null}
-        {hasClient ? (
-          <span className="mt-2 text-[0.55rem] tracking-[0.45rem] md:text-xl md:tracking-[1.05rem]">
-            {titleText}
-          </span>
-        ) : hasTitle ? (
-          <span className="text-sm tracking-[0.75rem] md:text-3xl md:tracking-[1.725rem]">
-            {titleText}
-          </span>
-        ) : null}
-      </h2>
-    )
-  }
+  const titleContent = (
+    <h2 className="absolute z-10 flex flex-col items-center text-center font-serif text-white uppercase opacity-100 transition-opacity duration-700 after:absolute after:right-8 after:left-0 after:block after:content-[''] lg:opacity-0 lg:group-hover:opacity-100">
+      {hasClient ? (
+        <span className="text-sm tracking-[0.75rem] md:text-3xl md:tracking-[1.725rem]">
+          {clientText}
+        </span>
+      ) : null}
+      {hasClient ? (
+        <span className="mt-2 text-[0.55rem] tracking-[0.45rem] md:text-xl md:tracking-[1.05rem]">
+          {titleText}
+        </span>
+      ) : hasTitle ? (
+        <span className="text-sm tracking-[0.75rem] md:text-3xl md:tracking-[1.725rem]">
+          {titleText}
+        </span>
+      ) : null}
+    </h2>
+  )
 
   return (
     <ScrollObserver>
@@ -65,10 +63,10 @@ export const ProjectCard = ({
               preview={project.preview}
               eager={true}
             >
-              <TitleContent />
+              {titleContent}
             </ProjectPreview>
           ) : (
-            <TitleContent />
+            titleContent
           )}
         </div>
       </Link>
